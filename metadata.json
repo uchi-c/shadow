@@ -1,0 +1,6 @@
+{
+  "name": "Shadow Root Security Technologies",
+  "description": "Sleek and secure corporate web showcase for Shadow Root Security Technologies, a youth-led cybersecurity startup based in Lusaka, Zambia featuring an interactive RAG-powered Gemini AI Site Concierge.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
