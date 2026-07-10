@@ -40,6 +40,37 @@ export interface ChatLog {
   updatedAt: number;
 }
 
+export type RecordStatus = "pending" | "contacted" | "qualified" | "closed" | "archived";
+
+const STATUS_KEYS: RecordStatus[] = ["pending", "contacted", "qualified", "closed", "archived"];
+
+// Aggregated intelligence report describing the current state of the pipeline
+export interface SystemStats {
+  generatedAt: number;
+  leads: {
+    total: number;
+    byStatus: Record<RecordStatus, number>;
+  };
+  chats: {
+    total: number;
+    escalated: number;
+    withContact: number;
+    byStatus: Record<RecordStatus, number>;
+  };
+  knowledge: {
+    total: number;
+    byCategory: Record<KnowledgeBaseEntry["category"], number>;
+  };
+  pipeline: {
+    // Total actionable records = form leads + chats that surfaced a contact / escalation
+    actionableRecords: number;
+    open: number; // pending
+    engaged: number; // contacted + qualified
+    conversionRate: number; // qualified share of all lead records (0-1)
+  };
+  recentActivityTimestamp: number | null;
+}
+
 const DATA_DIR = path.join(process.cwd(), ".data");
 const LEADS_FILE = path.join(DATA_DIR, "leads.json");
 const KNOWLEDGE_FILE = path.join(DATA_DIR, "knowledge_base.json");
@@ -269,6 +300,87 @@ export const db = {
       return true;
     }
     return false;
+  },
+
+  // === STATE / INTELLIGENCE REPORTING ===
+  // Computes an aggregated snapshot of the pipeline for the admin reporting console.
+  getStats(): SystemStats {
+    const leads = this.getLeads();
+    const chats = this.getChatLogs();
+    const knowledge = this.getKnowledgeBase();
+
+    const emptyStatusMap = (): Record<RecordStatus, number> =>
+      STATUS_KEYS.reduce((acc, key) => {
+        acc[key] = 0;
+        return acc;
+      }, {} as Record<RecordStatus, number>);
+
+    // Tally lead records by status
+    const leadsByStatus = emptyStatusMap();
+    leads.forEach(l => {
+      const status = STATUS_KEYS.includes(l.status) ? l.status : "pending";
+      leadsByStatus[status] += 1;
+    });
+
+    // Tally chat sessions by status + escalation / contact signals
+    const chatsByStatus = emptyStatusMap();
+    let escalated = 0;
+    let chatsWithContact = 0;
+    chats.forEach(c => {
+      const status = STATUS_KEYS.includes(c.status) ? c.status : "pending";
+      chatsByStatus[status] += 1;
+      if (c.isEscalated) escalated += 1;
+      if (c.visitorContact || c.visitorName || c.isEscalated) chatsWithContact += 1;
+    });
+
+    // Tally knowledge documents by category
+    const knowledgeByCategory = knowledge.reduce((acc, entry) => {
+      acc[entry.category] = (acc[entry.category] || 0) + 1;
+      return acc;
+    }, {} as Record<KnowledgeBaseEntry["category"], number>);
+
+    // Pipeline view: form leads plus chats that surfaced an actionable contact
+    const actionableChats = chats.filter(c => c.visitorContact || c.visitorName || c.isEscalated);
+    const actionableRecords = leads.length + actionableChats.length;
+    const open = leadsByStatus.pending + actionableChats.filter(c => (c.status || "pending") === "pending").length;
+    const engaged =
+      leadsByStatus.contacted + leadsByStatus.qualified +
+      actionableChats.filter(c => c.status === "contacted" || c.status === "qualified").length;
+    const qualified =
+      leadsByStatus.qualified + actionableChats.filter(c => c.status === "qualified").length;
+    const conversionRate = actionableRecords > 0 ? qualified / actionableRecords : 0;
+
+    // Most recent activity across leads + chats
+    const timestamps = [
+      ...leads.map(l => l.createdAt),
+      ...chats.map(c => c.updatedAt || c.createdAt)
+    ].filter(t => typeof t === "number" && !Number.isNaN(t));
+    const recentActivityTimestamp = timestamps.length > 0 ? Math.max(...timestamps) : null;
+
+    return {
+      generatedAt: Date.now(),
+      leads: {
+        total: leads.length,
+        byStatus: leadsByStatus
+      },
+      chats: {
+        total: chats.length,
+        escalated,
+        withContact: chatsWithContact,
+        byStatus: chatsByStatus
+      },
+      knowledge: {
+        total: knowledge.length,
+        byCategory: knowledgeByCategory
+      },
+      pipeline: {
+        actionableRecords,
+        open,
+        engaged,
+        conversionRate
+      },
+      recentActivityTimestamp
+    };
   },
 
   // === PARAMETERIZED SEARCH (SQL EMULATION) ===

@@ -311,6 +311,53 @@ app.delete("/api/admin/knowledge/:id", authenticateAdmin, (req: Request, res: Re
 });
 
 
+// Aggregated intelligence report / state snapshot (authenticated)
+app.get("/api/admin/stats", authenticateAdmin, (req: Request, res: Response) => {
+  try {
+    const stats = db.getStats();
+    return res.json({ stats });
+  } catch (err) {
+    return res.status(500).json({ error: "Internal Database Security Error." });
+  }
+});
+
+
+// --- PUBLIC SYSTEM STATE / HEALTH CHECK ---
+// Lightweight liveness + configuration probe. Reports only booleans so no
+// secrets, tokens, or PII are ever leaked through this public endpoint.
+const SERVER_START_TIME = Date.now();
+app.get("/api/health", (req: Request, res: Response) => {
+  let datastoreReachable = true;
+  let leadCount = 0;
+  let knowledgeCount = 0;
+  try {
+    leadCount = db.getLeads().length;
+    knowledgeCount = db.getKnowledgeBase().length;
+  } catch (err) {
+    datastoreReachable = false;
+  }
+
+  const services = {
+    supabaseAuth: !!supabase,
+    geminiConfigured: !!process.env.GEMINI_API_KEY,
+    datastore: datastoreReachable
+  };
+
+  const allHealthy = Object.values(services).every(Boolean);
+
+  return res.status(allHealthy ? 200 : 503).json({
+    status: allHealthy ? "ok" : "degraded",
+    timestamp: Date.now(),
+    uptimeSeconds: Math.floor((Date.now() - SERVER_START_TIME) / 1000),
+    services,
+    metrics: {
+      leads: leadCount,
+      knowledgeEntries: knowledgeCount
+    }
+  });
+});
+
+
 // --- PUBLIC SECURITY CONSULTATION/LEAD SUBMISSION GATE ---
 app.post("/api/leads", (req: Request, res: Response) => {
   const clientIp = req.ip || req.headers["x-forwarded-for"]?.toString() || "anonymous";
