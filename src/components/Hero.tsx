@@ -76,7 +76,7 @@ export default function Hero({ onNavigate }: HeroProps) {
 
             <button
               onClick={() => onNavigate("services")}
-              className="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded border border-slate-705 transition-all flex items-center justify-center space-x-2.5 cursor-pointer"
+              className="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded border border-slate-700 transition-all flex items-center justify-center space-x-2.5 cursor-pointer"
             >
               <span>View Services</span>
             </button>
@@ -158,7 +158,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                     {analyzedTargets.map((target, idx) => (
                       <div key={idx} className="flex items-center space-x-2 text-slate-300">
                         <span className="text-emerald-400 font-bold">✔</span>
-                        <span className="text-slate-450 font-mono text-[9.5px]">{target}</span>
+                        <span className="text-slate-400 font-mono text-[9.5px]">{target}</span>
                       </div>
                     ))}
                   </div>

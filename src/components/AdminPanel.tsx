@@ -574,7 +574,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
               )}
 
               {errorMsg && (
-                <div className="bg-red-955/20 border border-red-900/40 text-red-400 text-xs p-3 rounded-lg flex items-start space-x-2">
+                <div className="bg-red-950/20 border border-red-900/40 text-red-400 text-xs p-3 rounded-lg flex items-start space-x-2">
                   <ShieldAlert className="w-4 h-4 shrink-0 text-red-400 mt-0.5" />
                   <span className="leading-tight">{errorMsg}</span>
                 </div>
@@ -767,7 +767,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                 </button>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-950/20 hover:bg-red-955/40 text-red-400 border border-red-900/40 px-3.5 py-1.5 rounded-lg font-mono font-bold cursor-pointer transition-all"
+                  className="bg-red-950/20 hover:bg-red-950/40 text-red-400 border border-red-900/40 px-3.5 py-1.5 rounded-lg font-mono font-bold cursor-pointer transition-all"
                   id="logout-btn"
                 >
                   Log out session
@@ -777,7 +777,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
             {/* ERROR NOTIFIER */}
             {errorMsg && (
-              <div className="bg-red-955/20 border-b border-red-900/30 text-red-400 text-xs px-6 py-3 shrink-0 flex items-center justify-between">
+              <div className="bg-red-950/20 border-b border-red-900/30 text-red-400 text-xs px-6 py-3 shrink-0 flex items-center justify-between">
                 <span className="font-mono">{errorMsg}</span>
                 <button onClick={() => setErrorMsg("")} className="text-red-400 font-bold hover:underline font-mono">Dismiss</button>
               </div>
@@ -1023,7 +1023,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                     lead.status === "pending" ? "bg-amber-950/30 text-amber-400 border-amber-500/30" :
                                     lead.status === "contacted" ? "bg-blue-950/30 text-blue-400 border-blue-500/30" :
                                     lead.status === "qualified" ? "bg-emerald-950/30 text-emerald-400 border-emerald-500/30" :
-                                    lead.status === "closed" ? "bg-rose-955/25 text-rose-400 border-rose-500/30" :
+                                    lead.status === "closed" ? "bg-rose-950/25 text-rose-400 border-rose-500/30" :
                                     "bg-zinc-950/30 text-zinc-400 border-zinc-500/20"
                                   }`}>
                                     {lead.status}
@@ -1131,8 +1131,8 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                       </div>
                                       <div className={`p-2.5 rounded-xl text-xs leading-relaxed ${
                                         isBot 
-                                          ? "bg-[#6C00FF]/10 text-slate-250 border border-[#6C00FF]/10 rounded-tl-none" 
-                                          : "bg-emerald-955/10 text-emerald-100 border border-emerald-900/15 rounded-tr-none"
+                                          ? "bg-[#6C00FF]/10 text-slate-300 border border-[#6C00FF]/10 rounded-tl-none" 
+                                          : "bg-emerald-950/10 text-emerald-100 border border-emerald-900/15 rounded-tr-none"
                                       }`}>
                                         {msg.text}
                                       </div>
@@ -1189,7 +1189,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               onClick={() => handleUpdateUnifiedLeadStatus(selectedLead, "closed")}
                               className={`px-2.5 py-2 rounded text-[11px] cursor-pointer font-bold border transition-all truncate text-center font-mono ${
                                 selectedLead.status === "closed" 
-                                  ? "bg-rose-955/20 text-rose-400 border-rose-500" 
+                                  ? "bg-rose-950/20 text-rose-400 border-rose-500" 
                                   : "bg-[#0c0515] text-slate-400 border-white/5 hover:border-rose-500/30 hover:text-rose-300"
                               }`}
                             >
@@ -1199,7 +1199,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               onClick={() => handleUpdateUnifiedLeadStatus(selectedLead, "archived")}
                               className={`px-2.5 py-2 rounded col-span-2 sm:col-span-1 text-[11px] cursor-pointer font-bold border transition-all truncate text-center font-mono ${
                                 selectedLead.status === "archived" 
-                                  ? "bg-pink-955/20 text-pink-400 border-pink-500" 
+                                  ? "bg-pink-950/20 text-pink-400 border-pink-500" 
                                   : "bg-[#0c0515] text-slate-400 border-white/5 hover:border-pink-500/30 hover:text-pink-300"
                               }`}
                             >
@@ -1326,7 +1326,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
                             <button
                               onClick={() => handleDeleteKbEntry(doc.id)}
-                              className="text-slate-500 hover:text-red-400 transition-all p-1.5 hover:bg-red-955/20 rounded shrink-0 cursor-pointer"
+                              className="text-slate-500 hover:text-red-400 transition-all p-1.5 hover:bg-red-950/20 rounded shrink-0 cursor-pointer"
                               title="Delete article document"
                             >
                               <Trash2 className="w-4 h-4" />

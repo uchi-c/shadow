@@ -49,7 +49,7 @@ export default function Footer({ onNavigate, onOpenAdmin }: FooterProps) {
           <h4 className="text-xs font-mono font-bold tracking-widest text-[#A370FF] uppercase">
             Map Controls
           </h4>
-          <ul className="text-slate-450 text-xs space-y-2.5">
+          <ul className="text-slate-400 text-xs space-y-2.5">
             <li>
               <button onClick={() => onNavigate("home")} className="hover:text-[#6C00FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C00FF] hover:underline transition-all cursor-pointer rounded px-1 text-left">
                 Return to Base (Home)
