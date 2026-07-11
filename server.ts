@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import path from "path";
-import app from "./app";
+import app from "./app.js";
 
 // Long-running server entry point for local development (`npm run dev`) and
 // persistent Node hosts (`npm start`). The Express app itself lives in app.ts

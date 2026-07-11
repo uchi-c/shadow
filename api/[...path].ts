@@ -5,6 +5,9 @@
 // (no vite, no static-file server), so it bundles cleanly into a function.
 // Vercel's Node runtime accepts an Express app directly as a request handler,
 // so every request to /api/* is dispatched into the app.
-import app from "../app";
+// NOTE: the .js extension is required — package.json is "type": "module", so at
+// runtime Node's ESM resolver needs an explicit extension. TypeScript still maps
+// this back to ../app.ts for type-checking.
+import app from "../app.js";
 
 export default app;

@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
-import { db } from "./src/db/secure_db";
+import { db } from "./src/db/secure_db.js";
 import { createClient } from "@supabase/supabase-js";
 
 // Load environment variables securely
