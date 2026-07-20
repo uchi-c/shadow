@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { 
-  Lock, Eye, Check, ShieldAlert, KeyRound, Database, MessageSquare, 
-  Mail, RefreshCw, Trash2, Calendar, FileText, UserCheck, X, 
-  Search, Phone, Send, UserPlus, Info, ExternalLink 
+import {
+  Lock, Eye, Check, ShieldAlert, KeyRound, Database, MessageSquare,
+  Mail, RefreshCw, Trash2, Calendar, FileText, UserCheck, X,
+  Search, Phone, Send, UserPlus, Info, ExternalLink,
+  BarChart3, TrendingUp, Activity, Zap, AlertTriangle
 } from "lucide-react";
 import { LeadInquiry, kbEntry } from "../types";
 import { supabase } from "../lib/supabaseClient";
@@ -10,6 +11,42 @@ import { supabase } from "../lib/supabaseClient";
 interface AdminPanelProps {
   isOpen: boolean;
   onClose: () => void;
+}
+
+// Ordered status metadata used to render the report distribution bars
+const STATUS_META: { key: StatusKey; label: string; bar: string; text: string }[] = [
+  { key: "pending", label: "Pending", bar: "bg-amber-400", text: "text-amber-400" },
+  { key: "contacted", label: "Contacted", bar: "bg-blue-400", text: "text-blue-400" },
+  { key: "qualified", label: "Qualified", bar: "bg-emerald-400", text: "text-emerald-400" },
+  { key: "closed", label: "Closed", bar: "bg-rose-400", text: "text-rose-400" },
+  { key: "archived", label: "Archived", bar: "bg-zinc-400", text: "text-zinc-400" },
+];
+
+type StatusKey = "pending" | "contacted" | "qualified" | "closed" | "archived";
+
+interface AdminStats {
+  generatedAt: number;
+  leads: {
+    total: number;
+    byStatus: Record<StatusKey, number>;
+  };
+  chats: {
+    total: number;
+    escalated: number;
+    withContact: number;
+    byStatus: Record<StatusKey, number>;
+  };
+  knowledge: {
+    total: number;
+    byCategory: Record<string, number>;
+  };
+  pipeline: {
+    actionableRecords: number;
+    open: number;
+    engaged: number;
+    conversionRate: number;
+  };
+  recentActivityTimestamp: number | null;
 }
 
 interface UnifiedLead {
@@ -40,10 +77,11 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
   const [errorMsg, setErrorMsg] = useState("");
 
   // Dashboard Data State
-  const [activeTab, setActiveTab] = useState<"leads" | "knowledge" | "chats">("leads");
+  const [activeTab, setActiveTab] = useState<"reports" | "leads" | "knowledge" | "chats">("reports");
   const [leads, setLeads] = useState<LeadInquiry[]>([]);
   const [kbEntries, setKbEntries] = useState<kbEntry[]>([]);
   const [chats, setChats] = useState<any[]>([]);
+  const [stats, setStats] = useState<AdminStats | null>(null);
 
   // Search & Filtering States
   const [sourceFilter, setSourceFilter] = useState<"all" | "quote" | "chat">("all");
@@ -122,7 +160,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
       // Force refresh of leads and chats concurrently to populate unified model
       const tokenHeader = `Bearer ${authToken}`;
       
-      const endpoints = ["/api/admin/leads", "/api/admin/chats", "/api/admin/knowledge"];
+      const endpoints = ["/api/admin/leads", "/api/admin/chats", "/api/admin/knowledge", "/api/admin/stats"];
       const requests = endpoints.map(ep => 
         fetch(ep, { headers: { "Authorization": tokenHeader } })
           .then(async r => {
@@ -144,6 +182,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
         if (res.endpoint === "/api/admin/leads") setLeads(res.data.leads || []);
         if (res.endpoint === "/api/admin/chats") setChats(res.data.chats || []);
         if (res.endpoint === "/api/admin/knowledge") setKbEntries(res.data.entries || []);
+        if (res.endpoint === "/api/admin/stats") setStats(res.data.stats || null);
       });
 
     } catch (err: any) {
@@ -282,6 +321,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
     setLeads([]);
     setKbEntries([]);
     setChats([]);
+    setStats(null);
     setSelectedLead(null);
   };
 
@@ -534,7 +574,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
               )}
 
               {errorMsg && (
-                <div className="bg-red-955/20 border border-red-900/40 text-red-400 text-xs p-3 rounded-lg flex items-start space-x-2">
+                <div className="bg-red-950/20 border border-red-900/40 text-red-400 text-xs p-3 rounded-lg flex items-start space-x-2">
                   <ShieldAlert className="w-4 h-4 shrink-0 text-red-400 mt-0.5" />
                   <span className="leading-tight">{errorMsg}</span>
                 </div>
@@ -666,6 +706,18 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
             <div className="bg-[#120826] border-b border-[#6C00FF1a] px-6 py-3 flex flex-col md:flex-row gap-4 md:items-center justify-between shrink-0">
               <div className="flex flex-wrap gap-2 text-xs">
                 <button
+                  onClick={() => setActiveTab("reports")}
+                  className={`px-4 py-2 rounded-lg font-bold cursor-pointer transition-all flex items-center space-x-1.5 ${
+                    activeTab === "reports"
+                      ? "bg-[#6C00FF] text-white shadow-[0_4px_12px_rgba(108,0,255,0.3)]"
+                      : "text-slate-400 hover:text-white hover:bg-[#0a0515]"
+                  }`}
+                  id="tab-reports"
+                >
+                  <BarChart3 className="w-3.5 h-3.5" />
+                  <span>State &amp; Intelligence Report</span>
+                </button>
+                <button
                   onClick={() => setActiveTab("leads")}
                   className={`px-4 py-2 rounded-lg font-bold cursor-pointer transition-all flex items-center space-x-1.5 ${
                     activeTab === "leads" 
@@ -715,7 +767,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                 </button>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-950/20 hover:bg-red-955/40 text-red-400 border border-red-900/40 px-3.5 py-1.5 rounded-lg font-mono font-bold cursor-pointer transition-all"
+                  className="bg-red-950/20 hover:bg-red-950/40 text-red-400 border border-red-900/40 px-3.5 py-1.5 rounded-lg font-mono font-bold cursor-pointer transition-all"
                   id="logout-btn"
                 >
                   Log out session
@@ -725,7 +777,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
             {/* ERROR NOTIFIER */}
             {errorMsg && (
-              <div className="bg-red-955/20 border-b border-red-900/30 text-red-400 text-xs px-6 py-3 shrink-0 flex items-center justify-between">
+              <div className="bg-red-950/20 border-b border-red-900/30 text-red-400 text-xs px-6 py-3 shrink-0 flex items-center justify-between">
                 <span className="font-mono">{errorMsg}</span>
                 <button onClick={() => setErrorMsg("")} className="text-red-400 font-bold hover:underline font-mono">Dismiss</button>
               </div>
@@ -734,6 +786,146 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
             {/* SCROLLABLE VIEWCONTAINER */}
             <div className="flex-grow overflow-hidden bg-[#0a0515] flex">
               
+              {/* TAB 0: STATE & INTELLIGENCE REPORT */}
+              {!loading && activeTab === "reports" && (
+                <div className="flex-grow flex flex-col p-6 overflow-y-auto space-y-6">
+                  {!stats ? (
+                    <div className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-8 text-center text-xs text-slate-500 font-mono">
+                      Report data is being compiled. Trigger a reload if this persists.
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                        <div className="space-y-1">
+                          <h4 className="font-display font-bold text-white text-base flex items-center gap-2">
+                            <Activity className="w-4 h-4 text-[#A370FF]" />
+                            Operational State Snapshot
+                          </h4>
+                          <p className="text-xs text-slate-400 font-mono">
+                            Aggregated intelligence across inquiry forms, Kuma AI sessions, and the RAG knowledge base.
+                          </p>
+                        </div>
+                        <div className="text-[10px] text-slate-500 font-mono text-right space-y-0.5 shrink-0">
+                          <div>Generated {new Date(stats.generatedAt).toLocaleString()}</div>
+                          <div>
+                            Last activity:{" "}
+                            {stats.recentActivityTimestamp
+                              ? new Date(stats.recentActivityTimestamp).toLocaleString()
+                              : "No records yet"}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* KPI STAT CARDS */}
+                      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+                        {[
+                          { label: "Actionable Records", value: stats.pipeline.actionableRecords, icon: FileText, accent: "text-[#A370FF]" },
+                          { label: "Open / Pending", value: stats.pipeline.open, icon: Mail, accent: "text-amber-400" },
+                          { label: "Engaged", value: stats.pipeline.engaged, icon: TrendingUp, accent: "text-blue-400" },
+                          { label: "Conversion", value: `${(stats.pipeline.conversionRate * 100).toFixed(1)}%`, icon: BarChart3, accent: "text-emerald-400" },
+                          { label: "AI Escalations", value: stats.chats.escalated, icon: Zap, accent: "text-[#A370FF]" },
+                          { label: "RAG Documents", value: stats.knowledge.total, icon: Database, accent: "text-slate-300" },
+                        ].map((card) => {
+                          const Icon = card.icon;
+                          return (
+                            <div
+                              key={card.label}
+                              className="bg-[#120826]/75 border border-[#6C00FF22] rounded-xl p-4 space-y-2"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="text-[9px] font-mono uppercase tracking-wider text-slate-500 leading-tight">
+                                  {card.label}
+                                </span>
+                                <Icon className={`w-3.5 h-3.5 ${card.accent}`} />
+                              </div>
+                              <div className={`text-2xl font-display font-bold ${card.accent}`}>{card.value}</div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* STATUS DISTRIBUTION BREAKDOWNS */}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        {[
+                          { title: "Inquiry Form Leads", total: stats.leads.total, byStatus: stats.leads.byStatus },
+                          { title: "Kuma AI Chat Sessions", total: stats.chats.total, byStatus: stats.chats.byStatus },
+                        ].map((group) => (
+                          <div
+                            key={group.title}
+                            className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-5 space-y-4"
+                          >
+                            <div className="flex items-center justify-between">
+                              <h5 className="font-display font-medium text-xs text-white uppercase tracking-widest font-mono">
+                                {group.title}
+                              </h5>
+                              <span className="text-[10px] font-mono text-slate-400">{group.total} total</span>
+                            </div>
+                            <div className="space-y-2.5">
+                              {STATUS_META.map((meta) => {
+                                const count = group.byStatus[meta.key] || 0;
+                                const pct = group.total > 0 ? Math.round((count / group.total) * 100) : 0;
+                                return (
+                                  <div key={meta.key} className="space-y-1">
+                                    <div className="flex items-center justify-between text-[10px] font-mono">
+                                      <span className={meta.text}>{meta.label}</span>
+                                      <span className="text-slate-400">
+                                        {count} <span className="text-slate-600">({pct}%)</span>
+                                      </span>
+                                    </div>
+                                    <div className="h-1.5 bg-[#0a0515] rounded-full overflow-hidden border border-white/5">
+                                      <div
+                                        className={`h-full ${meta.bar} rounded-full transition-all duration-500`}
+                                        style={{ width: `${pct}%` }}
+                                      />
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* KNOWLEDGE COVERAGE + ESCALATION NOTICE */}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-5 space-y-3">
+                          <h5 className="font-display font-medium text-xs text-white uppercase tracking-widest font-mono flex items-center gap-1.5">
+                            <Database className="w-3.5 h-3.5 text-[#A370FF]" />
+                            RAG Knowledge Coverage
+                          </h5>
+                          {Object.keys(stats.knowledge.byCategory).length === 0 ? (
+                            <p className="text-[11px] text-slate-500 font-mono">No knowledge documents indexed.</p>
+                          ) : (
+                            <div className="flex flex-wrap gap-2">
+                              {Object.entries(stats.knowledge.byCategory).map(([cat, count]) => (
+                                <span
+                                  key={cat}
+                                  className="bg-[#0a0515] border border-[#6C00FF33] rounded px-2.5 py-1 text-[10px] font-mono text-slate-300"
+                                >
+                                  {cat}: <span className="text-[#A370FF] font-bold">{count}</span>
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-5 space-y-2">
+                          <h5 className="font-display font-medium text-xs text-white uppercase tracking-widest font-mono flex items-center gap-1.5">
+                            <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+                            Escalation Signal
+                          </h5>
+                          <p className="text-[11px] text-slate-400 font-mono leading-relaxed">
+                            <span className="text-amber-400 font-bold">{stats.chats.escalated}</span> of{" "}
+                            <span className="text-slate-200 font-bold">{stats.chats.total}</span> AI sessions triggered a human takeover.{" "}
+                            <span className="text-slate-200 font-bold">{stats.chats.withContact}</span> surfaced actionable contact details.
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+
               {/* TAB 1: UNIFIED LEADS HUB (WITH DETAILS Modal Side Drawer) */}
               {!loading && activeTab === "leads" && (
                 <div className="flex-grow flex overflow-hidden">
@@ -831,7 +1023,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                     lead.status === "pending" ? "bg-amber-950/30 text-amber-400 border-amber-500/30" :
                                     lead.status === "contacted" ? "bg-blue-950/30 text-blue-400 border-blue-500/30" :
                                     lead.status === "qualified" ? "bg-emerald-950/30 text-emerald-400 border-emerald-500/30" :
-                                    lead.status === "closed" ? "bg-rose-955/25 text-rose-400 border-rose-500/30" :
+                                    lead.status === "closed" ? "bg-rose-950/25 text-rose-400 border-rose-500/30" :
                                     "bg-zinc-950/30 text-zinc-400 border-zinc-500/20"
                                   }`}>
                                     {lead.status}
@@ -939,8 +1131,8 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                       </div>
                                       <div className={`p-2.5 rounded-xl text-xs leading-relaxed ${
                                         isBot 
-                                          ? "bg-[#6C00FF]/10 text-slate-250 border border-[#6C00FF]/10 rounded-tl-none" 
-                                          : "bg-emerald-955/10 text-emerald-100 border border-emerald-900/15 rounded-tr-none"
+                                          ? "bg-[#6C00FF]/10 text-slate-300 border border-[#6C00FF]/10 rounded-tl-none" 
+                                          : "bg-emerald-950/10 text-emerald-100 border border-emerald-900/15 rounded-tr-none"
                                       }`}>
                                         {msg.text}
                                       </div>
@@ -997,7 +1189,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               onClick={() => handleUpdateUnifiedLeadStatus(selectedLead, "closed")}
                               className={`px-2.5 py-2 rounded text-[11px] cursor-pointer font-bold border transition-all truncate text-center font-mono ${
                                 selectedLead.status === "closed" 
-                                  ? "bg-rose-955/20 text-rose-400 border-rose-500" 
+                                  ? "bg-rose-950/20 text-rose-400 border-rose-500" 
                                   : "bg-[#0c0515] text-slate-400 border-white/5 hover:border-rose-500/30 hover:text-rose-300"
                               }`}
                             >
@@ -1007,7 +1199,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               onClick={() => handleUpdateUnifiedLeadStatus(selectedLead, "archived")}
                               className={`px-2.5 py-2 rounded col-span-2 sm:col-span-1 text-[11px] cursor-pointer font-bold border transition-all truncate text-center font-mono ${
                                 selectedLead.status === "archived" 
-                                  ? "bg-pink-955/20 text-pink-400 border-pink-500" 
+                                  ? "bg-pink-950/20 text-pink-400 border-pink-500" 
                                   : "bg-[#0c0515] text-slate-400 border-white/5 hover:border-pink-500/30 hover:text-pink-300"
                               }`}
                             >
@@ -1134,7 +1326,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
                             <button
                               onClick={() => handleDeleteKbEntry(doc.id)}
-                              className="text-slate-500 hover:text-red-400 transition-all p-1.5 hover:bg-red-955/20 rounded shrink-0 cursor-pointer"
+                              className="text-slate-500 hover:text-red-400 transition-all p-1.5 hover:bg-red-950/20 rounded shrink-0 cursor-pointer"
                               title="Delete article document"
                             >
                               <Trash2 className="w-4 h-4" />

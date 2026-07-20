@@ -185,7 +185,7 @@ export default function ChatConcierge() {
                 <h3 className="font-display font-black text-sm tracking-tight flex items-center">
                   SHADOW <span className="text-[10px] bg-[#6C00FF22] border border-[#6C00FF44] px-1.5 py-0.5 rounded ml-2 text-[#A370FF] font-mono uppercase font-extrabold">Online</span>
                 </h3>
-                <p className="text-[9px] text-slate-450 font-mono tracking-widest leading-none mt-1">
+                <p className="text-[9px] text-slate-400 font-mono tracking-widest leading-none mt-1">
                   SECURE CHAT CONCIERGE
                 </p>
               </div>

@@ -107,7 +107,7 @@ export default function CaseStudies() {
             <div className="space-y-6">
               {/* Challenge */}
               <div className="space-y-1.5">
-                <h4 className="text-xs font-bold text-slate-250 uppercase tracking-widest flex items-center space-x-2 font-mono">
+                <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
                   <span>THE THREAT INTERACTION (CHALLENGE)</span>
                 </h4>
@@ -118,7 +118,7 @@ export default function CaseStudies() {
 
               {/* Solution */}
               <div className="space-y-1.5">
-                <h4 className="text-xs font-bold text-slate-250 uppercase tracking-widest flex items-center space-x-2 font-mono">
+                <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#6C00FF]"></span>
                   <span>THE SHADOW PLAN (RECON/IMPLEMENTATION)</span>
                 </h4>
@@ -129,7 +129,7 @@ export default function CaseStudies() {
 
               {/* Results */}
               <div className="space-y-1.5">
-                <h4 className="text-xs font-bold text-slate-250 uppercase tracking-widest flex items-center space-x-2 font-mono">
+                <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                   <span>SECURITY OUTCOMES RECORDED</span>
                 </h4>

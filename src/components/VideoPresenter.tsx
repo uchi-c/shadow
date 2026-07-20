@@ -299,7 +299,7 @@ export default function VideoPresenter() {
                 className={`flex items-center space-x-1 px-2.5 py-1 text-[10px] rounded border transition-all ${
                   showTranscript
                     ? "bg-[#6C00FF]/30 border-[#6C00FF] text-[#A370FF]"
-                    : "bg-slate-900 border-slate-750 hover:bg-slate-800 text-slate-300"
+                    : "bg-slate-900 border-slate-700 hover:bg-slate-800 text-slate-300"
                 }`}
                 aria-pressed={showTranscript}
                 aria-label="Toggle visual transcript of the corporate slide presentation"

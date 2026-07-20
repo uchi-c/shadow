@@ -12,6 +12,7 @@ import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import AdminPanel from "./components/AdminPanel";
 import Footer from "./components/Footer";
 import VideoPresenter from "./components/VideoPresenter";
+import HiggsField from "./components/HiggsField";
 import useSEO from "./lib/useSEO";
 
 export default function App() {
@@ -37,11 +38,14 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#05020a] min-h-screen text-slate-200 selection:bg-[#6c00ff]/30 selection:text-white leading-normal relative overflow-x-hidden flex flex-col justify-between">
+    <div className="bg-[#05020a] min-h-screen text-slate-200 selection:bg-[#6c00ff]/30 selection:text-white leading-normal relative isolate overflow-x-hidden flex flex-col justify-between">
       
+      {/* Interactive Higgs-field particle background (fixed, behind all content) */}
+      <HiggsField className="fixed inset-0 -z-10 h-full w-full" />
+
       {/* Background Ambient Cosmic Gradients */}
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#6C00FF] rounded-full mix-blend-screen filter blur-[120px] opacity-15 pointer-events-none"></div>
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#6C00FF] rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none"></div>
+      <div className="fixed top-0 left-0 w-[400px] h-[400px] bg-[#6C00FF] rounded-full mix-blend-screen filter blur-[120px] opacity-15 pointer-events-none -z-10"></div>
+      <div className="fixed bottom-0 right-0 w-[500px] h-[500px] bg-[#6C00FF] rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none -z-10"></div>
 
       {/* Skip Navigation Link for Screen Readers (WCAG AA accessibility) */}
       <a 
