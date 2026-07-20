@@ -1,19 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Shield, Sparkles, Phone, ArrowUpRight, CheckCircle, Keyboard, PlayCircle, Layers } from "lucide-react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Services from "./components/Services";
-import About from "./components/About";
-import CaseStudies from "./components/CaseStudies";
-import QuoteForm from "./components/QuoteForm";
 import ChatConcierge from "./components/ChatConcierge";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
-import AdminPanel from "./components/AdminPanel";
 import Footer from "./components/Footer";
-import VideoPresenter from "./components/VideoPresenter";
 import HiggsField from "./components/HiggsField";
 import useSEO from "./lib/useSEO";
+
+// Code-split the heavier, navigation-gated views so they are not in the initial
+// bundle. AdminPanel in particular drags in @supabase/supabase-js, which the
+// public site never needs on first paint.
+const Services = lazy(() => import("./components/Services"));
+const About = lazy(() => import("./components/About"));
+const CaseStudies = lazy(() => import("./components/CaseStudies"));
+const QuoteForm = lazy(() => import("./components/QuoteForm"));
+const VideoPresenter = lazy(() => import("./components/VideoPresenter"));
+const AdminPanel = lazy(() => import("./components/AdminPanel"));
+
+// Minimal, theme-matched fallback while a split chunk loads.
+function ViewFallback() {
+  return (
+    <div className="flex items-center justify-center py-24" role="status" aria-label="Loading">
+      <div className="w-8 h-8 rounded-full border-2 border-[#6C00FF33] border-t-[#A370FF] animate-spin"></div>
+    </div>
+  );
+}
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -64,6 +77,7 @@ export default function App() {
 
       {/* Main Multi-Page Routed Area */}
       <main id="main-content" className="flex-grow pt-24 pb-16 outline-none" tabIndex={-1}>
+        <Suspense fallback={<ViewFallback />}>
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSection}
@@ -96,7 +110,9 @@ export default function App() {
                   </div>
                   
                   <div className="py-4">
-                    <VideoPresenter />
+                    <Suspense fallback={<ViewFallback />}>
+                      <VideoPresenter />
+                    </Suspense>
                   </div>
                 </div>
 
@@ -213,6 +229,7 @@ export default function App() {
             )}
           </motion.div>
         </AnimatePresence>
+        </Suspense>
       </main>
 
       {/* Conversational concierge simulation with screen reader overrides */}
@@ -222,11 +239,15 @@ export default function App() {
       <FloatingWhatsApp />
 
       {/* Secured supersonic leader administrative telemetry dashboard */}
-      <AdminPanel 
-        isOpen={isAdminOpen} 
-        onClose={() => setIsAdminOpen(false)} 
-        aria-label="Administrative telemetry and leads log"
-      />
+      {isAdminOpen && (
+        <Suspense fallback={null}>
+          <AdminPanel
+            isOpen={isAdminOpen}
+            onClose={() => setIsAdminOpen(false)}
+            aria-label="Administrative telemetry and leads log"
+          />
+        </Suspense>
+      )}
 
       {/* High contrast structured footer navigation */}
       <Footer 
