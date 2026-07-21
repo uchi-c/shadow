@@ -6,12 +6,13 @@ import Hero from "./components/Hero";
 import ChatConcierge from "./components/ChatConcierge";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import Footer from "./components/Footer";
-import HiggsField from "./components/HiggsField";
 import useSEO from "./lib/useSEO";
 
 // Code-split the heavier, navigation-gated views so they are not in the initial
 // bundle. AdminPanel in particular drags in @supabase/supabase-js, which the
-// public site never needs on first paint.
+// public site never needs on first paint. Strands pulls in `ogl` (WebGL), so it
+// is also split out and lazy-mounted to keep the initial bundle within budget.
+const Strands = lazy(() => import("./components/Strands"));
 const Services = lazy(() => import("./components/Services"));
 const About = lazy(() => import("./components/About"));
 const CaseStudies = lazy(() => import("./components/CaseStudies"));
@@ -53,8 +54,22 @@ export default function App() {
   return (
     <div className="bg-[#05020a] min-h-screen text-slate-200 selection:bg-[#6c00ff]/30 selection:text-white leading-normal relative isolate overflow-x-hidden flex flex-col justify-between">
       
-      {/* Interactive Higgs-field particle background (fixed, behind all content) */}
-      <HiggsField className="fixed inset-0 -z-10 h-full w-full" />
+      {/* Animated Strands backdrop (React Bits, WebGL) — fixed behind all content.
+          Lazy-mounted so `ogl` stays out of the initial bundle; the component
+          itself renders a single static frame under prefers-reduced-motion. */}
+      <div className="fixed inset-0 -z-10 h-full w-full pointer-events-none" aria-hidden="true">
+        <Suspense fallback={null}>
+          <Strands
+            colors={["#22C55E", "#2563EB", "#06B6D4"]}
+            count={3}
+            speed={0.45}
+            glow={2.4}
+            intensity={0.55}
+            opacity={0.85}
+            scale={1.5}
+          />
+        </Suspense>
+      </div>
 
       {/* Background Ambient Cosmic Gradients */}
       <div className="fixed top-0 left-0 w-[400px] h-[400px] bg-[#6C00FF] rounded-full mix-blend-screen filter blur-[120px] opacity-15 pointer-events-none -z-10"></div>
