@@ -1,9 +1,9 @@
 import React from "react";
-import { Wrench, Mail, Gauge, Bug, Lock } from "lucide-react";
+import { Wrench, Gauge, Bug, Lock } from "lucide-react";
 import PasswordAnalyzer from "./tools/PasswordAnalyzer";
+import PhishingDetector from "./tools/PhishingDetector";
 
 const UPCOMING = [
-  { icon: Mail, title: "Phishing Email Detector", desc: "Paste a suspicious message to score its risk signals." },
   { icon: Gauge, title: "Security Maturity Assessment", desc: "A short questionnaire that scores your posture and flags gaps." },
   { icon: Bug, title: "CVE Explorer", desc: "Look up known vulnerabilities affecting your stack." }
 ];
@@ -24,9 +24,10 @@ export default function SecurityTools() {
         </p>
       </div>
 
-      {/* Live tool */}
-      <div className="max-w-3xl">
+      {/* Live tools */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
         <PasswordAnalyzer />
+        <PhishingDetector />
       </div>
 
       {/* Roadmap of upcoming tools */}
@@ -35,7 +36,7 @@ export default function SecurityTools() {
           <Lock className="w-3.5 h-3.5" />
           <span>More tools rolling out</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
           {UPCOMING.map((t) => {
             const Icon = t.icon;
             return (
