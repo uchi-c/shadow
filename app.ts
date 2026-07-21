@@ -568,4 +568,139 @@ app.post("/api/chat", async (req: Request, res: Response) => {
   }
 });
 
+// --- PUBLIC CVE EXPLORER (LIVE NVD PROXY) ---
+// Server-side proxy to the NIST National Vulnerability Database (NVD) API 2.0.
+// Proxying (rather than calling NVD from the browser) avoids CORS issues, lets
+// us attach an API key server-side if one is configured, and returns a small,
+// normalized shape. All data returned here is live from NVD — nothing invented.
+const cveLimitStore = new Map<string, RateLimitBucket>();
+
+interface NormalizedCve {
+  id: string;
+  summary: string;
+  published: string | null;
+  lastModified: string | null;
+  severity: string | null;
+  score: number | null;
+  vector: string | null;
+  cwe: string[];
+  url: string;
+}
+
+function pickCvssMetric(metrics: any): { severity: string | null; score: number | null; vector: string | null } {
+  const order = ["cvssMetricV31", "cvssMetricV30", "cvssMetricV2"];
+  for (const key of order) {
+    const arr = metrics?.[key];
+    if (Array.isArray(arr) && arr.length > 0) {
+      const primary = arr.find((m: any) => m.type === "Primary") || arr[0];
+      const data = primary?.cvssData || {};
+      const severity = primary?.baseSeverity || data.baseSeverity || null;
+      const score = typeof data.baseScore === "number" ? data.baseScore : null;
+      const vector = data.vectorString || null;
+      return { severity: severity ? String(severity).toUpperCase() : null, score, vector };
+    }
+  }
+  return { severity: null, score: null, vector: null };
+}
+
+app.get("/api/cve", async (req: Request, res: Response) => {
+  const clientIp = req.ip || req.headers["x-forwarded-for"]?.toString() || "anonymous";
+
+  // Rate limit: max 10 lookups per 5 minutes per IP (NVD is a shared public service).
+  const allowed = checkRateLimit(clientIp, cveLimitStore, 10, 5 * 60 * 1000);
+  if (!allowed) {
+    return res.status(429).json({ error: "Rate limit reached. Please wait a few minutes before searching again." });
+  }
+
+  const rawKeyword = typeof req.query.keyword === "string" ? req.query.keyword : "";
+  const rawCveId = typeof req.query.id === "string" ? req.query.id : "";
+
+  // A specific CVE id lookup, or a keyword search.
+  const cveIdMatch = rawCveId.trim().toUpperCase().match(/^CVE-\d{4}-\d{4,7}$/);
+  const keyword = rawKeyword.trim().slice(0, 120);
+
+  if (!cveIdMatch && keyword.length < 2) {
+    return res.status(400).json({ error: "Enter a product, technology, or a specific CVE id (e.g. CVE-2021-44228)." });
+  }
+
+  const params = new URLSearchParams();
+  if (cveIdMatch) {
+    params.set("cveId", cveIdMatch[0]);
+  } else {
+    params.set("keywordSearch", keyword);
+    params.set("resultsPerPage", "20");
+  }
+
+  const nvdUrl = `https://services.nvd.nist.gov/rest/json/cves/2.0?${params.toString()}`;
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12_000);
+
+  try {
+    const headers: Record<string, string> = { "User-Agent": "shadow-root-cve-explorer" };
+    if (process.env.NVD_API_KEY) headers["apiKey"] = process.env.NVD_API_KEY;
+
+    const nvdResponse = await fetch(nvdUrl, { headers, signal: controller.signal });
+
+    if (!nvdResponse.ok) {
+      // 403/503 from NVD usually means transient throttling of the shared feed.
+      const status = nvdResponse.status === 404 ? 404 : 502;
+      return res.status(status).json({
+        error: nvdResponse.status === 404
+          ? "No matching CVE found."
+          : "The vulnerability feed is busy right now. Please try again shortly."
+      });
+    }
+
+    const data: any = await nvdResponse.json();
+    const vulns: any[] = Array.isArray(data?.vulnerabilities) ? data.vulnerabilities : [];
+
+    const results: NormalizedCve[] = vulns.map((v) => {
+      const cve = v?.cve || {};
+      const descEn = Array.isArray(cve.descriptions)
+        ? cve.descriptions.find((d: any) => d.lang === "en")?.value
+        : null;
+      const { severity, score, vector } = pickCvssMetric(cve.metrics);
+      const cwe: string[] = Array.isArray(cve.weaknesses)
+        ? Array.from(new Set(
+            cve.weaknesses
+              .flatMap((w: any) => Array.isArray(w.description) ? w.description : [])
+              .map((d: any) => d?.value)
+              .filter((val: any) => typeof val === "string" && val.startsWith("CWE-"))
+          )) as string[]
+        : [];
+      return {
+        id: String(cve.id || "Unknown"),
+        summary: descEn ? String(descEn) : "No description provided by NVD.",
+        published: cve.published || null,
+        lastModified: cve.lastModified || null,
+        severity,
+        score,
+        vector,
+        cwe,
+        url: `https://nvd.nist.gov/vuln/detail/${encodeURIComponent(String(cve.id || ""))}`
+      };
+    });
+
+    // Highest score first so the most urgent items surface at the top.
+    results.sort((a, b) => (b.score ?? -1) - (a.score ?? -1));
+
+    return res.json({
+      query: cveIdMatch ? cveIdMatch[0] : keyword,
+      totalResults: typeof data?.totalResults === "number" ? data.totalResults : results.length,
+      results
+    });
+  } catch (err: any) {
+    const aborted = err?.name === "AbortError";
+    return res.status(aborted ? 504 : 502).json({
+      error: aborted
+        ? "The vulnerability feed took too long to respond. Please try again."
+        : "Could not reach the vulnerability feed right now. Please try again shortly."
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
+});
+
+
 export default app;
