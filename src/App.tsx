@@ -17,6 +17,7 @@ const FaultyTerminal = lazy(() => import("./components/FaultyTerminal"));
 const Services = lazy(() => import("./components/Services"));
 const About = lazy(() => import("./components/About"));
 const CaseStudies = lazy(() => import("./components/CaseStudies"));
+const SecurityTools = lazy(() => import("./components/SecurityTools"));
 const QuoteForm = lazy(() => import("./components/QuoteForm"));
 const VideoPresenter = lazy(() => import("./components/VideoPresenter"));
 const AdminPanel = lazy(() => import("./components/AdminPanel"));
@@ -271,6 +272,12 @@ export default function App() {
             {activeSection === "case" && (
               <div className="max-w-7xl mx-auto px-4 md:px-10">
                 <CaseStudies />
+              </div>
+            )}
+
+            {activeSection === "tools" && (
+              <div className="max-w-7xl mx-auto px-4 md:px-10">
+                <SecurityTools />
               </div>
             )}
 

@@ -13,6 +13,7 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
     { label: "Services", target: "services" },
     { label: "Founder Story", target: "about" },
     { label: "Case Studies", target: "case" },
+    { label: "Tools", target: "tools" },
     { label: "Quote Generator", target: "quote" }
   ];
 
