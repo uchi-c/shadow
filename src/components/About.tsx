@@ -28,12 +28,12 @@ export default function About() {
   ];
 
   return (
-    <div id="about" className="bg-transparent py-16 space-y-24 border-b border-[#6C00FF33] font-sans">
+    <div id="about" className="bg-transparent py-16 space-y-24 border-b border-[#2563eb33] font-sans">
       <div className="max-w-7xl mx-auto px-4 md:px-10">
         
         {/* Section Title */}
         <div className="mb-12 flex flex-col space-y-3.5">
-          <div className="text-xs font-mono font-bold tracking-widest text-[#A370FF] uppercase">
+          <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
             Corporate Identity & Leadership
           </div>
           <h2 className="font-display font-bold text-3xl md:text-5xl text-white tracking-tight leading-tight">
@@ -47,7 +47,7 @@ export default function About() {
           {/* Left Column: Narrative & Mission */}
           <div className="lg:col-span-7 flex flex-col space-y-6">
             <h3 className="font-display font-medium text-lg md:text-xl text-slate-100 flex items-center space-x-2">
-              <ShieldCheck className="w-5 h-5 text-[#6C00FF]" />
+              <ShieldCheck className="w-5 h-5 text-[#2563eb]" />
               <span>Shadow Root Mission & Roots</span>
             </h3>
 
@@ -62,11 +62,11 @@ export default function About() {
             {/* Core Pillars Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 font-sans">
               <div 
-                className="bg-[#120826]/70 border border-[#6C00FF33] p-5 rounded-xl hover:shadow-[0_0_15px_rgba(108,0,255,0.1)] focus-within:ring-2 focus-within:ring-[#6C00FF] transition-all"
+                className="bg-[#0f1720]/70 border border-[#2563eb33] p-5 rounded-xl hover:shadow-[0_0_15px_rgba(37,99,235,0.1)] focus-within:ring-2 focus-within:ring-[#2563eb] transition-all"
                 tabIndex={0}
                 aria-label="Core pillar: Scaling Local Talent. Our expanding cohort of security professionals represents the future of Zambian tech sovereignty."
               >
-                <div className="bg-[#6C00FF22] text-[#A370FF] p-2 rounded-lg w-fit mb-3 border border-[#6C00FF44]">
+                <div className="bg-[#2563eb22] text-[#60a5fa] p-2 rounded-lg w-fit mb-3 border border-[#2563eb44]">
                   <Scaling className="w-5 h-5" />
                 </div>
                 <h4 className="font-display font-bold text-white text-sm">Scaling Local Talent</h4>
@@ -74,11 +74,11 @@ export default function About() {
               </div>
 
               <div 
-                className="bg-[#120826]/70 border border-[#6C00FF33] p-5 rounded-xl hover:shadow-[0_0_15px_rgba(108,0,255,0.1)] focus-within:ring-2 focus-within:ring-[#6C00FF] transition-all"
+                className="bg-[#0f1720]/70 border border-[#2563eb33] p-5 rounded-xl hover:shadow-[0_0_15px_rgba(37,99,235,0.1)] focus-within:ring-2 focus-within:ring-[#2563eb] transition-all"
                 tabIndex={0}
                 aria-label="Core pillar: Ethical NGO Pricing. We adjust costs according to organization scale, ensuring donor funds are never spent on bloated licenses."
               >
-                <div className="bg-[#6C00FF22] text-[#A370FF] p-2 rounded-lg w-fit mb-3 border border-[#6C00FF44]">
+                <div className="bg-[#2563eb22] text-[#60a5fa] p-2 rounded-lg w-fit mb-3 border border-[#2563eb44]">
                   <HeartHandshake className="w-5 h-5" />
                 </div>
                 <h4 className="font-display font-bold text-white text-sm">Ethical NGO Pricing</h4>
@@ -90,7 +90,7 @@ export default function About() {
           {/* Right Column: 3D Hologram Hovering Shield Logo */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
             <div className="text-center mb-4">
-              <span className="text-[10px] font-mono tracking-widest text-[#A370FF] uppercase bg-[#120826] border border-[#6C00FF33] px-3 py-1 rounded-full">
+              <span className="text-[10px] font-mono tracking-widest text-[#60a5fa] uppercase bg-[#0f1720] border border-[#2563eb33] px-3 py-1 rounded-full">
                 Interactive Cursor Perspective
               </span>
             </div>
@@ -117,19 +117,19 @@ export default function About() {
             
             {/* CEO Profile Card: Uchi Chinyama */}
             <div 
-              className="bg-[#120826]/70 border border-[#6C00FF44] rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row gap-6 hover:border-[#6C00FF] hover:shadow-[0_0_20px_rgba(108,0,255,0.15)] transition-all focus-within:ring-2 focus-within:ring-[#6C00FF] max-w-2xl w-full"
+              className="bg-[#0f1720]/70 border border-[#2563eb44] rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row gap-6 hover:border-[#2563eb] hover:shadow-[0_0_20px_rgba(37,99,235,0.15)] transition-all focus-within:ring-2 focus-within:ring-[#2563eb] max-w-2xl w-full"
               tabIndex={0}
               aria-label="Profile of Uchi Chinyama, Chief Executive Officer and Founder of Shadow Root Security Technologies."
             >
               
               {/* Profile Image of CEO Uchi Chinyama */}
               <div 
-                className="w-40 h-48 rounded-xl bg-slate-950 border border-[#6C00FF55] shrink-0 overflow-hidden relative group"
+                className="w-40 h-48 rounded-xl bg-slate-950 border border-[#2563eb55] shrink-0 overflow-hidden relative group"
                 role="img"
                 aria-label="Corporate portrait of CEO Uchi Chinyama in front of glowing monitoring control systems"
               >
                 {/* Simulated Monitor Grid Background (blue bars & maps) */}
-                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(10,5,21,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(10,5,21,0.5)_1px,transparent_1px)] bg-[size:10px_10px] z-20 pointer-events-none"></div>
+                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(11,15,20,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(11,15,20,0.5)_1px,transparent_1px)] bg-[size:10px_10px] z-20 pointer-events-none"></div>
                 <div className="absolute top-2 left-2 w-32 h-1 bg-cyan-500/20 rounded z-20 pointer-events-none"></div>
                 
                 {/* High Contrast Photograph of CEO */}
@@ -146,7 +146,7 @@ export default function About() {
                 </svg>
 
                 {/* Stitched 'Shadow Root' Suit pocket label graphic */}
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-[#6C00FF]/25 border border-[#6C00FF55] rounded px-1.5 py-0.5 text-[7px] font-mono uppercase text-teal-400 font-bold z-20">
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-[#2563eb]/25 border border-[#2563eb55] rounded px-1.5 py-0.5 text-[7px] font-mono uppercase text-teal-400 font-bold z-20">
                   Shadow Root CEO
                 </div>
               </div>
@@ -167,11 +167,11 @@ export default function About() {
 
                 <div className="space-y-2 text-xs font-mono">
                   <div className="flex items-center space-x-2 text-slate-355">
-                    <span className="text-[#6C00FF]">✔</span>
+                    <span className="text-[#2563eb]">✔</span>
                     <span>Direct Phishing Architect</span>
                   </div>
                   <div className="flex items-center space-x-2 text-slate-355">
-                    <span className="text-[#6C00FF]">✔</span>
+                    <span className="text-[#2563eb]">✔</span>
                     <span>10+ Years Security Passion</span>
                   </div>
                 </div>
@@ -180,7 +180,7 @@ export default function About() {
                 <div className="flex flex-wrap items-center gap-2 pt-2">
                   <a
                     href="mailto:uchichinyama@gmail.com"
-                    className="bg-[#6C00FF]/20 hover:bg-[#6C00FF] border border-[#6C00FF66] text-white px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all flex items-center space-x-1"
+                    className="bg-[#2563eb]/20 hover:bg-[#2563eb] border border-[#2563eb66] text-white px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all flex items-center space-x-1"
                     title="Send secure email to CEO Uchi Chinyama"
                   >
                     <Mail className="w-3.5 h-3.5" />
@@ -204,12 +204,12 @@ export default function About() {
         </div>
 
         {/* Section 3: Interactive Diagram of "The Shadow Methodology" */}
-        <div className="mt-28 bg-[#120826]/80 text-white rounded-2xl border border-[#6C00FF44] p-6 md:p-10 relative overflow-hidden shadow-2xl">
+        <div className="mt-28 bg-[#0f1720]/80 text-white rounded-2xl border border-[#2563eb44] p-6 md:p-10 relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-64 h-64 bg-shadow-purple-dark/25 rounded-full blur-3xl pointer-events-none"></div>
           
           <div className="relative z-10 flex flex-col space-y-8">
             <div className="flex items-center space-x-2.5 pb-4 border-b border-white/5">
-              <Swords className="w-5 h-5 text-[#6C00FF] animate-pulse" />
+              <Swords className="w-5 h-5 text-[#2563eb] animate-pulse" />
               <span className="font-display font-bold text-sm tracking-tight uppercase font-mono">The Shadow Audit Methodology (Step-by-Step Security)</span>
             </div>
 
@@ -218,12 +218,12 @@ export default function About() {
               {steps.map((st, index) => (
                 <div 
                   key={index} 
-                  className="bg-[#0a0515]/70 border border-[#6C00FF33] p-5 rounded-xl hover:border-[#A370FF] focus:ring-2 focus:ring-[#6C00FF] transition-all flex flex-col justify-between"
+                  className="bg-[#0b0f14]/70 border border-[#2563eb33] p-5 rounded-xl hover:border-[#60a5fa] focus:ring-2 focus:ring-[#2563eb] transition-all flex flex-col justify-between"
                   tabIndex={0}
                   aria-label={`Step ${st.metric}: ${st.title}. ${st.desc}`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[#A370FF] font-black text-sm bg-[#0a0515]/90 w-8 h-8 rounded-full border border-[#6C00FF44] flex items-center justify-center shrink-0">
+                    <span className="font-mono text-[#60a5fa] font-black text-sm bg-[#0b0f14]/90 w-8 h-8 rounded-full border border-[#2563eb44] flex items-center justify-center shrink-0">
                       {st.metric}
                     </span>
                     <span className="text-[8px] font-mono text-slate-500 uppercase">ACTIVE</span>

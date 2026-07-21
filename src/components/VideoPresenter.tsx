@@ -37,11 +37,11 @@ export default function VideoPresenter() {
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = "rgba(10, 5, 21, 0.4)";
+      ctx.fillStyle = "rgba(11,15,20, 0.4)";
       ctx.fillRect(0, 0, width, height);
 
       // Draw connections
-      ctx.strokeStyle = "rgba(108, 0, 255, 0.15)";
+      ctx.strokeStyle = "rgba(37,99,235, 0.15)";
       ctx.lineWidth = 0.8;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -62,7 +62,7 @@ export default function VideoPresenter() {
         const p = particles[i];
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = i % 5 === 0 ? "#00F0FF" : "#6c00ff";
+        ctx.fillStyle = i % 5 === 0 ? "#00F0FF" : "#2563eb";
         ctx.shadowColor = "#00F0FF";
         ctx.shadowBlur = i % 8 === 0 ? 6 : 0;
         ctx.fill();
@@ -184,7 +184,7 @@ export default function VideoPresenter() {
         onKeyDown={handleKeyDown}
         tabIndex={0}
         aria-label="Shadow Root Corporate Presentation Video Player. Interactive hotkeys: Space to play, M to toggle mute, F for fullscreen mode"
-        className="relative aspect-video rounded-2xl overflow-hidden border border-[#6C00FF55] bg-[#05020a] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C00FF]"
+        className="relative aspect-video rounded-2xl overflow-hidden border border-[#2563eb55] bg-[#070a0f] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
       >
         {/* Dynamic Plexus fallback background or layered ambient cyber glow */}
         <canvas 
@@ -212,13 +212,13 @@ export default function VideoPresenter() {
           
           {/* Logo Brand Watermark */}
           <div className="flex items-center space-x-3 text-white self-start">
-            <div className="bg-[#6C00FF] p-2 rounded-lg flex items-center justify-center border border-[#6C00FF] shadow-[0_0_10px_#6C00FF]">
+            <div className="bg-[#2563eb] p-2 rounded-lg flex items-center justify-center border border-[#2563eb] shadow-[0_0_10px_#2563eb]">
               <svg viewBox="0 0 100 100" className="w-4 h-4" fill="currentColor">
                 <path d="M50 10 L85 25 L85 65 C85 85 50 95 50 95 C50 95 15 85 15 65 L15 25 Z" />
               </svg>
             </div>
             <div className="font-display font-bold text-xs tracking-widest uppercase">
-              SHADOW ROOT <span className="text-[#A370FF]">TECHNOLOGIES</span>
+              SHADOW ROOT <span className="text-[#60a5fa]">TECHNOLOGIES</span>
             </div>
           </div>
 
@@ -226,9 +226,9 @@ export default function VideoPresenter() {
           <div className="my-auto max-w-xl md:pl-6 leading-tight select-none">
             <h2 className="font-display font-black text-white text-3xl md:text-4xl lg:text-5xl tracking-tight text-glow-purple drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] leading-[1.15]">
               Building Digital Trust for the <br />
-              <span className="text-[#A370FF] relative inline-block">
+              <span className="text-[#60a5fa] relative inline-block">
                 Next Era of Institutions.
-                <span className="absolute bottom-1 left-0 w-full h-1 bg-[#6C00FF]"></span>
+                <span className="absolute bottom-1 left-0 w-full h-1 bg-[#2563eb]"></span>
               </span>
             </h2>
             <p className="text-[10px] md:text-xs text-slate-400 font-mono tracking-widest uppercase mt-4 block">
@@ -255,7 +255,7 @@ export default function VideoPresenter() {
               max="105"
               value={progress}
               onChange={handleVideoSeek}
-              className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#6C00FF] focus:outline-none"
+              className="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#2563eb] focus:outline-none"
               aria-label="Seek video duration progress bar"
             />
           </div>
@@ -265,7 +265,7 @@ export default function VideoPresenter() {
             <div className="flex items-center space-x-4">
               <button
                 onClick={handlePlayPause}
-                className="hover:text-[#6C00FF] transition-all p-1"
+                className="hover:text-[#2563eb] transition-all p-1"
                 aria-label={isPlaying ? "Pause corporate video presentation" : "Play corporate video presentation"}
               >
                 {isPlaying ? <Pause className="w-5 h-5 shrink-0" /> : <Play className="w-5 h-5 shrink-0" />}
@@ -273,7 +273,7 @@ export default function VideoPresenter() {
 
               <button
                 onClick={handleRestart}
-                className="hover:text-[#6C00FF] transition-all p-1"
+                className="hover:text-[#2563eb] transition-all p-1"
                 aria-label="Restart video playback"
               >
                 <RotateCcw className="w-4 h-4 shrink-0" />
@@ -281,7 +281,7 @@ export default function VideoPresenter() {
 
               <button
                 onClick={handleMuteUnmute}
-                className="hover:text-[#6C00FF] transition-all p-1"
+                className="hover:text-[#2563eb] transition-all p-1"
                 aria-label={isMuted ? "Unmute video presentation audio" : "Mute video presentation audio"}
               >
                 {isMuted ? <VolumeX className="w-5 h-5 shrink-0 text-red-400" /> : <Volume2 className="w-5 h-5 shrink-0" />}
@@ -298,7 +298,7 @@ export default function VideoPresenter() {
                 onClick={() => setShowTranscript(!showTranscript)}
                 className={`flex items-center space-x-1 px-2.5 py-1 text-[10px] rounded border transition-all ${
                   showTranscript
-                    ? "bg-[#6C00FF]/30 border-[#6C00FF] text-[#A370FF]"
+                    ? "bg-[#2563eb]/30 border-[#2563eb] text-[#60a5fa]"
                     : "bg-slate-900 border-slate-700 hover:bg-slate-800 text-slate-300"
                 }`}
                 aria-pressed={showTranscript}
@@ -310,7 +310,7 @@ export default function VideoPresenter() {
 
               <button
                 onClick={handleFullscreen}
-                className="hover:text-[#6C00FF] transition-all p-1"
+                className="hover:text-[#2563eb] transition-all p-1"
                 aria-label="Toggle full-screen presentation mode"
               >
                 <Maximize className="w-4 h-4 shrink-0" />
@@ -324,7 +324,7 @@ export default function VideoPresenter() {
       {/* Under-player Transcript Overlay for WCAG AA compliance (Accessibility) */}
       {showTranscript && (
         <div 
-          className="bg-[#120826]/75 border border-[#6C00FF33] rounded-xl p-5 text-slate-200 text-xs leading-relaxed max-w-4xl"
+          className="bg-[#0f1720]/75 border border-[#2563eb33] rounded-xl p-5 text-slate-200 text-xs leading-relaxed max-w-4xl"
           aria-live="polite"
         >
           <div className="flex items-center space-x-2 text-white font-mono font-bold text-xs uppercase mb-3 border-b border-white/5 pb-2">

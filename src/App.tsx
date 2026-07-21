@@ -25,7 +25,7 @@ const AdminPanel = lazy(() => import("./components/AdminPanel"));
 function ViewFallback() {
   return (
     <div className="flex items-center justify-center py-24" role="status" aria-label="Loading">
-      <div className="w-8 h-8 rounded-full border-2 border-[#6C00FF33] border-t-[#A370FF] animate-spin"></div>
+      <div className="w-8 h-8 rounded-full border-2 border-[#2563eb33] border-t-[#60a5fa] animate-spin"></div>
     </div>
   );
 }
@@ -53,7 +53,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#05020a] min-h-screen text-slate-200 selection:bg-[#6c00ff]/30 selection:text-white leading-normal relative isolate overflow-x-hidden flex flex-col justify-between">
+    <div className="bg-[#070a0f] min-h-screen text-slate-200 selection:bg-[#2563eb]/30 selection:text-white leading-normal relative isolate overflow-x-hidden flex flex-col justify-between">
       
       {/* Animated Strands backdrop (React Bits, WebGL) — fixed behind all content.
           Lazy-mounted so `ogl` stays out of the initial bundle; the component
@@ -73,13 +73,13 @@ export default function App() {
       </div>
 
       {/* Background Ambient Cosmic Gradients */}
-      <div className="fixed top-0 left-0 w-[400px] h-[400px] bg-[#6C00FF] rounded-full mix-blend-screen filter blur-[120px] opacity-15 pointer-events-none -z-10"></div>
-      <div className="fixed bottom-0 right-0 w-[500px] h-[500px] bg-[#6C00FF] rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none -z-10"></div>
+      <div className="fixed top-0 left-0 w-[400px] h-[400px] bg-[#2563eb] rounded-full mix-blend-screen filter blur-[120px] opacity-15 pointer-events-none -z-10"></div>
+      <div className="fixed bottom-0 right-0 w-[500px] h-[500px] bg-[#2563eb] rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none -z-10"></div>
 
       {/* Skip Navigation Link for Screen Readers (WCAG AA accessibility) */}
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#6C00FF] focus:text-white focus:px-4 focus:py-2.5 focus:rounded-lg focus:outline-none focus:ring-4 focus:ring-[#9E3AFF] font-mono text-xs uppercase"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#2563eb] focus:text-white focus:px-4 focus:py-2.5 focus:rounded-lg focus:outline-none focus:ring-4 focus:ring-[#3b82f6] font-mono text-xs uppercase"
       >
         Skip directly to main content area
       </a>
@@ -131,7 +131,7 @@ export default function App() {
                       </Suspense>
                     </div>
                     {/* Scrim for legibility of the overlaid copy */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#05020a] via-[#05020a]/50 to-[#05020a]/10 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070a0f] via-[#070a0f]/50 to-[#070a0f]/10 pointer-events-none"></div>
                     <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8">
                       <div className="text-[10px] font-mono text-[#22C55E] tracking-widest uppercase flex items-center space-x-2">
                         <Shield className="w-4 h-4" />
@@ -148,8 +148,8 @@ export default function App() {
                 <div id="mission-video" className="max-w-7xl mx-auto px-4 md:px-10 space-y-8">
                   <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/5 pb-4">
                     <div className="space-y-1">
-                      <div className="text-[10px] font-mono text-[#A370FF] tracking-widest uppercase flex items-center space-x-2">
-                        <PlayCircle className="w-4 h-4 text-[#6C00FF]" />
+                      <div className="text-[10px] font-mono text-[#60a5fa] tracking-widest uppercase flex items-center space-x-2">
+                        <PlayCircle className="w-4 h-4 text-[#2563eb]" />
                         <span>Interactive Broadcast</span>
                       </div>
                       <h3 className="font-display font-medium text-xl md:text-3xl text-white">
@@ -170,14 +170,14 @@ export default function App() {
 
                 {/* Cyber Matrix Quick Stats & Portal Preview links */}
                 <div className="max-w-7xl mx-auto px-4 md:px-10">
-                  <div className="bg-gradient-to-r from-[#120826] to-[#0a0515] border border-[#6C00FF33] rounded-2xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
+                  <div className="bg-gradient-to-r from-[#0f1720] to-[#0b0f14] border border-[#2563eb33] rounded-2xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
                     
                     <div 
-                      className="space-y-3 p-4 rounded-xl border border-transparent hover:border-[#6C00FF22] transition-colors"
+                      className="space-y-3 p-4 rounded-xl border border-transparent hover:border-[#2563eb22] transition-colors"
                       tabIndex={0}
                       aria-label="Direct consultation shortcut: Click get secure to book a review."
                     >
-                      <div className="text-[#A370FF] font-mono text-xs font-bold uppercase tracking-wider flex items-center space-x-2">
+                      <div className="text-[#60a5fa] font-mono text-xs font-bold uppercase tracking-wider flex items-center space-x-2">
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                         <span>Direct On-site Help</span>
                       </div>
@@ -187,7 +187,7 @@ export default function App() {
                       </p>
                       <button 
                         onClick={() => handleNavigate("quote")}
-                        className="text-xs font-mono text-[#A370FF] hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#6C00FF] rounded px-1"
+                        className="text-xs font-mono text-[#60a5fa] hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#2563eb] rounded px-1"
                         aria-label="Navigate to contact and quote form"
                       >
                         <span>Request support</span>
@@ -196,7 +196,7 @@ export default function App() {
                     </div>
 
                     <div 
-                      className="space-y-3 p-4 rounded-xl border border-transparent hover:border-[#6C00FF22] transition-colors"
+                      className="space-y-3 p-4 rounded-xl border border-transparent hover:border-[#2563eb22] transition-colors"
                       tabIndex={0}
                       aria-label="Defensive capabilities summary shortcut. Review our custom phishing parameters."
                     >
@@ -210,7 +210,7 @@ export default function App() {
                       </p>
                       <button 
                         onClick={() => handleNavigate("services")}
-                        className="text-xs font-mono text-teal-400 hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#6C00FF] rounded px-1"
+                        className="text-xs font-mono text-teal-400 hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#2563eb] rounded px-1"
                         aria-label="Navigate to services view"
                       >
                         <span>Learn solutions</span>
@@ -219,12 +219,12 @@ export default function App() {
                     </div>
 
                     <div 
-                      className="space-y-3 p-4 rounded-xl border border-transparent hover:border-[#6C00FF22] transition-colors"
+                      className="space-y-3 p-4 rounded-xl border border-transparent hover:border-[#2563eb22] transition-colors"
                       tabIndex={0}
                       aria-label="Security education outreach summary."
                     >
-                      <div className="text-[#A370FF] font-mono text-xs font-bold uppercase tracking-wider flex items-center space-x-2">
-                        <Sparkles className="w-4 h-4 text-[#6C00FF]" />
+                      <div className="text-[#60a5fa] font-mono text-xs font-bold uppercase tracking-wider flex items-center space-x-2">
+                        <Sparkles className="w-4 h-4 text-[#2563eb]" />
                         <span>Leadership & Story</span>
                       </div>
                       <h4 className="font-display font-bold text-white text-sm">Youth-Led Collective</h4>
@@ -233,7 +233,7 @@ export default function App() {
                       </p>
                       <button 
                         onClick={() => handleNavigate("about")}
-                        className="text-xs font-mono text-[#A370FF] hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#6C00FF] rounded px-1"
+                        className="text-xs font-mono text-[#60a5fa] hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#2563eb] rounded px-1"
                         aria-label="Navigate to about and leadership page"
                       >
                         <span>Meet our team</span>
@@ -246,8 +246,8 @@ export default function App() {
 
                 {/* Secondary Assistive Accessibility hotkey instructions overlay */}
                 <div className="max-w-7xl mx-auto px-4 md:px-10">
-                  <div className="border border-[#6C00FF1a] bg-[#120826]/30 rounded-xl p-4 flex items-center space-x-3 text-slate-400 text-xs font-sans">
-                    <Keyboard className="w-5 h-5 text-[#6C00FF] shrink-0" />
+                  <div className="border border-[#2563eb1a] bg-[#0f1720]/30 rounded-xl p-4 flex items-center space-x-3 text-slate-400 text-xs font-sans">
+                    <Keyboard className="w-5 h-5 text-[#2563eb] shrink-0" />
                     <p>
                       <strong>Accessibility Notice:</strong> This defensive portal conforms strictly to WCAG AA benchmarks. You can jump directly to interactive components, skip blocks, and use keyboard standard shortcuts for direct element control.
                     </p>

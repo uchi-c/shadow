@@ -29,13 +29,13 @@ export default function CaseStudies() {
   const activeStudy = caseStudies.find(c => c.id === activeTab) || caseStudies[0];
 
   return (
-    <div id="case" className="bg-transparent py-24 border-b border-[#6C00FF33]">
+    <div id="case" className="bg-transparent py-24 border-b border-[#2563eb33]">
       <div className="max-w-7xl mx-auto px-4 md:px-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="max-w-xl mb-6 md:mb-0">
-            <div className="text-xs font-mono font-bold tracking-widest text-[#A370FF] uppercase mb-3.5">
+            <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase mb-3.5">
               Mission Deliveries
             </div>
             <h2 className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight leading-tight">
@@ -44,12 +44,12 @@ export default function CaseStudies() {
           </div>
 
           {/* Tab Selector Buttons */}
-          <div className="flex bg-[#120826]/70 border border-[#6C00FF33] p-1 rounded-xl shrink-0 space-x-1.5 font-sans">
+          <div className="flex bg-[#0f1720]/70 border border-[#2563eb33] p-1 rounded-xl shrink-0 space-x-1.5 font-sans">
             <button
               onClick={() => setActiveTab("ngo_phishing")}
               className={`px-4 py-2.5 rounded-lg text-xs font-semibold cursor-pointer transition-all ${
                 activeTab === "ngo_phishing"
-                  ? "bg-[#6C00FF] text-white shadow-[0_0_15px_#6C00FF]"
+                  ? "bg-[#2563eb] text-white shadow-[0_0_15px_#2563eb]"
                   : "text-slate-400 hover:text-white"
               }`}
             >
@@ -59,7 +59,7 @@ export default function CaseStudies() {
               onClick={() => setActiveTab("dist_retail")}
               className={`px-4 py-2.5 rounded-lg text-xs font-semibold cursor-pointer transition-all ${
                 activeTab === "dist_retail"
-                  ? "bg-[#6C00FF] text-white shadow-[0_0_15px_#6C00FF]"
+                  ? "bg-[#2563eb] text-white shadow-[0_0_15px_#2563eb]"
                   : "text-slate-400 hover:text-white"
               }`}
             >
@@ -69,15 +69,15 @@ export default function CaseStudies() {
         </div>
 
         {/* Mission Card Structure */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#120826]/70 border border-[#6C00FF33] rounded-3xl p-6 md:p-10 relative overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0f1720]/70 border border-[#2563eb33] rounded-3xl p-6 md:p-10 relative overflow-hidden">
           {/* Subtle watermarks */}
-          <div className="absolute top-10 right-10 opacity-[0.02] pointer-events-none text-[#6C00FF]">
+          <div className="absolute top-10 right-10 opacity-[0.02] pointer-events-none text-[#2563eb]">
             <FolderGit className="w-80 h-80" />
           </div>
 
           <div className="lg:col-span-4 space-y-6">
             <div>
-              <span className="font-mono text-[10px] text-[#A370FF] font-extrabold uppercase bg-[#6C00FF22] border border-[#6C00FF44] px-2.5 py-1 rounded-full">
+              <span className="font-mono text-[10px] text-[#60a5fa] font-extrabold uppercase bg-[#2563eb22] border border-[#2563eb44] px-2.5 py-1 rounded-full">
                 CASE ANALYSIS REPORT
               </span>
               <h3 className="font-display font-bold text-2xl text-white mt-4 leading-tight">
@@ -119,7 +119,7 @@ export default function CaseStudies() {
               {/* Solution */}
               <div className="space-y-1.5">
                 <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#6C00FF]"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563eb]"></span>
                   <span>THE SHADOW PLAN (RECON/IMPLEMENTATION)</span>
                 </h4>
                 <p className="text-sm text-slate-300 leading-relaxed pl-3.5">
@@ -133,7 +133,7 @@ export default function CaseStudies() {
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                   <span>SECURITY OUTCOMES RECORDED</span>
                 </h4>
-                <p className="text-sm text-slate-200 bg-[#0a0515]/60 border border-[#6C00FF33] rounded-lg p-4 font-medium leading-relaxed">
+                <p className="text-sm text-slate-200 bg-[#0b0f14]/60 border border-[#2563eb33] rounded-lg p-4 font-medium leading-relaxed">
                   {activeStudy.results}
                 </p>
               </div>

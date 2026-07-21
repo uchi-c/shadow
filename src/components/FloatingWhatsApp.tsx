@@ -35,7 +35,7 @@ export default function FloatingWhatsApp() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.92 }}
             transition={{ type: "spring", stiffness: 380, damping: 24 }}
-            className={`absolute bottom-16 left-0 bg-[#0a0515]/95 border border-emerald-500/40 text-white rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.2)] pointer-events-none ${
+            className={`absolute bottom-16 left-0 bg-[#0b0f14]/95 border border-emerald-500/40 text-white rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.2)] pointer-events-none ${
               isMobile ? "w-52 p-2.5" : "w-60 p-3"
             }`}
           >

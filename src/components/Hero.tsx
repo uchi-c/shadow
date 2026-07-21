@@ -48,16 +48,16 @@ export default function Hero({ onNavigate }: HeroProps) {
   }, [scanState]);
 
   return (
-    <div id="home" className="relative bg-transparent min-h-screen pt-28 pb-16 flex flex-col justify-center overflow-hidden border-b border-[#6C00FF33]">
+    <div id="home" className="relative bg-transparent min-h-screen pt-28 pb-16 flex flex-col justify-center overflow-hidden border-b border-[#2563eb33]">
       <div className="max-w-7xl mx-auto px-4 md:px-10 relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full z-10">
         {/* Left Hand Copy Content */}
         <div className="lg:col-span-7 flex flex-col space-y-6">
-          <div className="inline-block px-3 py-1 bg-[#6C00FF22] border border-[#6C00FF44] rounded text-[#A370FF] text-xs font-bold uppercase tracking-widest mb-2 w-fit font-mono">
+          <div className="inline-block px-3 py-1 bg-[#2563eb22] border border-[#2563eb44] rounded text-[#60a5fa] text-xs font-bold uppercase tracking-widest mb-2 w-fit font-mono">
             Lusaka&apos;s Premier Security Partner
           </div>
 
           <h1 className="text-5xl md:text-6xl font-black leading-none text-white tracking-tight leading-[1.1]">
-            We start in the <span className="text-[#6C00FF]">shadows.</span>
+            We start in the <span className="text-[#2563eb]">shadows.</span>
           </h1>
 
           <p className="font-sans text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
@@ -68,7 +68,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
             <button
               onClick={() => onNavigate("quote")}
-              className="px-8 py-4 bg-[#6C00FF] hover:bg-[#8e3aff] text-white font-bold rounded shadow-[0_0_20px_rgba(108,0,255,0.4)] transition-all flex items-center justify-center space-x-2.5 cursor-pointer"
+              className="px-8 py-4 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold rounded shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all flex items-center justify-center space-x-2.5 cursor-pointer"
             >
               <span>Request Free Audit</span>
               <ArrowRight className="w-4 h-4 text-white" />
@@ -93,7 +93,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               <div className="text-xs text-slate-500 mt-1.5 font-medium">NGO Simulation Retainment</div>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <div className="font-display font-bold text-3xl text-[#6C00FF] leading-none text-shadow-purple">A+ SSL</div>
+              <div className="font-display font-bold text-3xl text-[#2563eb] leading-none text-shadow-purple">A+ SSL</div>
               <div className="text-xs text-slate-500 mt-1.5 font-medium">Production Hardening Mark</div>
             </div>
           </div>
@@ -101,9 +101,9 @@ export default function Hero({ onNavigate }: HeroProps) {
 
         {/* Right Hand Side: Dynamic interactive security sandbox console */}
         <div className="lg:col-span-5 relative w-full h-full max-w-lg mx-auto">
-          <div className="relative bg-[#120826] rounded-2xl border border-[#6C00FF66] shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden font-mono text-[11px] leading-relaxed text-slate-300">
+          <div className="relative bg-[#0f1720] rounded-2xl border border-[#2563eb66] shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden font-mono text-[11px] leading-relaxed text-slate-300">
             {/* Console Header */}
-            <div className="bg-[#0a0515] px-4 py-3 border-b border-[#6C00FF33] flex justify-between items-center">
+            <div className="bg-[#0b0f14] px-4 py-3 border-b border-[#2563eb33] flex justify-between items-center">
               <div className="flex items-center space-x-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
@@ -111,7 +111,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 <span className="text-slate-500 font-bold ml-1.5 text-[9px] tracking-wider uppercase">Sandbox Assessment V2</span>
               </div>
               <div className="flex items-center space-x-1">
-                <Server className="w-3.5 h-3.5 text-[#6C00FF]" />
+                <Server className="w-3.5 h-3.5 text-[#2563eb]" />
                 <span className="text-[10px] text-slate-400 font-semibold uppercase">SECURE-PORT</span>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             <div className="p-5 flex flex-col space-y-4 min-h-[300px] justify-between">
               {scanState === "IDLE" && (
                 <div className="flex flex-col items-center justify-center text-center py-8 space-y-4">
-                  <div className="w-14 h-14 rounded-full bg-[#6C00FF22] border border-[#6C00FF44] flex items-center justify-center text-[#6C00FF] animate-pulse">
+                  <div className="w-14 h-14 rounded-full bg-[#2563eb22] border border-[#2563eb44] flex items-center justify-center text-[#2563eb] animate-pulse">
                     <ShieldCheck className="w-7 h-7" />
                   </div>
                   <div>
@@ -131,7 +131,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                   </div>
                   <button
                     onClick={() => setScanState("SCANNING")}
-                    className="bg-[#6C00FF] hover:bg-[#8e3aff] text-white px-5 py-2.5 rounded text-[10px] font-bold cursor-pointer flex items-center space-x-1.5 shadow-[0_0_15px_#6C00FF] transition-all"
+                    className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-5 py-2.5 rounded text-[10px] font-bold cursor-pointer flex items-center space-x-1.5 shadow-[0_0_15px_#2563eb] transition-all"
                   >
                     <RefreshCw className="w-3.5 h-3.5" />
                     <span>Run Security Handshake</span>
@@ -141,15 +141,15 @@ export default function Hero({ onNavigate }: HeroProps) {
 
               {scanState === "SCANNING" && (
                 <div className="flex flex-col space-y-3">
-                  <div className="flex items-center justify-between text-[10px] bg-[#0a0515] p-2 rounded border border-[#6C00FF33]">
-                    <span className="font-bold text-[#6C00FF] animate-pulse-ring">AUDITING CORE DIRECTIVES...</span>
+                  <div className="flex items-center justify-between text-[10px] bg-[#0b0f14] p-2 rounded border border-[#2563eb33]">
+                    <span className="font-bold text-[#2563eb] animate-pulse-ring">AUDITING CORE DIRECTIVES...</span>
                     <span>{scanProgress}%</span>
                   </div>
                   
                   {/* Progress bar */}
-                  <div className="w-full bg-[#1c0f3a] rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full bg-[#1e293b] rounded-full h-1.5 overflow-hidden">
                     <div 
-                      className="bg-[#6C00FF] h-full rounded-full transition-all duration-300 shadow-[0_0_8px_#6C00FF]" 
+                      className="bg-[#2563eb] h-full rounded-full transition-all duration-300 shadow-[0_0_8px_#2563eb]" 
                       style={{ width: `${scanProgress}%` }}
                     ></div>
                   </div>
@@ -182,7 +182,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                     </div>
                   </div>
 
-                  <div className="space-y-1 bg-[#0a0515]/80 p-2.5 rounded border border-[#6C00FF33] max-h-[120px] overflow-y-auto">
+                  <div className="space-y-1 bg-[#0b0f14]/80 p-2.5 rounded border border-[#2563eb33] max-h-[120px] overflow-y-auto">
                     {testAttackVectors.map((target, idx) => (
                       <div key={idx} className="flex items-center justify-between text-[9px] text-slate-400">
                         <span className="truncate">{target}</span>
@@ -201,7 +201,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               )}
 
               {/* Console Footer */}
-              <div className="border-t border-[#6C00FF1a] pt-3 flex items-center justify-between text-[9px] text-slate-500">
+              <div className="border-t border-[#2563eb1a] pt-3 flex items-center justify-between text-[9px] text-slate-500">
                 <span>ENCRYPTION CLIENT: SHA-256</span>
                 <span>STATUS: SECURE CONTEXT</span>
               </div>

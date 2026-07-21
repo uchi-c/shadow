@@ -505,17 +505,17 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
   return (
     <div id="admin-portal" className="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
-      <div className="bg-[#0c0515] rounded-3xl w-full max-w-6xl h-[90vh] border border-[#6C00FF33] flex flex-col overflow-hidden shadow-[0_0_50px_rgba(108,0,255,0.15)] relative font-sans">
+      <div className="bg-[#0b0f14] rounded-3xl w-full max-w-6xl h-[90vh] border border-[#2563eb33] flex flex-col overflow-hidden shadow-[0_0_50px_rgba(37,99,235,0.15)] relative font-sans">
         
         {/* HEADER BAR */}
-        <div className="bg-[#120826] text-white px-6 py-4 border-b border-[#6C00FF33] flex justify-between items-center shrink-0">
+        <div className="bg-[#0f1720] text-white px-6 py-4 border-b border-[#2563eb33] flex justify-between items-center shrink-0">
           <div className="flex items-center space-x-3">
-            <KeyRound className="w-5 h-5 text-[#A370FF] animate-pulse" />
+            <KeyRound className="w-5 h-5 text-[#60a5fa] animate-pulse" />
             <div>
               <h3 className="font-display font-medium text-sm text-slate-100 tracking-tight flex items-center gap-1.5">
                 Shadow Root Admin Command Center
                 {isSupabaseActive && (
-                  <span className="bg-[#6C00FF]/25 border border-[#6C00FF]/50 text-[9px] font-mono tracking-wider text-[#A370FF] px-1.5 py-0.5 rounded uppercase">
+                  <span className="bg-[#2563eb]/25 border border-[#2563eb]/50 text-[9px] font-mono tracking-wider text-[#60a5fa] px-1.5 py-0.5 rounded uppercase">
                     Supabase Enabled
                   </span>
                 )}
@@ -527,7 +527,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white transition-all cursor-pointer p-1.5 hover:bg-[#0c0515] rounded-full"
+            className="text-slate-400 hover:text-white transition-all cursor-pointer p-1.5 hover:bg-[#0b0f14] rounded-full"
             id="admin-close-btn"
           >
             <X className="w-5 h-5" />
@@ -536,11 +536,11 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
         {/* SECURE ENCRYPTED AUTHENTICATION LAYERS */}
         {!isAuthenticated ? (
-          <div className="flex-grow flex flex-col justify-center items-center p-6 bg-[#0a0515]/80 overflow-y-auto">
-            <div className="w-full max-w-md bg-[#120826]/90 border border-[#6C00FF33] p-7 rounded-2xl shadow-2xl space-y-5">
+          <div className="flex-grow flex flex-col justify-center items-center p-6 bg-[#0b0f14]/80 overflow-y-auto">
+            <div className="w-full max-w-md bg-[#0f1720]/90 border border-[#2563eb33] p-7 rounded-2xl shadow-2xl space-y-5">
               
               <div className="text-center space-y-2">
-                <div className="bg-[#6C00FF22] text-[#A370FF] p-3.5 rounded-full w-fit mx-auto mb-2 border border-[#6C00FF44] shadow-[0_0_15px_rgba(108,0,255,0.3)]">
+                <div className="bg-[#2563eb22] text-[#60a5fa] p-3.5 rounded-full w-fit mx-auto mb-2 border border-[#2563eb44] shadow-[0_0_15px_rgba(37,99,235,0.3)]">
                   <Lock className="w-6 h-6" />
                 </div>
                 <h4 className="font-display font-bold text-white text-base">Security Verification Auth</h4>
@@ -551,22 +551,22 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
               {/* AUTHENTICATION TAB CONTROLS */}
               {isSupabaseActive && (
-                <div className="flex border-b border-[#6C00FF22] text-xs font-mono">
+                <div className="flex border-b border-[#2563eb22] text-xs font-mono">
                   <button
                     onClick={() => { setAuthMode("supabase_login"); setErrorMsg(""); }}
-                    className={`flex-1 pb-2 border-b-2 text-center transition-all ${authMode === "supabase_login" ? "border-[#6C00FF] text-white" : "border-transparent text-slate-500 hover:text-slate-300"}`}
+                    className={`flex-1 pb-2 border-b-2 text-center transition-all ${authMode === "supabase_login" ? "border-[#2563eb] text-white" : "border-transparent text-slate-500 hover:text-slate-300"}`}
                   >
                     Supabase Login
                   </button>
                   <button
                     onClick={() => { setAuthMode("supabase_register"); setErrorMsg(""); }}
-                    className={`flex-1 pb-2 border-b-2 text-center transition-all ${authMode === "supabase_register" ? "border-[#6C00FF] text-white" : "border-transparent text-slate-500 hover:text-slate-300"}`}
+                    className={`flex-1 pb-2 border-b-2 text-center transition-all ${authMode === "supabase_register" ? "border-[#2563eb] text-white" : "border-transparent text-slate-500 hover:text-slate-300"}`}
                   >
                     Teammate Register
                   </button>
                   <button
                     onClick={() => { setAuthMode("fallback_login"); setErrorMsg(""); }}
-                    className={`flex-1 pb-2 border-b-2 text-center transition-all ${authMode === "fallback_login" ? "border-[#6C00FF] text-white" : "border-transparent text-slate-500 hover:text-slate-300"}`}
+                    className={`flex-1 pb-2 border-b-2 text-center transition-all ${authMode === "fallback_login" ? "border-[#2563eb] text-white" : "border-transparent text-slate-500 hover:text-slate-300"}`}
                   >
                     Decryption Fallback
                   </button>
@@ -591,7 +591,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                       value={supabaseEmail}
                       onChange={(e) => setSupabaseEmail(e.target.value)}
                       placeholder="e.g. name@shadowroot.sec"
-                      className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded-lg px-4.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#6C00FF] focus:ring-2 focus:ring-[#6C00FF] focus:ring-offset-2 focus:ring-offset-[#0a0515]"
+                      className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded-lg px-4.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb] focus:ring-offset-2 focus:ring-offset-[#0b0f14]"
                       required
                     />
                   </div>
@@ -603,14 +603,14 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                       value={supabasePassword}
                       onChange={(e) => setSupabasePassword(e.target.value)}
                       placeholder="Enter password"
-                      className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded-lg px-4.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#6C00FF] focus:ring-2 focus:ring-[#6C00FF] focus:ring-offset-2 focus:ring-offset-[#0a0515]"
+                      className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded-lg px-4.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb] focus:ring-offset-2 focus:ring-offset-[#0b0f14]"
                       required
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-[#6C00FF] hover:bg-[#8e3aff] text-white font-bold py-3 rounded-lg text-xs cursor-pointer shadow-[0_0_15px_#6C00FF] transition-all flex items-center justify-center space-x-2 font-mono focus:outline-none focus:ring-2 focus:ring-[#6C00FF]"
+                    className="w-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold py-3 rounded-lg text-xs cursor-pointer shadow-[0_0_15px_#2563eb] transition-all flex items-center justify-center space-x-2 font-mono focus:outline-none focus:ring-2 focus:ring-[#2563eb]"
                   >
                     {loading ? "Verifying Token..." : "PROCEED WITH SUPABASE AUTH"}
                   </button>
@@ -628,10 +628,10 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                       value={supabaseEmail}
                       onChange={(e) => setSupabaseEmail(e.target.value)}
                       placeholder="must end with @shadowroot.sec or @shadowroot.co"
-                      className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded-lg px-4.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#6C00FF] focus:ring-2 focus:ring-[#6C00FF] focus:ring-offset-2 focus:ring-offset-[#0a0515]"
+                      className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded-lg px-4.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb] focus:ring-offset-2 focus:ring-offset-[#0b0f14]"
                       required
                     />
-                    <p className="text-[9px] text-[#A370FF] leading-snug font-mono">
+                    <p className="text-[9px] text-[#60a5fa] leading-snug font-mono">
                       Domain whitelist checks are strictly enforced to follow the principle of least privilege.
                     </p>
                   </div>
@@ -643,14 +643,14 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                       value={supabasePassword}
                       onChange={(e) => setSupabasePassword(e.target.value)}
                       placeholder="Minimum 6 characters"
-                      className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded-lg px-4.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#6C00FF] focus:ring-2 focus:ring-[#6C00FF] focus:ring-offset-2 focus:ring-offset-[#0a0515]"
+                      className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded-lg px-4.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb] focus:ring-offset-2 focus:ring-offset-[#0b0f14]"
                       required
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-[#A370FF] hover:bg-[#b991ff] text-slate-950 font-bold py-3 rounded-lg text-xs cursor-pointer transition-all flex items-center justify-center space-x-2 font-mono focus:outline-none focus:ring-2 focus:ring-[#A370FF]"
+                    className="w-full bg-[#60a5fa] hover:bg-[#93c5fd] text-slate-950 font-bold py-3 rounded-lg text-xs cursor-pointer transition-all flex items-center justify-center space-x-2 font-mono focus:outline-none focus:ring-2 focus:ring-[#60a5fa]"
                   >
                     <UserPlus className="w-3.5 h-3.5" />
                     <span>{loading ? "Creating Teammate Identity..." : "REGISTER TEAMMATE PRIVILEGES"}</span>
@@ -669,21 +669,21 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Password code (e.g. shadowrootadmin123)"
-                      className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded-lg px-4.5 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#6C00FF] focus:ring-2 focus:ring-[#6C00FF] focus:ring-offset-2 focus:ring-offset-[#0a0515]"
+                      className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded-lg px-4.5 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb] focus:ring-offset-2 focus:ring-offset-[#0b0f14]"
                       required
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-[#6C00FF] hover:bg-[#8e3aff] text-white font-bold py-3 rounded-lg text-xs cursor-pointer shadow-[0_0_15px_#6C00FF] transition-all flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-[#6C00FF]"
+                    className="w-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold py-3 rounded-lg text-xs cursor-pointer shadow-[0_0_15px_#2563eb] transition-all flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-[#2563eb]"
                   >
                     {loading ? "Decrypting DB..." : "DECRYPT OFFLINE TABLES"}
                   </button>
                   
                   {!isSupabaseActive && (
-                    <div className="bg-[#120826] border border-[#6C00FF1a] rounded-lg p-3 text-[10px] text-slate-400 leading-snug space-y-1.5">
-                      <div className="flex items-center space-x-1.5 text-[#A370FF] font-semibold">
+                    <div className="bg-[#0f1720] border border-[#2563eb1a] rounded-lg p-3 text-[10px] text-slate-400 leading-snug space-y-1.5">
+                      <div className="flex items-center space-x-1.5 text-[#60a5fa] font-semibold">
                         <Info className="w-3.5 h-3.5" />
                         <span>Supabase Integration Guide:</span>
                       </div>
@@ -703,14 +703,14 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
           <div className="flex-grow flex flex-col overflow-hidden">
             
             {/* TAB MENU BAR */}
-            <div className="bg-[#120826] border-b border-[#6C00FF1a] px-6 py-3 flex flex-col md:flex-row gap-4 md:items-center justify-between shrink-0">
+            <div className="bg-[#0f1720] border-b border-[#2563eb1a] px-6 py-3 flex flex-col md:flex-row gap-4 md:items-center justify-between shrink-0">
               <div className="flex flex-wrap gap-2 text-xs">
                 <button
                   onClick={() => setActiveTab("reports")}
                   className={`px-4 py-2 rounded-lg font-bold cursor-pointer transition-all flex items-center space-x-1.5 ${
                     activeTab === "reports"
-                      ? "bg-[#6C00FF] text-white shadow-[0_4px_12px_rgba(108,0,255,0.3)]"
-                      : "text-slate-400 hover:text-white hover:bg-[#0a0515]"
+                      ? "bg-[#2563eb] text-white shadow-[0_4px_12px_rgba(37,99,235,0.3)]"
+                      : "text-slate-400 hover:text-white hover:bg-[#0b0f14]"
                   }`}
                   id="tab-reports"
                 >
@@ -721,8 +721,8 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                   onClick={() => setActiveTab("leads")}
                   className={`px-4 py-2 rounded-lg font-bold cursor-pointer transition-all flex items-center space-x-1.5 ${
                     activeTab === "leads" 
-                      ? "bg-[#6C00FF] text-white shadow-[0_4px_12px_rgba(108,0,255,0.3)]" 
-                      : "text-slate-400 hover:text-white hover:bg-[#0a0515]"
+                      ? "bg-[#2563eb] text-white shadow-[0_4px_12px_rgba(37,99,235,0.3)]" 
+                      : "text-slate-400 hover:text-white hover:bg-[#0b0f14]"
                   }`}
                   id="tab-leads"
                 >
@@ -733,8 +733,8 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                   onClick={() => setActiveTab("knowledge")}
                   className={`px-4 py-2 rounded-lg font-bold cursor-pointer transition-all flex items-center space-x-1.5 ${
                     activeTab === "knowledge" 
-                      ? "bg-[#6C00FF] text-white shadow-[0_4px_12px_rgba(108,0,255,0.3)]" 
-                      : "text-slate-400 hover:text-white hover:bg-[#0a0515]"
+                      ? "bg-[#2563eb] text-white shadow-[0_4px_12px_rgba(37,99,235,0.3)]" 
+                      : "text-slate-400 hover:text-white hover:bg-[#0b0f14]"
                   }`}
                   id="tab-knowledge"
                 >
@@ -745,8 +745,8 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                   onClick={() => setActiveTab("chats")}
                   className={`px-4 py-2 rounded-lg font-bold cursor-pointer transition-all flex items-center space-x-1.5 ${
                     activeTab === "chats" 
-                      ? "bg-[#6C00FF] text-white shadow-[0_4px_12px_rgba(108,0,255,0.3)]" 
-                      : "text-slate-400 hover:text-white hover:bg-[#0a0515]"
+                      ? "bg-[#2563eb] text-white shadow-[0_4px_12px_rgba(37,99,235,0.3)]" 
+                      : "text-slate-400 hover:text-white hover:bg-[#0b0f14]"
                   }`}
                   id="tab-chats"
                 >
@@ -759,7 +759,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                 <button
                   onClick={fetchDashboardData}
                   disabled={loading}
-                  className="p-2 bg-[#0a0515] hover:bg-[#120826] border border-[#6C00FF33] text-slate-300 rounded-lg cursor-pointer transition-all hover:rotate-45"
+                  className="p-2 bg-[#0b0f14] hover:bg-[#0f1720] border border-[#2563eb33] text-slate-300 rounded-lg cursor-pointer transition-all hover:rotate-45"
                   title="Reload data records"
                   id="reload-btn"
                 >
@@ -784,13 +784,13 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
             )}
 
             {/* SCROLLABLE VIEWCONTAINER */}
-            <div className="flex-grow overflow-hidden bg-[#0a0515] flex">
+            <div className="flex-grow overflow-hidden bg-[#0b0f14] flex">
               
               {/* TAB 0: STATE & INTELLIGENCE REPORT */}
               {!loading && activeTab === "reports" && (
                 <div className="flex-grow flex flex-col p-6 overflow-y-auto space-y-6">
                   {!stats ? (
-                    <div className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-8 text-center text-xs text-slate-500 font-mono">
+                    <div className="bg-[#0f1720]/75 border border-[#2563eb1a] rounded-xl p-8 text-center text-xs text-slate-500 font-mono">
                       Report data is being compiled. Trigger a reload if this persists.
                     </div>
                   ) : (
@@ -798,7 +798,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
                         <div className="space-y-1">
                           <h4 className="font-display font-bold text-white text-base flex items-center gap-2">
-                            <Activity className="w-4 h-4 text-[#A370FF]" />
+                            <Activity className="w-4 h-4 text-[#60a5fa]" />
                             Operational State Snapshot
                           </h4>
                           <p className="text-xs text-slate-400 font-mono">
@@ -819,18 +819,18 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                       {/* KPI STAT CARDS */}
                       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
                         {[
-                          { label: "Actionable Records", value: stats.pipeline.actionableRecords, icon: FileText, accent: "text-[#A370FF]" },
+                          { label: "Actionable Records", value: stats.pipeline.actionableRecords, icon: FileText, accent: "text-[#60a5fa]" },
                           { label: "Open / Pending", value: stats.pipeline.open, icon: Mail, accent: "text-amber-400" },
                           { label: "Engaged", value: stats.pipeline.engaged, icon: TrendingUp, accent: "text-blue-400" },
                           { label: "Conversion", value: `${(stats.pipeline.conversionRate * 100).toFixed(1)}%`, icon: BarChart3, accent: "text-emerald-400" },
-                          { label: "AI Escalations", value: stats.chats.escalated, icon: Zap, accent: "text-[#A370FF]" },
+                          { label: "AI Escalations", value: stats.chats.escalated, icon: Zap, accent: "text-[#60a5fa]" },
                           { label: "RAG Documents", value: stats.knowledge.total, icon: Database, accent: "text-slate-300" },
                         ].map((card) => {
                           const Icon = card.icon;
                           return (
                             <div
                               key={card.label}
-                              className="bg-[#120826]/75 border border-[#6C00FF22] rounded-xl p-4 space-y-2"
+                              className="bg-[#0f1720]/75 border border-[#2563eb22] rounded-xl p-4 space-y-2"
                             >
                               <div className="flex items-center justify-between">
                                 <span className="text-[9px] font-mono uppercase tracking-wider text-slate-500 leading-tight">
@@ -852,7 +852,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                         ].map((group) => (
                           <div
                             key={group.title}
-                            className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-5 space-y-4"
+                            className="bg-[#0f1720]/75 border border-[#2563eb1a] rounded-xl p-5 space-y-4"
                           >
                             <div className="flex items-center justify-between">
                               <h5 className="font-display font-medium text-xs text-white uppercase tracking-widest font-mono">
@@ -872,7 +872,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                         {count} <span className="text-slate-600">({pct}%)</span>
                                       </span>
                                     </div>
-                                    <div className="h-1.5 bg-[#0a0515] rounded-full overflow-hidden border border-white/5">
+                                    <div className="h-1.5 bg-[#0b0f14] rounded-full overflow-hidden border border-white/5">
                                       <div
                                         className={`h-full ${meta.bar} rounded-full transition-all duration-500`}
                                         style={{ width: `${pct}%` }}
@@ -888,9 +888,9 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
                       {/* KNOWLEDGE COVERAGE + ESCALATION NOTICE */}
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                        <div className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-5 space-y-3">
+                        <div className="bg-[#0f1720]/75 border border-[#2563eb1a] rounded-xl p-5 space-y-3">
                           <h5 className="font-display font-medium text-xs text-white uppercase tracking-widest font-mono flex items-center gap-1.5">
-                            <Database className="w-3.5 h-3.5 text-[#A370FF]" />
+                            <Database className="w-3.5 h-3.5 text-[#60a5fa]" />
                             RAG Knowledge Coverage
                           </h5>
                           {Object.keys(stats.knowledge.byCategory).length === 0 ? (
@@ -900,16 +900,16 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               {Object.entries(stats.knowledge.byCategory).map(([cat, count]) => (
                                 <span
                                   key={cat}
-                                  className="bg-[#0a0515] border border-[#6C00FF33] rounded px-2.5 py-1 text-[10px] font-mono text-slate-300"
+                                  className="bg-[#0b0f14] border border-[#2563eb33] rounded px-2.5 py-1 text-[10px] font-mono text-slate-300"
                                 >
-                                  {cat}: <span className="text-[#A370FF] font-bold">{count}</span>
+                                  {cat}: <span className="text-[#60a5fa] font-bold">{count}</span>
                                 </span>
                               ))}
                             </div>
                           )}
                         </div>
 
-                        <div className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-5 space-y-2">
+                        <div className="bg-[#0f1720]/75 border border-[#2563eb1a] rounded-xl p-5 space-y-2">
                           <h5 className="font-display font-medium text-xs text-white uppercase tracking-widest font-mono flex items-center gap-1.5">
                             <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
                             Escalation Signal
@@ -931,7 +931,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                 <div className="flex-grow flex overflow-hidden">
                   
                   {/* LEFT: LEADS SCRUBBER & FILTERS GRID */}
-                  <div className="w-full lg:w-3/5 flex flex-col p-6 overflow-y-auto border-r border-[#6C00FF1a] space-y-4">
+                  <div className="w-full lg:w-3/5 flex flex-col p-6 overflow-y-auto border-r border-[#2563eb1a] space-y-4">
                     
                     {/* FILTER MATRIX CONTROLS */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 shrink-0">
@@ -940,7 +940,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                         <select
                           value={sourceFilter}
                           onChange={(e) => setSourceFilter(e.target.value as any)}
-                          className="w-full bg-[#120826]/80 text-[#A370FF] font-semibold border border-[#6C00FF33] rounded px-3 py-2 text-xs focus:outline-none"
+                          className="w-full bg-[#0f1720]/80 text-[#60a5fa] font-semibold border border-[#2563eb33] rounded px-3 py-2 text-xs focus:outline-none"
                         >
                           <option value="all">All Sources</option>
                           <option value="quote">Inquiry Forms Only</option>
@@ -952,7 +952,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                         <select
                           value={statusFilter}
                           onChange={(e) => setStatusFilter(e.target.value as any)}
-                          className="w-full bg-[#120826]/80 text-[#A370FF] font-semibold border border-[#6C00FF33] rounded px-3 py-2 text-xs focus:outline-none"
+                          className="w-full bg-[#0f1720]/80 text-[#60a5fa] font-semibold border border-[#2563eb33] rounded px-3 py-2 text-xs focus:outline-none"
                         >
                           <option value="all">All Statuses</option>
                           <option value="pending">Pending</option>
@@ -970,7 +970,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Search names, emails..."
-                            className="w-full bg-[#120826]/80 text-white placeholder-slate-500 border border-[#6C00FF33] rounded pl-8 pr-3 py-2 text-xs focus:outline-none"
+                            className="w-full bg-[#0f1720]/80 text-white placeholder-slate-500 border border-[#2563eb33] rounded pl-8 pr-3 py-2 text-xs focus:outline-none"
                           />
                           <Search className="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-2.5" />
                         </div>
@@ -980,7 +980,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                     {/* LEAD INQUIRIES LIST */}
                     <div className="space-y-4">
                       {filteredUnifiedLeads.length === 0 ? (
-                        <div className="bg-[#120826]/40 border border-[#6C00FF1a] rounded-2xl p-12 text-center text-xs text-slate-500 font-mono">
+                        <div className="bg-[#0f1720]/40 border border-[#2563eb1a] rounded-2xl p-12 text-center text-xs text-slate-500 font-mono">
                           No active lead records match the filters specified.
                         </div>
                       ) : (
@@ -992,8 +992,8 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               onClick={() => setSelectedLead(lead)}
                               className={`border rounded-2xl p-5 cursor-pointer transition-all duration-300 ${
                                 isActive 
-                                  ? "bg-[#1d0b3a]/70 border-[#A370FF] shadow-[0_0_15px_rgba(163,112,255,0.2)]" 
-                                  : "bg-[#120826]/60 border-[#6C00FF1a] hover:bg-[#120826]/90 hover:border-[#6C00FF55]"
+                                  ? "bg-[#17233a]/70 border-[#60a5fa] shadow-[0_0_15px_rgba(96,165,250,0.2)]" 
+                                  : "bg-[#0f1720]/60 border-[#2563eb1a] hover:bg-[#0f1720]/90 hover:border-[#2563eb55]"
                               }`}
                             >
                               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/5">
@@ -1012,7 +1012,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                     </span>
                                   </div>
                                   <p className="text-[10px] text-slate-500 mt-1.5 flex items-center space-x-1 font-mono">
-                                    <Calendar className="w-3 h-3 text-[#6C00FF]" />
+                                    <Calendar className="w-3 h-3 text-[#2563eb]" />
                                     <span>{new Date(lead.createdAt).toLocaleString()}</span>
                                   </p>
                                 </div>
@@ -1035,7 +1035,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                 <div className="truncate pr-4 leading-normal">
                                   <strong>Challenge/Interest:</strong> {lead.service}
                                 </div>
-                                <div className="text-[10px] text-[#A370FF] flex items-center shrink-0">
+                                <div className="text-[10px] text-[#60a5fa] flex items-center shrink-0">
                                   {lead.chatSessionId ? "✓ Contains AI Session" : "Bypassed AI Chat"}
                                 </div>
                               </div>
@@ -1047,19 +1047,19 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                   </div>
 
                   {/* RIGHT: LEADS DETAILS DISPLAY CONSOLE */}
-                  <div className="hidden lg:flex lg:w-2/5 flex-col p-6 overflow-y-auto bg-[#120826]/30">
+                  <div className="hidden lg:flex lg:w-2/5 flex-col p-6 overflow-y-auto bg-[#0f1720]/30">
                     {selectedLead ? (
                       <div className="space-y-6">
                         
                         {/* Summary Block */}
                         <div className="space-y-2">
-                          <p className="text-[10px] font-mono tracking-widest text-[#A370FF] uppercase mt-1">LEAD DETAILED RECORD</p>
+                          <p className="text-[10px] font-mono tracking-widest text-[#60a5fa] uppercase mt-1">LEAD DETAILED RECORD</p>
                           <h4 className="text-xl font-display font-bold text-white tracking-tight">{selectedLead.name}</h4>
                           <p className="text-sm text-slate-400 font-mono leading-none">{selectedLead.company}</p>
                         </div>
 
                         {/* Client details card */}
-                        <div className="bg-[#0c0515] rounded-2xl p-4.5 border border-[#6C00FF22] space-y-3.5 text-xs font-mono">
+                        <div className="bg-[#0b0f14] rounded-2xl p-4.5 border border-[#2563eb22] space-y-3.5 text-xs font-mono">
                           <div className="flex items-start justify-between">
                             <div>
                               <span className="text-slate-500 block text-[9px] uppercase">Service Type Of Interest</span>
@@ -1077,7 +1077,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               <span className="text-slate-500 block text-[9px] uppercase">Email Link</span>
                               <a 
                                 href={`mailto:${selectedLead.email}`} 
-                                className="text-[#A370FF] hover:underline font-semibold block truncate mt-0.5 text-[11px]"
+                                className="text-[#60a5fa] hover:underline font-semibold block truncate mt-0.5 text-[11px]"
                               >
                                 {selectedLead.email}
                               </a>
@@ -1095,9 +1095,9 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                         </div>
 
                         {/* Message description */}
-                        <div className="space-y-1.5 bg-[#0c0515] p-4.5 rounded-2xl border border-[#6C00FF1a]">
+                        <div className="space-y-1.5 bg-[#0b0f14] p-4.5 rounded-2xl border border-[#2563eb1a]">
                           <span className="text-slate-500 font-mono text-[9px] uppercase block">Client Stated Proposal Message Requirements</span>
-                          <p className="text-slate-300 text-xs leading-relaxed whitespace-pre-line bg-[#0a0515]/30 p-2.5 rounded border border-white/5">
+                          <p className="text-slate-300 text-xs leading-relaxed whitespace-pre-line bg-[#0b0f14]/30 p-2.5 rounded border border-white/5">
                             {selectedLead.message}
                           </p>
                         </div>
@@ -1109,7 +1109,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                           </span>
                           
                           {selectedLead.chatSessionId ? (
-                            <div className="border border-[#6C00FF22] bg-[#0c0515] rounded-2xl p-4 space-y-3 max-h-[250px] overflow-y-auto">
+                            <div className="border border-[#2563eb22] bg-[#0b0f14] rounded-2xl p-4 space-y-3 max-h-[250px] overflow-y-auto">
                               {activeChat.length === 0 ? (
                                 <p className="text-center py-6 text-slate-500 text-[11px] font-mono">
                                   Dialogue is blank, or matching logs are loading...
@@ -1120,7 +1120,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                   return (
                                     <div key={idx} className="space-y-1">
                                       <div className="flex items-center justify-between text-[9px] font-mono">
-                                        <span className={isBot ? "text-[#A370FF] font-bold" : "text-emerald-400 font-bold"}>
+                                        <span className={isBot ? "text-[#60a5fa] font-bold" : "text-emerald-400 font-bold"}>
                                           {isBot ? "Kuma AI Assistant:" : "Client Visitor:"}
                                         </span>
                                         {msg.timestamp && (
@@ -1131,7 +1131,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                       </div>
                                       <div className={`p-2.5 rounded-xl text-xs leading-relaxed ${
                                         isBot 
-                                          ? "bg-[#6C00FF]/10 text-slate-300 border border-[#6C00FF]/10 rounded-tl-none" 
+                                          ? "bg-[#2563eb]/10 text-slate-300 border border-[#2563eb]/10 rounded-tl-none" 
                                           : "bg-emerald-950/10 text-emerald-100 border border-emerald-900/15 rounded-tr-none"
                                       }`}>
                                         {msg.text}
@@ -1142,7 +1142,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               )}
                             </div>
                           ) : (
-                            <div className="bg-[#0c0515] border border-white/5 p-4 rounded-2xl text-center text-slate-500 text-[11px] font-mono leading-snug">
+                            <div className="bg-[#0b0f14] border border-white/5 p-4 rounded-2xl text-center text-slate-500 text-[11px] font-mono leading-snug">
                               Client bypassed Kuma AI and consulted directly via the inquiry form submission page.
                             </div>
                           )}
@@ -1160,7 +1160,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               className={`px-2.5 py-2 rounded text-[11px] cursor-pointer font-bold border transition-all truncate text-center font-mono ${
                                 selectedLead.status === "pending" 
                                   ? "bg-amber-950/40 text-amber-400 border-amber-500" 
-                                  : "bg-[#0c0515] text-slate-400 border-white/5 hover:border-amber-500/30 hover:text-amber-300"
+                                  : "bg-[#0b0f14] text-slate-400 border-white/5 hover:border-amber-500/30 hover:text-amber-300"
                               }`}
                             >
                               Pend
@@ -1170,7 +1170,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               className={`px-2.5 py-2 rounded text-[11px] cursor-pointer font-bold border transition-all truncate text-center font-mono ${
                                 selectedLead.status === "contacted" 
                                   ? "bg-blue-950/40 text-blue-400 border-blue-500" 
-                                  : "bg-[#0c0515] text-slate-400 border-white/5 hover:border-blue-500/30 hover:text-blue-300"
+                                  : "bg-[#0b0f14] text-slate-400 border-white/5 hover:border-blue-500/30 hover:text-blue-300"
                               }`}
                             >
                               Contacted
@@ -1180,7 +1180,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               className={`px-2.5 py-2 rounded text-[11px] cursor-pointer font-bold border transition-all truncate text-center font-mono ${
                                 selectedLead.status === "qualified" 
                                   ? "bg-emerald-950/40 text-emerald-400 border-emerald-500" 
-                                  : "bg-[#0c0515] text-slate-400 border-white/5 hover:border-emerald-500/30 hover:text-emerald-300"
+                                  : "bg-[#0b0f14] text-slate-400 border-white/5 hover:border-emerald-500/30 hover:text-emerald-300"
                               }`}
                             >
                               Qualified
@@ -1190,7 +1190,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               className={`px-2.5 py-2 rounded text-[11px] cursor-pointer font-bold border transition-all truncate text-center font-mono ${
                                 selectedLead.status === "closed" 
                                   ? "bg-rose-950/20 text-rose-400 border-rose-500" 
-                                  : "bg-[#0c0515] text-slate-400 border-white/5 hover:border-rose-500/30 hover:text-rose-300"
+                                  : "bg-[#0b0f14] text-slate-400 border-white/5 hover:border-rose-500/30 hover:text-rose-300"
                               }`}
                             >
                               Closed
@@ -1200,7 +1200,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                               className={`px-2.5 py-2 rounded col-span-2 sm:col-span-1 text-[11px] cursor-pointer font-bold border transition-all truncate text-center font-mono ${
                                 selectedLead.status === "archived" 
                                   ? "bg-pink-950/20 text-pink-400 border-pink-500" 
-                                  : "bg-[#0c0515] text-slate-400 border-white/5 hover:border-pink-500/30 hover:text-pink-300"
+                                  : "bg-[#0b0f14] text-slate-400 border-white/5 hover:border-pink-500/30 hover:text-pink-300"
                               }`}
                             >
                               Archive
@@ -1229,9 +1229,9 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                     
                     {/* Form Component to Add Documents */}
-                    <form onSubmit={handleAddKbEntry} className="lg:col-span-4 bg-[#120826]/75 border border-[#6C00FF22] rounded-xl p-5 shadow-sm space-y-4 shrink-0">
+                    <form onSubmit={handleAddKbEntry} className="lg:col-span-4 bg-[#0f1720]/75 border border-[#2563eb22] rounded-xl p-5 shadow-sm space-y-4 shrink-0">
                       <h4 className="font-display font-medium text-xs text-white uppercase tracking-widest flex items-center space-x-1.5 font-mono">
-                        <Database className="w-4 h-4 text-[#A370FF]" />
+                        <Database className="w-4 h-4 text-[#60a5fa]" />
                         <span>Append training record</span>
                       </h4>
 
@@ -1242,7 +1242,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                           value={newKb.title}
                           onChange={(e) => setNewKb(prev => ({ ...prev, title: e.target.value }))}
                           placeholder="e.g. Service: Penetration retainers"
-                          className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded p-2.5 text-xs text-white focus:outline-none focus:border-[#6C00FF]"
+                          className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded p-2.5 text-xs text-white focus:outline-none focus:border-[#2563eb]"
                           required
                         />
                       </div>
@@ -1252,13 +1252,13 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                         <select
                           value={newKb.category}
                           onChange={(e) => setNewKb(prev => ({ ...prev, category: e.target.value as any }))}
-                          className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded p-2.5 text-xs text-white focus:outline-none focus:border-[#6C00FF]"
+                          className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded p-2.5 text-xs text-white focus:outline-none focus:border-[#2563eb]"
                         >
-                          <option className="bg-[#120826] text-white" value="service font-sans">Service Details</option>
-                          <option className="bg-[#120826] text-white" value="company font-sans">Company Background</option>
-                          <option className="bg-[#120826] text-white" value="case_study font-sans">Case Study summary</option>
-                          <option className="bg-[#120826] text-white" value="faq font-sans">FAQ details</option>
-                          <option className="bg-[#120826] text-white" value="methodology font-sans">Methodologies</option>
+                          <option className="bg-[#0f1720] text-white" value="service font-sans">Service Details</option>
+                          <option className="bg-[#0f1720] text-white" value="company font-sans">Company Background</option>
+                          <option className="bg-[#0f1720] text-white" value="case_study font-sans">Case Study summary</option>
+                          <option className="bg-[#0f1720] text-white" value="faq font-sans">FAQ details</option>
+                          <option className="bg-[#0f1720] text-white" value="methodology font-sans">Methodologies</option>
                         </select>
                       </div>
 
@@ -1269,7 +1269,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                           value={newKb.keywords}
                           onChange={(e) => setNewKb(prev => ({ ...prev, keywords: e.target.value }))}
                           placeholder="cost, quote, custom, audit, mtn"
-                          className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded p-2.5 text-xs text-white focus:outline-none focus:border-[#6C00FF]"
+                          className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded p-2.5 text-xs text-white focus:outline-none focus:border-[#2563eb]"
                         />
                       </div>
 
@@ -1280,7 +1280,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                           onChange={(e) => setNewKb(prev => ({ ...prev, content: e.target.value }))}
                           rows={6}
                           placeholder="Detailed markdown-supported documentation context for server-side semantic RAG lookup..."
-                          className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded p-2.5 text-xs text-white resize-none focus:outline-none focus:border-[#6C00FF]"
+                          className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded p-2.5 text-xs text-white resize-none focus:outline-none focus:border-[#2563eb]"
                           required
                         ></textarea>
                       </div>
@@ -1288,7 +1288,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-[#6C00FF] hover:bg-[#8e3aff] text-white font-bold py-2.5 px-3 rounded text-[11px] cursor-pointer shadow-[0_0_12px_#6C00FF] transition-all flex items-center justify-center space-x-1 font-mono"
+                        className="w-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold py-2.5 px-3 rounded text-[11px] cursor-pointer shadow-[0_0_12px_#2563eb] transition-all flex items-center justify-center space-x-1 font-mono"
                       >
                         <Check className="w-3.5 h-3.5" />
                         <span>Publish to AI Indexer</span>
@@ -1298,16 +1298,16 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                     {/* Left Lists of KB Articles */}
                     <div className="lg:col-span-8 space-y-4">
                       {kbEntries.length === 0 ? (
-                        <div className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-8 text-center text-xs text-slate-500 font-mono">
+                        <div className="bg-[#0f1720]/75 border border-[#2563eb1a] rounded-xl p-8 text-center text-xs text-slate-500 font-mono">
                           Zero knowledge indexes found on server.
                         </div>
                       ) : (
                         kbEntries.map((doc) => (
-                          <div key={doc.id} className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-4 shadow-sm flex justify-between items-start space-x-4">
+                          <div key={doc.id} className="bg-[#0f1720]/75 border border-[#2563eb1a] rounded-xl p-4 shadow-sm flex justify-between items-start space-x-4">
                             <div className="space-y-2 flex-1 min-w-0">
                               <div>
                                 <div className="flex items-center space-x-2">
-                                  <span className="bg-[#6C00FF22] text-[#A370FF] font-mono text-[8.5px] font-bold px-2 py-0.5 rounded border border-[#6C00FF33] uppercase shrink-0 font-mono">
+                                  <span className="bg-[#2563eb22] text-[#60a5fa] font-mono text-[8.5px] font-bold px-2 py-0.5 rounded border border-[#2563eb33] uppercase shrink-0 font-mono">
                                     {doc.category}
                                   </span>
                                   <h5 className="font-display font-medium text-xs text-white truncate">{doc.title}</h5>
@@ -1315,11 +1315,11 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                 <div className="text-[9.5px] text-slate-400 mt-1 flex flex-wrap gap-1 font-mono">
                                   <span className="font-mono font-semibold uppercase tracking-wider text-[8.5px] shrink-0 mr-1 mt-0.5">Keywords:</span>
                                   {doc.keywords.map((k, i) => (
-                                    <span key={i} className="bg-[#0a0515] border border-white/5 px-1.5 rounded text-slate-400 font-mono text-[9px]">{k}</span>
+                                    <span key={i} className="bg-[#0b0f14] border border-white/5 px-1.5 rounded text-slate-400 font-mono text-[9px]">{k}</span>
                                   ))}
                                 </div>
                               </div>
-                              <p className="text-[11px] text-slate-300 bg-[#0a0515]/50 border border-white/5 p-2.5 rounded leading-relaxed whitespace-pre-line">
+                              <p className="text-[11px] text-slate-300 bg-[#0b0f14]/50 border border-white/5 p-2.5 rounded leading-relaxed whitespace-pre-line">
                                 {doc.content}
                               </p>
                             </div>
@@ -1353,12 +1353,12 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
                   <div className="space-y-4">
                     {chats.length === 0 ? (
-                      <div className="bg-[#120826]/75 border border-[#6C00FF1a] rounded-xl p-8 text-center text-xs text-slate-500 font-mono">
+                      <div className="bg-[#0f1720]/75 border border-[#2563eb1a] rounded-xl p-8 text-center text-xs text-slate-500 font-mono">
                         No active customer chatbot logs recorded yet.
                       </div>
                     ) : (
                       chats.map((chatLog: any) => (
-                        <div key={chatLog.id} className="bg-[#120826]/75 border border-[#6C00FF33] rounded-xl p-5 shadow-sm space-y-4">
+                        <div key={chatLog.id} className="bg-[#0f1720]/75 border border-[#2563eb33] rounded-xl p-5 shadow-sm space-y-4">
                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/5">
                             <div>
                               <div className="flex flex-wrap items-center gap-2">
@@ -1366,7 +1366,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                                   {chatLog.visitorName || "Anonymous Searcher"}
                                 </span>
                                 {chatLog.isEscalated && (
-                                  <span className="bg-[#6C00FF22] text-[#A370FF] border border-[#6C00FF44] px-2 py-0.5 rounded text-[8px] font-mono font-black uppercase tracking-wider animate-pulse shrink-0">
+                                  <span className="bg-[#2563eb22] text-[#60a5fa] border border-[#2563eb44] px-2 py-0.5 rounded text-[8px] font-mono font-black uppercase tracking-wider animate-pulse shrink-0">
                                     ESCALATED TAKEOVER
                                   </span>
                                 )}
@@ -1378,8 +1378,8 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
                             <div className="flex items-center space-x-2">
                               {chatLog.visitorContact && (
-                                <div className="bg-[#0a0515]/80 border border-[#6C00FF33] rounded px-2.5 py-1 text-[10px] font-mono font-bold text-slate-300 shrink-0">
-                                  TAKEOVER DEST: <span className="text-[#A370FF]">{chatLog.visitorContact}</span>
+                                <div className="bg-[#0b0f14]/80 border border-[#2563eb33] rounded px-2.5 py-1 text-[10px] font-mono font-bold text-slate-300 shrink-0">
+                                  TAKEOVER DEST: <span className="text-[#60a5fa]">{chatLog.visitorContact}</span>
                                 </div>
                               )}
                               <button
@@ -1393,18 +1393,18 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                           </div>
 
                           {chatLog.escalationReason && (
-                            <div className="bg-[#6C00FF11] border border-[#6C00FF33] text-slate-300 text-[10px] p-2.5 rounded-lg font-mono">
+                            <div className="bg-[#2563eb11] border border-[#2563eb33] text-slate-300 text-[10px] p-2.5 rounded-lg font-mono">
                               <strong>Takeover Code Reason:</strong> {chatLog.escalationReason}
                             </div>
                           )}
 
                           {/* Dialog Bubbles */}
-                          <div className="space-y-2 max-h-[160px] overflow-y-auto bg-[#0a0515] p-3 rounded-lg border border-white/5 text-[10.5px]">
+                          <div className="space-y-2 max-h-[160px] overflow-y-auto bg-[#0b0f14] p-3 rounded-lg border border-white/5 text-[10.5px]">
                             {chatLog.messages && chatLog.messages.map((m: any, idx: number) => {
                               const isBot = m.role === "model";
                               return (
                                 <div key={idx} className="flex space-x-2 items-start leading-relaxed text-slate-300">
-                                  <span className={`font-mono text-[9px] uppercase font-bold shrink-0 ${isBot ? "text-[#A370FF]" : "text-emerald-400"}`}>
+                                  <span className={`font-mono text-[9px] uppercase font-bold shrink-0 ${isBot ? "text-[#60a5fa]" : "text-emerald-400"}`}>
                                     {isBot ? "Shadow:" : "Visitor:"}
                                   </span>
                                   <span className="font-sans whitespace-pre-line break-words flex-1">{m.text}</span>

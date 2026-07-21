@@ -156,34 +156,34 @@ export default function ChatConcierge() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="relative bg-slate-950 hover:bg-[#120826] text-white rounded-full p-4 border border-[#6C00FF] flex items-center justify-center cursor-pointer shadow-[0_0_20px_rgba(108,0,255,0.4)] hover:scale-105 transition-all group"
+          className="relative bg-slate-950 hover:bg-[#0f1720] text-white rounded-full p-4 border border-[#2563eb] flex items-center justify-center cursor-pointer shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group"
         >
           {/* Glowing pulse ring */}
-          <div className="absolute inset-0 rounded-full border border-[#6C00FF33] animate-pulse-ring pointer-events-none"></div>
-          <MessageSquare className="w-6 h-6 text-[#A370FF] group-hover:rotate-6 transition-all" />
+          <div className="absolute inset-0 rounded-full border border-[#2563eb33] animate-pulse-ring pointer-events-none"></div>
+          <MessageSquare className="w-6 h-6 text-[#60a5fa] group-hover:rotate-6 transition-all" />
           <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8e3aff] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#6C00FF]"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1d4ed8] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#2563eb]"></span>
           </span>
         </button>
       )}
 
       {/* Embedded Chat Modal Panel */}
       {isOpen && (
-        <div className="w-[360px] sm:w-[410px] h-[580px] bg-[#0a0515]/95 rounded-2xl border border-[#6C00FF44] shadow-2xl flex flex-col justify-between overflow-hidden">
+        <div className="w-[360px] sm:w-[410px] h-[580px] bg-[#0b0f14]/95 rounded-2xl border border-[#2563eb44] shadow-2xl flex flex-col justify-between overflow-hidden">
           
           {/* Header Panel */}
-          <div className="bg-[#120826] text-white px-4.5 py-4 border-b border-[#6C00FF33] flex justify-between items-center">
+          <div className="bg-[#0f1720] text-white px-4.5 py-4 border-b border-[#2563eb33] flex justify-between items-center">
             <div className="flex items-center space-x-3">
               <div className="relative">
                 <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-slate-950"></span>
-                <div className="bg-[#0a0515] border border-[#6C00FF33] p-2 rounded-xl text-[#A370FF] flex items-center justify-center shadow-[0_0_8px_rgba(108,0,255,0.3)]">
+                <div className="bg-[#0b0f14] border border-[#2563eb33] p-2 rounded-xl text-[#60a5fa] flex items-center justify-center shadow-[0_0_8px_rgba(37,99,235,0.3)]">
                   <Shield className="w-4 h-4" />
                 </div>
               </div>
               <div>
                 <h3 className="font-display font-black text-sm tracking-tight flex items-center">
-                  SHADOW <span className="text-[10px] bg-[#6C00FF22] border border-[#6C00FF44] px-1.5 py-0.5 rounded ml-2 text-[#A370FF] font-mono uppercase font-extrabold">Online</span>
+                  SHADOW <span className="text-[10px] bg-[#2563eb22] border border-[#2563eb44] px-1.5 py-0.5 rounded ml-2 text-[#60a5fa] font-mono uppercase font-extrabold">Online</span>
                 </h3>
                 <p className="text-[9px] text-slate-400 font-mono tracking-widest leading-none mt-1">
                   SECURE CHAT CONCIERGE
@@ -192,7 +192,7 @@ export default function ChatConcierge() {
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-slate-400 hover:text-white transition-all cursor-pointer p-1 rounded-full hover:bg-[#120826]"
+              className="text-slate-400 hover:text-white transition-all cursor-pointer p-1 rounded-full hover:bg-[#0f1720]"
             >
               <X className="w-5 h-5" />
             </button>
@@ -200,19 +200,19 @@ export default function ChatConcierge() {
 
           {/* Active Escalated takeover banner if alert triggered */}
           {isEscalated && (
-            <div className="bg-gradient-to-r from-[#6C00FF22] to-transparent border-b border-[#6C00FF33] px-4.5 py-2 flex items-center justify-between text-[10px] text-[#A370FF] font-medium space-x-2 shrink-0">
+            <div className="bg-gradient-to-r from-[#2563eb22] to-transparent border-b border-[#2563eb33] px-4.5 py-2 flex items-center justify-between text-[10px] text-[#60a5fa] font-medium space-x-2 shrink-0">
               <div className="flex items-center space-x-2">
-                <AlertCircle className="w-3.5 h-3.5 text-[#A370FF] animate-pulse" />
+                <AlertCircle className="w-3.5 h-3.5 text-[#60a5fa] animate-pulse" />
                 <span className="font-mono text-[9px] font-bold">HUMAN TAKE-OVER ESCALATION INITIATED: {escalationReason}</span>
               </div>
-              <span className="bg-[#6C00FF] text-white font-mono text-[8px] font-bold px-1.5 py-0.5 rounded shrink-0">
+              <span className="bg-[#2563eb] text-white font-mono text-[8px] font-bold px-1.5 py-0.5 rounded shrink-0">
                 PENDING
               </span>
             </div>
           )}
 
           {/* Messages Loop Area */}
-          <div className="flex-1 overflow-y-auto px-4.5 py-5 space-y-4 bg-[#0d071a] relative">
+          <div className="flex-1 overflow-y-auto px-4.5 py-5 space-y-4 bg-[#0b0f14] relative">
             
             {messages.map((msg) => {
               const isBot = msg.role === "model";
@@ -225,15 +225,15 @@ export default function ChatConcierge() {
                 >
                   <div className={`p-1.5 rounded-lg shrink-0 flex items-center justify-center border ${
                     isBot 
-                      ? "bg-[#120826] text-[#A370FF] border-[#6C00FF33]" 
-                      : "bg-[#6C00FF22] text-white border-[#6C00FF44]"
+                      ? "bg-[#0f1720] text-[#60a5fa] border-[#2563eb33]" 
+                      : "bg-[#2563eb22] text-white border-[#2563eb44]"
                   }`}>
                     {isBot ? <Bot className="w-3.5 h-3.5" /> : <User className="w-3.5 h-3.5" />}
                   </div>
                   <div className={`rounded-xl px-4 py-3 text-xs leading-relaxed font-sans shadow-lg whitespace-pre-line ${
                     isBot 
-                      ? "bg-[#120826]/90 text-slate-100 rounded-tl-none border border-[#6C00FF22]" 
-                      : "bg-[#240f4f] text-white rounded-tr-none border border-[#6C00FF33]"
+                      ? "bg-[#0f1720]/90 text-slate-100 rounded-tl-none border border-[#2563eb22]" 
+                      : "bg-[#1e293b] text-white rounded-tr-none border border-[#2563eb33]"
                   }`}>
                     {msg.text}
                   </div>
@@ -244,8 +244,8 @@ export default function ChatConcierge() {
             {/* Simulated typing dot */}
             {loading && !isCapturingInfo && (
               <div className="flex items-center space-x-1.5 text-slate-400 text-xs py-2 pl-1.5">
-                <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#A370FF]" />
-                <span className="font-mono text-[9px] uppercase tracking-widest text-[#A370FF] font-extrabold animate-pulse">
+                <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#60a5fa]" />
+                <span className="font-mono text-[9px] uppercase tracking-widest text-[#60a5fa] font-extrabold animate-pulse">
                   Shadow decrypting...
                 </span>
               </div>
@@ -253,9 +253,9 @@ export default function ChatConcierge() {
 
             {/* Dynamic Card Prompt if Escalated */}
             {isCapturingInfo && (
-              <div className="bg-[#120826] border border-[#6C00FF44] rounded-xl p-4 shadow-md font-sans text-xs space-y-3.5 border-l-4 border-l-[#6C00FF]">
+              <div className="bg-[#0f1720] border border-[#2563eb44] rounded-xl p-4 shadow-md font-sans text-xs space-y-3.5 border-l-4 border-l-[#2563eb]">
                 <div className="flex items-center space-x-2 text-white font-mono font-bold">
-                  <KeyRound className="w-4 h-4 text-[#A370FF] shrink-0" />
+                  <KeyRound className="w-4 h-4 text-[#60a5fa] shrink-0" />
                   <span>Takeover Contact Card</span>
                 </div>
                 <p className="text-[10px] text-slate-400 leading-normal">
@@ -267,7 +267,7 @@ export default function ChatConcierge() {
                     value={visitorName}
                     onChange={(e) => setVisitorName(e.target.value)}
                     placeholder="Your Full Name (e.g. Mwansa)"
-                    className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded px-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#6C00FF]"
+                    className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded px-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb]"
                     required
                   />
                   <input
@@ -275,13 +275,13 @@ export default function ChatConcierge() {
                     value={visitorContact}
                     onChange={(e) => setVisitorContact(e.target.value)}
                     placeholder="WhatsApp Phone or Verification Email"
-                    className="w-full bg-[#0a0515]/90 border border-[#6C00FF33] rounded px-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#6C00FF]"
+                    className="w-full bg-[#0b0f14]/90 border border-[#2563eb33] rounded px-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb]"
                     required
                   />
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-[#6C00FF] hover:bg-[#8e3aff] text-white font-bold py-2 rounded text-[10px] cursor-pointer shadow-[0_0_10px_#6C00FF] transition-all flex items-center justify-center space-x-1"
+                    className="w-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold py-2 rounded text-[10px] cursor-pointer shadow-[0_0_10px_#2563eb] transition-all flex items-center justify-center space-x-1"
                   >
                     <Check className="w-3 h-3 shrink-0" />
                     <span>Confirm takeover credentials</span>
@@ -296,7 +296,7 @@ export default function ChatConcierge() {
           {/* Chat Form Control Footer */}
           <form
             onSubmit={handleSendMessage}
-            className="p-3 bg-[#0a0515]/95 border-t border-[#6C00FF33] flex items-center space-x-2"
+            className="p-3 bg-[#0b0f14]/95 border-t border-[#2563eb33] flex items-center space-x-2"
           >
             <input
               type="text"
@@ -304,12 +304,12 @@ export default function ChatConcierge() {
               onChange={(e) => setInputMessage(e.target.value)}
               placeholder={isCapturingInfo ? "Please fulfill the contact card first..." : "Inquire about simulations, pricing ret..."}
               disabled={loading || isCapturingInfo}
-              className="flex-1 bg-[#120826]/90 border border-[#6C00FF33] rounded-lg px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#6C00FF] focus:bg-[#120826] transition-all disabled:opacity-50"
+              className="flex-1 bg-[#0f1720]/90 border border-[#2563eb33] rounded-lg px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb] focus:bg-[#0f1720] transition-all disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={loading || !inputMessage.trim() || isCapturingInfo}
-              className="bg-[#6C00FF] hover:bg-[#8e3aff] text-white rounded-lg p-3 cursor-pointer transition-all disabled:opacity-50 flex items-center justify-center shadow-[0_0_10px_#6C00FF]"
+              className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white rounded-lg p-3 cursor-pointer transition-all disabled:opacity-50 flex items-center justify-center shadow-[0_0_10px_#2563eb]"
             >
               <Send className="w-3.5 h-3.5 text-white shrink-0" />
             </button>
