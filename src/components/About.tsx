@@ -1,7 +1,7 @@
 import React from "react";
 import { ShieldAlert, Scaling, HeartHandshake, Swords, ShieldCheck, Mail, Phone, ExternalLink } from "lucide-react";
 import Hover3DLogo from "./Hover3DLogo";
-import uchiChinyamaPhoto from "../assets/images/uchi_chinyama_photo_1781708485934.jpg";
+import uchiChinyamaPhoto from "../assets/images/uchi_chinyama_founder_portrait.jpg";
 
 export default function About() {
   const steps = [
@@ -123,20 +123,20 @@ export default function About() {
             >
               
               {/* Profile Image of CEO Uchi Chinyama */}
-              <div 
-                className="w-40 h-48 rounded-xl bg-slate-950 border border-[#2563eb55] shrink-0 overflow-hidden relative group"
+              <div
+                className="w-44 h-60 rounded-xl bg-slate-950 border border-[#2563eb55] shrink-0 overflow-hidden relative group mx-auto sm:mx-0"
                 role="img"
-                aria-label="Corporate portrait of CEO Uchi Chinyama in front of glowing monitoring control systems"
+                aria-label="Professional portrait of CEO Uchi Chinyama in a suit outside Shadow Root headquarters"
               >
                 {/* Simulated Monitor Grid Background (blue bars & maps) */}
                 <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(11,15,20,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(11,15,20,0.5)_1px,transparent_1px)] bg-[size:10px_10px] z-20 pointer-events-none"></div>
                 <div className="absolute top-2 left-2 w-32 h-1 bg-cyan-500/20 rounded z-20 pointer-events-none"></div>
                 
                 {/* High Contrast Photograph of CEO */}
-                <img 
+                <img
                   src={uchiChinyamaPhoto}
-                  alt="Uchi Chinyama, Chief Executive Officer of Shadow Root Security Technologies"
-                  className="w-full h-full object-cover relative z-10 filter brightness-95 contrast-[1.05]"
+                  alt="Uchi Chinyama, Founder and Chief Executive Officer of Shadow Root Security Technologies"
+                  className="w-full h-full object-cover object-top relative z-10 filter brightness-95 contrast-[1.05]"
                   referrerPolicy="no-referrer"
                 />
                 
