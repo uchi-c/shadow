@@ -7,6 +7,7 @@ import Hero from "./components/Hero";
 import ChatConcierge from "./components/ChatConcierge";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import Footer from "./components/Footer";
+import ChunkErrorBoundary from "./components/ChunkErrorBoundary";
 import useSEO from "./lib/useSEO";
 
 // Code-split the heavier, navigation-gated views so they are not in the initial
@@ -63,17 +64,19 @@ export default function App() {
           Lazy-mounted so `ogl` stays out of the initial bundle; the component
           itself renders a single static frame under prefers-reduced-motion. */}
       <div className="fixed inset-0 -z-10 h-full w-full pointer-events-none" aria-hidden="true">
-        <Suspense fallback={null}>
-          <Strands
-            colors={["#22C55E", "#2563EB", "#06B6D4"]}
-            count={3}
-            speed={0.45}
-            glow={2.4}
-            intensity={0.55}
-            opacity={0.85}
-            scale={1.5}
-          />
-        </Suspense>
+        <ChunkErrorBoundary reloadOnChunkError={false} fallback={null}>
+          <Suspense fallback={null}>
+            <Strands
+              colors={["#22C55E", "#2563EB", "#06B6D4"]}
+              count={3}
+              speed={0.45}
+              glow={2.4}
+              intensity={0.55}
+              opacity={0.85}
+              scale={1.5}
+            />
+          </Suspense>
+        </ChunkErrorBoundary>
       </div>
 
       {/* Background Ambient Cosmic Gradients */}
@@ -97,6 +100,7 @@ export default function App() {
 
       {/* Main Multi-Page Routed Area */}
       <main id="main-content" className="flex-grow pt-24 pb-16 outline-none" tabIndex={-1}>
+        <ChunkErrorBoundary>
         <Suspense fallback={<ViewFallback />}>
         <AnimatePresence mode="wait">
           <motion.div
@@ -117,22 +121,24 @@ export default function App() {
                 <div className="max-w-7xl mx-auto px-4 md:px-10">
                   <div className="relative h-[300px] md:h-[340px] rounded-2xl overflow-hidden border border-[#22C55E]/25 shadow-[0_0_40px_rgba(34,197,94,0.08)]">
                     <div className="absolute inset-0">
-                      <Suspense fallback={null}>
-                        <FaultyTerminal
-                          tint="#22C55E"
-                          brightness={0.62}
-                          scale={1.6}
-                          gridMul={[2, 1]}
-                          digitSize={1.2}
-                          scanlineIntensity={0.5}
-                          glitchAmount={1}
-                          flickerAmount={0.8}
-                          curvature={0.12}
-                          mouseReact
-                          mouseStrength={0.4}
-                          pageLoadAnimation
-                        />
-                      </Suspense>
+                      <ChunkErrorBoundary reloadOnChunkError={false} fallback={null}>
+                        <Suspense fallback={null}>
+                          <FaultyTerminal
+                            tint="#22C55E"
+                            brightness={0.62}
+                            scale={1.6}
+                            gridMul={[2, 1]}
+                            digitSize={1.2}
+                            scanlineIntensity={0.5}
+                            glitchAmount={1}
+                            flickerAmount={0.8}
+                            curvature={0.12}
+                            mouseReact
+                            mouseStrength={0.4}
+                            pageLoadAnimation
+                          />
+                        </Suspense>
+                      </ChunkErrorBoundary>
                     </div>
                     {/* Scrim for legibility of the overlaid copy */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#070a0f] via-[#070a0f]/50 to-[#070a0f]/10 pointer-events-none"></div>
@@ -304,6 +310,7 @@ export default function App() {
           </motion.div>
         </AnimatePresence>
         </Suspense>
+        </ChunkErrorBoundary>
       </main>
 
       {/* Conversational concierge simulation with screen reader overrides */}
@@ -314,13 +321,15 @@ export default function App() {
 
       {/* Secured supersonic leader administrative telemetry dashboard */}
       {isAdminOpen && (
-        <Suspense fallback={null}>
-          <AdminPanel
-            isOpen={isAdminOpen}
-            onClose={() => setIsAdminOpen(false)}
-            aria-label="Administrative telemetry and leads log"
-          />
-        </Suspense>
+        <ChunkErrorBoundary reloadOnChunkError={false} fallback={null}>
+          <Suspense fallback={null}>
+            <AdminPanel
+              isOpen={isAdminOpen}
+              onClose={() => setIsAdminOpen(false)}
+              aria-label="Administrative telemetry and leads log"
+            />
+          </Suspense>
+        </ChunkErrorBoundary>
       )}
 
       {/* High contrast structured footer navigation */}
