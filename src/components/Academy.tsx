@@ -6,7 +6,10 @@ import {
 
 interface AcademyProps {
   onNavigate?: (section: string) => void;
+  onQuote?: (service: string, message?: string) => void;
 }
+
+const ACADEMY_MSG = "I'd like to register interest in Shadow Root Academy (the cybersecurity learning tracks).";
 
 const TRACKS = [
   { icon: ShieldCheck, title: "Cybersecurity Fundamentals", desc: "Core concepts, threats, and defensive hygiene for absolute beginners." },
@@ -27,7 +30,8 @@ const OFFERINGS = [
   { icon: Users, title: "Mentorship & community", desc: "Learn alongside peers with guidance from practitioners." }
 ];
 
-export default function Academy({ onNavigate }: AcademyProps) {
+export default function Academy({ onNavigate, onQuote }: AcademyProps) {
+  const registerInterest = () => (onQuote ? onQuote("academy", ACADEMY_MSG) : onNavigate?.("quote"));
   return (
     <section aria-labelledby="academy-heading" className="space-y-12">
       <div className="space-y-4 max-w-3xl">
@@ -43,7 +47,7 @@ export default function Academy({ onNavigate }: AcademyProps) {
           A practical, hands-on cybersecurity school built by working practitioners — designed to take beginners in Zambia and across Southern Africa all the way to job-ready. We&apos;re assembling the first cohorts now.
         </p>
         <button
-          onClick={() => onNavigate?.("quote")}
+          onClick={registerInterest}
           className="inline-flex items-center gap-1.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-xl transition-all cursor-pointer shadow-[0_0_15px_rgba(37,99,235,0.4)]"
         >
           <span>Register your interest</span>
@@ -98,7 +102,7 @@ export default function Academy({ onNavigate }: AcademyProps) {
           <p className="text-xs text-slate-400 mt-1 max-w-xl">Register your interest and we&apos;ll reach out with dates, pricing, and scholarship options for students and NGOs.</p>
         </div>
         <button
-          onClick={() => onNavigate?.("quote")}
+          onClick={registerInterest}
           className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg text-xs font-bold transition-all cursor-pointer shadow-[0_0_15px_rgba(37,99,235,0.4)] shrink-0"
         >
           Register your interest

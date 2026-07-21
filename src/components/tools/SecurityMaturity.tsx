@@ -62,7 +62,7 @@ function levelFor(pct: number) {
   return [...LEVELS].reverse().find(l => pct >= l.min) ?? LEVELS[0];
 }
 
-export default function SecurityMaturity({ onNavigate }: { onNavigate?: (section: string) => void }) {
+export default function SecurityMaturity({ onNavigate, onQuote }: { onNavigate?: (section: string) => void; onQuote?: (service: string, message?: string) => void }) {
   const [answers, setAnswers] = useState<Record<string, number>>({});
 
   const answeredCount = Object.keys(answers).length;
@@ -163,9 +163,11 @@ export default function SecurityMaturity({ onNavigate }: { onNavigate?: (section
               </>
             )}
 
-            {onNavigate && (
+            {(onQuote || onNavigate) && (
               <button
-                onClick={() => onNavigate("quote")}
+                onClick={() => (onQuote
+                  ? onQuote("consultation", `I completed the Security Maturity Assessment (score ${pct}/100 — ${level.label}) and would like a tailored remediation plan.`)
+                  : onNavigate?.("quote"))}
                 className="mt-1 inline-flex items-center gap-1.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-all cursor-pointer"
               >
                 <span>Get a tailored remediation plan</span>

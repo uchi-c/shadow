@@ -3,6 +3,7 @@ import { Boxes, Bot, FlaskConical, Radar, GraduationCap, ArrowUpRight, Check, Sp
 
 interface ProductsProps {
   onNavigate?: (section: string) => void;
+  onQuote?: (service: string, message?: string) => void;
 }
 
 type Status = "Live" | "In development" | "Planned";
@@ -21,19 +22,23 @@ interface Product {
   icon: React.ComponentType<{ className?: string }>;
   desc: string;
   cta: string;
-  target: string;
+  target: string; // "quote" routes to the quote form with context; anything else navigates
+  quoteService?: string;
+  quoteMessage?: string;
 }
 
 const PRODUCTS: Product[] = [
   {
     id: "kuma", name: "Kuma AI", tagline: "Virtual security concierge", status: "Live", icon: Bot,
     desc: "The server-side AI concierge already running on this site. Deploy it on your own website or WhatsApp to answer customers, qualify leads, and escalate incidents 24/7 — with your API keys safely hidden.",
-    cta: "Deploy Kuma", target: "quote"
+    cta: "Deploy Kuma", target: "quote",
+    quoteService: "ai_workflows", quoteMessage: "I'm interested in deploying Kuma AI (the virtual security concierge) for my organization."
   },
   {
     id: "labs", name: "Shadow Root Labs", tagline: "Hands-on cyber ranges", status: "In development", icon: FlaskConical,
     desc: "Isolated, disposable practice environments and capture-the-flag challenges for training teams and students on real attack-and-defense scenarios.",
-    cta: "Notify me", target: "quote"
+    cta: "Notify me", target: "quote",
+    quoteService: "consultation", quoteMessage: "Please notify me when Shadow Root Labs (hands-on cyber ranges) becomes available."
   },
   {
     id: "academy", name: "Shadow Root Academy", tagline: "Cyber skills for Africa", status: "In development", icon: GraduationCap,
@@ -43,12 +48,19 @@ const PRODUCTS: Product[] = [
   {
     id: "threatintel", name: "Threat Intelligence", tagline: "Regional threat feed", status: "Planned", icon: Radar,
     desc: "Curated intelligence on threats targeting Southern African businesses, NGOs, and schools — distilled into practical, prioritized guidance.",
-    cta: "Register interest", target: "quote"
+    cta: "Register interest", target: "quote",
+    quoteService: "consultation", quoteMessage: "I'd like to register interest in the Shadow Root Threat Intelligence offering."
   }
 ];
 
-export default function Products({ onNavigate }: ProductsProps) {
-  const go = (target: string) => onNavigate?.(target);
+export default function Products({ onNavigate, onQuote }: ProductsProps) {
+  const requestQuote = (service: string, message: string) =>
+    onQuote ? onQuote(service, message) : onNavigate?.("quote");
+
+  const handleProduct = (p: Product) => {
+    if (p.target === "quote") requestQuote(p.quoteService ?? "consultation", p.quoteMessage ?? "");
+    else onNavigate?.(p.target);
+  };
 
   return (
     <section aria-labelledby="products-heading" className="space-y-12">
@@ -93,7 +105,7 @@ export default function Products({ onNavigate }: ProductsProps) {
             ))}
           </div>
           <button
-            onClick={() => go("quote")}
+            onClick={() => requestQuote("uruu", "I'd like to join the URUU early-access waitlist.")}
             className="inline-flex items-center gap-1.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-xl transition-all cursor-pointer shadow-[0_0_15px_rgba(37,99,235,0.4)]"
           >
             <span>Join the early-access waitlist</span>
@@ -124,7 +136,7 @@ export default function Products({ onNavigate }: ProductsProps) {
                 <p className="text-xs text-slate-400 leading-relaxed">{p.desc}</p>
               </div>
               <button
-                onClick={() => go(p.target)}
+                onClick={() => handleProduct(p)}
                 className="self-start inline-flex items-center gap-1.5 text-xs font-bold text-[#60a5fa] hover:text-white transition-colors cursor-pointer"
               >
                 <span>{p.cta}</span>

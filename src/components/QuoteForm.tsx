@@ -3,9 +3,10 @@ import { Send, CheckCircle, ShieldAlert, ChevronRight, ChevronLeft } from "lucid
 
 interface QuoteFormProps {
   prefilledService?: string;
+  prefilledMessage?: string;
 }
 
-export default function QuoteForm({ prefilledService = "" }: QuoteFormProps) {
+export default function QuoteForm({ prefilledService = "", prefilledMessage = "" }: QuoteFormProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -18,17 +19,23 @@ export default function QuoteForm({ prefilledService = "" }: QuoteFormProps) {
     email: "",
     phone: "",
     service: prefilledService || "phishing_simulation",
-    message: "",
+    message: prefilledMessage || "",
     size: "1-10",
     hasTimeline: "flexible"
   });
 
-  // Prefill service hook triggers if value changes downstream
+  // Prefill service + message when arriving from a product / academy / tool CTA.
   React.useEffect(() => {
     if (prefilledService) {
       setFormData(prev => ({ ...prev, service: prefilledService }));
     }
   }, [prefilledService]);
+
+  React.useEffect(() => {
+    if (prefilledMessage) {
+      setFormData(prev => ({ ...prev, message: prefilledMessage }));
+    }
+  }, [prefilledMessage]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -273,6 +280,8 @@ export default function QuoteForm({ prefilledService = "" }: QuoteFormProps) {
                       <option className="bg-[#0f1720] text-white" value="secure_web_dev">Secure React/Full-Stack Development</option>
                       <option className="bg-[#0f1720] text-white" value="pentest_audits">Penetration Audit pen-test / retainer</option>
                       <option className="bg-[#0f1720] text-white" value="ai_workflows">Custom Google Gemini AI integration</option>
+                      <option className="bg-[#0f1720] text-white" value="uruu">URUU platform (early access)</option>
+                      <option className="bg-[#0f1720] text-white" value="academy">Shadow Root Academy</option>
                       <option className="bg-[#0f1720] text-white" value="consultation">General Strategy Discussion</option>
                     </select>
                   </div>
