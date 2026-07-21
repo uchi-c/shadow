@@ -1,5 +1,6 @@
 import React from "react";
-import { Mail, Phone, Shield, ArrowUp, KeyRound, Globe, SquareCheck } from "lucide-react";
+import { Mail, Phone, ArrowUp, KeyRound, SquareCheck } from "lucide-react";
+import BrandLogo from "./BrandLogo";
 
 interface FooterProps {
   onNavigate: (section: string) => void;
@@ -23,12 +24,10 @@ export default function Footer({ onNavigate, onOpenAdmin }: FooterProps) {
         
         {/* Col 1: Brand & Tagline */}
         <div className="md:col-span-4 space-y-4">
-          <div className="flex items-center space-x-2">
-            <span className="bg-[#0f1720] p-2 rounded-xl text-[#60a5fa] border border-[#2563eb33] flex items-center justify-center shadow-[0_0_10px_rgba(37,99,235,0.2)]">
-              <Shield className="w-5 h-5" />
-            </span>
+          <div className="flex items-center space-x-2.5">
+            <BrandLogo className="w-10 h-10 drop-shadow-[0_0_10px_rgba(34,197,94,0.3)]" />
             <span className="font-display font-black tracking-tight text-lg">
-              SHADOW<span className="text-[#2563eb]">ROOT</span>
+              SHADOW<span className="text-[#22c55e]">ROOT</span>
             </span>
           </div>
           <p className="font-sans text-xs text-slate-400 leading-relaxed max-w-sm">
