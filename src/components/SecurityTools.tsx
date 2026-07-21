@@ -1,14 +1,22 @@
 import React from "react";
-import { Wrench, Gauge, Bug, Lock } from "lucide-react";
+import { Wrench, Bug, Lock } from "lucide-react";
 import PasswordAnalyzer from "./tools/PasswordAnalyzer";
 import PhishingDetector from "./tools/PhishingDetector";
+import SecurityMaturity from "./tools/SecurityMaturity";
+import LineSidebar from "./LineSidebar";
 
-const UPCOMING = [
-  { icon: Gauge, title: "Security Maturity Assessment", desc: "A short questionnaire that scores your posture and flags gaps." },
-  { icon: Bug, title: "CVE Explorer", desc: "Look up known vulnerabilities affecting your stack." }
-];
+interface SecurityToolsProps {
+  onNavigate?: (section: string) => void;
+}
 
-export default function SecurityTools() {
+const TOOL_ANCHORS = ["tool-password", "tool-phishing", "tool-maturity"];
+const TOOL_LABELS = ["Password Strength", "Phishing Detector", "Maturity Assessment"];
+
+export default function SecurityTools({ onNavigate }: SecurityToolsProps) {
+  const scrollToTool = (index: number) => {
+    document.getElementById(TOOL_ANCHORS[index])?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section id="tools" aria-labelledby="tools-heading" className="space-y-10">
       <div className="space-y-3">
@@ -24,10 +32,32 @@ export default function SecurityTools() {
         </p>
       </div>
 
-      {/* Live tools */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-        <PasswordAnalyzer />
-        <PhishingDetector />
+      <div className="lg:grid lg:grid-cols-[210px_1fr] lg:gap-12">
+        {/* Proximity navigator (React Bits LineSidebar) */}
+        <aside className="hidden lg:block" aria-label="Jump to a tool">
+          <div className="sticky top-28">
+            <LineSidebar
+              items={TOOL_LABELS}
+              accentColor="#2563eb"
+              textColor="#94a3b8"
+              markerColor="#334155"
+              defaultActive={0}
+              onItemClick={scrollToTool}
+              fontSize={0.95}
+              markerLength={44}
+              itemGap={24}
+              maxShift={16}
+              proximityRadius={90}
+            />
+          </div>
+        </aside>
+
+        {/* Stacked tools */}
+        <div className="space-y-10 min-w-0">
+          <div id="tool-password" className="scroll-mt-28"><PasswordAnalyzer /></div>
+          <div id="tool-phishing" className="scroll-mt-28"><PhishingDetector /></div>
+          <div id="tool-maturity" className="scroll-mt-28"><SecurityMaturity onNavigate={onNavigate} /></div>
+        </div>
       </div>
 
       {/* Roadmap of upcoming tools */}
@@ -37,26 +67,18 @@ export default function SecurityTools() {
           <span>More tools rolling out</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
-          {UPCOMING.map((t) => {
-            const Icon = t.icon;
-            return (
-              <div
-                key={t.title}
-                className="bg-[#0f1720]/50 border border-[#2563eb1a] rounded-2xl p-5 space-y-2.5"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="bg-[#0b0f14] border border-[#2563eb33] p-2 rounded-lg text-[#60a5fa]">
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <span className="text-[8px] font-mono uppercase tracking-widest text-slate-500 border border-white/10 rounded-full px-2 py-0.5">
-                    Soon
-                  </span>
-                </div>
-                <h4 className="font-display font-bold text-white text-sm">{t.title}</h4>
-                <p className="text-xs text-slate-400 leading-relaxed">{t.desc}</p>
+          <div className="bg-[#0f1720]/50 border border-[#2563eb1a] rounded-2xl p-5 space-y-2.5">
+            <div className="flex items-center justify-between">
+              <div className="bg-[#0b0f14] border border-[#2563eb33] p-2 rounded-lg text-[#60a5fa]">
+                <Bug className="w-4 h-4" />
               </div>
-            );
-          })}
+              <span className="text-[8px] font-mono uppercase tracking-widest text-slate-500 border border-white/10 rounded-full px-2 py-0.5">
+                Soon
+              </span>
+            </div>
+            <h4 className="font-display font-bold text-white text-sm">CVE Explorer</h4>
+            <p className="text-xs text-slate-400 leading-relaxed">Look up known vulnerabilities affecting your stack.</p>
+          </div>
         </div>
       </div>
     </section>
