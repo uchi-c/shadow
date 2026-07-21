@@ -19,6 +19,8 @@ const Services = lazy(() => import("./components/Services"));
 const About = lazy(() => import("./components/About"));
 const CaseStudies = lazy(() => import("./components/CaseStudies"));
 const SecurityTools = lazy(() => import("./components/SecurityTools"));
+const Products = lazy(() => import("./components/Products"));
+const Academy = lazy(() => import("./components/Academy"));
 const QuoteForm = lazy(() => import("./components/QuoteForm"));
 const VideoPresenter = lazy(() => import("./components/VideoPresenter"));
 const AdminPanel = lazy(() => import("./components/AdminPanel"));
@@ -279,6 +281,18 @@ export default function App() {
             {activeSection === "tools" && (
               <div className="max-w-7xl mx-auto px-4 md:px-10">
                 <SecurityTools onNavigate={handleNavigate} />
+              </div>
+            )}
+
+            {activeSection === "products" && (
+              <div className="max-w-7xl mx-auto px-4 md:px-10">
+                <Products onNavigate={handleNavigate} />
+              </div>
+            )}
+
+            {activeSection === "academy" && (
+              <div className="max-w-7xl mx-auto px-4 md:px-10">
+                <Academy onNavigate={handleNavigate} />
               </div>
             )}
 
