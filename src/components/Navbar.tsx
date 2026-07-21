@@ -11,10 +11,12 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
   const navItems = [
     { label: "Home", target: "home" },
     { label: "Services", target: "services" },
-    { label: "Founder Story", target: "about" },
-    { label: "Case Studies", target: "case" },
+    { label: "Products", target: "products" },
+    { label: "Academy", target: "academy" },
     { label: "Tools", target: "tools" },
-    { label: "Quote Generator", target: "quote" }
+    { label: "Case Studies", target: "case" },
+    { label: "About", target: "about" },
+    { label: "Quote", target: "quote" }
   ];
 
   return (
@@ -43,7 +45,7 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
 
       {/* Center Nav Items (Desktop) */}
       <div 
-        className="hidden md:flex items-center space-x-8 text-sm font-medium uppercase tracking-widest text-slate-400"
+        className="hidden md:flex items-center space-x-4 lg:space-x-5 text-xs lg:text-sm font-medium uppercase tracking-wider text-slate-400"
         role="navigation"
         aria-label="Primary navigation menu"
       >
