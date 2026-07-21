@@ -38,12 +38,6 @@ const RELOAD_COOLDOWN_MS = 10_000;
  * reload, and the cooldown prevents reload loops.
  */
 export default class ChunkErrorBoundary extends Component<Props, State> {
-  // NOTE: this project has no @types/react installed, so React.Component is
-  // untyped (any) and does not surface props/state. Declare them explicitly so
-  // this file stays type-safe without changing global typings.
-  declare props: Props;
-  declare state: State;
-
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
