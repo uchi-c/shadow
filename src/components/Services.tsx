@@ -1,13 +1,98 @@
 import React, { useState } from "react";
-import { Mail, Terminal, ShieldAlert, BrainCircuit, ArrowUpRight, Check } from "lucide-react";
+import { Mail, Terminal, ShieldAlert, BrainCircuit, ArrowUpRight, Check, X, Route, ListChecks, Cpu, Wallet } from "lucide-react";
 import { ServiceItem } from "../types";
 
 interface ServicesProps {
   onSelectService: (serviceId: string) => void;
 }
 
+interface ServiceDetail {
+  process: string[];
+  deliverables: string[];
+  technologies: string[];
+  pricing: string;
+}
+
+// Detail content for the service modals. These describe Shadow Root's own
+// service offerings (not any client engagement), so they are safe to publish.
+const SERVICE_DETAILS: Record<string, ServiceDetail> = {
+  phishing_simulation: {
+    process: [
+      "Scoping & consent — agree targets and rules of engagement",
+      "Campaign design — localized lures (MTN/Airtel Money, banks, SaaS logins)",
+      "Controlled launch — safe, tracked simulation over an agreed window",
+      "Reporting — click and credential metrics, framed without blame",
+      "Awareness workshop — turn the findings into hands-on training",
+      "Re-test — measure improvement a few months later"
+    ],
+    deliverables: [
+      "Executive summary + per-department metrics",
+      "Anonymized click & credential-submission analytics",
+      "Interactive security-awareness training session",
+      "Prioritized remediation guidance"
+    ],
+    technologies: ["Localized lure templates", "Anonymized tracking", "Secure reporting"],
+    pricing: "Tiered by team size — starts at a budget-friendly basic tier for small teams and NGOs. Scoped after a free consultation."
+  },
+  secure_web_dev: {
+    process: [
+      "Discovery — goals, threat model, and scope",
+      "Architecture — security-first design (auth, data flow, headers)",
+      "Build — React/Express with input validation and rate limiting",
+      "Hardening — CSP/HSTS, dependency audit, secure file handling",
+      "Launch — SSL, performance pass, and monitoring",
+      "Handover — documentation and an optional support retainer"
+    ],
+    deliverables: [
+      "Fast, mobile-first React frontend",
+      "Hardened Express/Node backend",
+      "Security headers (CSP, HSTS, X-Frame-Options)",
+      "Rate limiting, input sanitization & SSL setup"
+    ],
+    technologies: ["React", "Next.js", "Node.js", "Express", "TypeScript", "Tailwind"],
+    pricing: "Milestone-based payment structure for software and web projects. Estimated after a scoping consultation."
+  },
+  pentest_audits: {
+    process: [
+      "Scoping & authorization — targets, depth, rules of engagement",
+      "Reconnaissance — surface and asset discovery",
+      "Testing — OWASP Top 10, injection, XSS, auth & misconfiguration",
+      "Validation — confirm findings and rate severity",
+      "Reporting — clear remediation steps, prioritized",
+      "Re-test / retainer — verify fixes; optional 24/7 monitoring"
+    ],
+    deliverables: [
+      "Comprehensive findings report with severity ratings",
+      "Proof-of-concept for confirmed issues",
+      "Prioritized remediation roadmap",
+      "Optional continuous-scanning retainer"
+    ],
+    technologies: ["OWASP methodology", "Web / API / network testing", "Config & database review"],
+    pricing: "One-time comprehensive audits, or monthly retainers for 24/7 coverage. Priced after scoping."
+  },
+  ai_workflows: {
+    process: [
+      "Use-case mapping — where AI adds real value (support, leads)",
+      "Architecture — server-side, key-hidden design (like this site's concierge)",
+      "RAG setup — ground answers in your own knowledge base",
+      "Integration — web widget and/or WhatsApp Business API",
+      "Safety — escalation routing, PII-safe logging, rate limits",
+      "Launch & tune — monitor and refine over time"
+    ],
+    deliverables: [
+      "Secure server-side AI concierge",
+      "Retrieval-augmented answers grounded in your content",
+      "WhatsApp Business API integration (optional)",
+      "Human-takeover routing + lead capture"
+    ],
+    technologies: ["Google Gemini", "RAG", "Express (hidden keys)", "WhatsApp Business API"],
+    pricing: "Scoped to integration complexity and volume. Assessed in a free consultation."
+  }
+};
+
 export default function Services({ onSelectService }: ServicesProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [openService, setOpenService] = useState<ServiceItem | null>(null);
 
   const servicesData: ServiceItem[] = [
     {
@@ -148,13 +233,20 @@ export default function Services({ onSelectService }: ServicesProps) {
                   </div>
                 </div>
 
-                {/* Footer Quote CTA */}
-                <div className="mt-8 pt-6 border-t border-white/5 flex justify-end">
+                {/* Footer CTAs */}
+                <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between gap-3">
+                  <button
+                    onClick={() => setOpenService(service)}
+                    className="text-xs font-sans font-bold text-slate-300 hover:text-white flex items-center space-x-1.5 transition-colors cursor-pointer"
+                  >
+                    <Route className="w-4 h-4 text-[#60a5fa]" />
+                    <span>View details</span>
+                  </button>
                   <button
                     onClick={() => onSelectService(service.id)}
                     className="text-xs font-sans font-bold text-slate-200 hover:text-[#60a5fa] flex items-center space-x-1.5 transition-colors cursor-pointer"
                   >
-                    <span>Request Custom Campaign Quote</span>
+                    <span>Request Quote</span>
                     <ArrowUpRight className="w-4 h-4 text-[#60a5fa]" />
                   </button>
                 </div>
@@ -183,6 +275,128 @@ export default function Services({ onSelectService }: ServicesProps) {
         </div>
 
       </div>
+
+      {/* SERVICE DETAIL MODAL */}
+      {openService && (() => {
+        const detail = SERVICE_DETAILS[openService.id];
+        return (
+          <div
+            className="fixed inset-0 z-50 bg-[#05070b]/85 backdrop-blur-sm flex items-center justify-center p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${openService.title} details`}
+            onClick={() => setOpenService(null)}
+          >
+            <div
+              className="bg-[#0b0f14] border border-[#2563eb44] rounded-3xl w-full max-w-2xl max-h-[88vh] overflow-y-auto shadow-[0_0_60px_rgba(37,99,235,0.18)]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="sticky top-0 bg-[#0b0f14]/95 backdrop-blur px-6 md:px-8 py-5 border-b border-[#2563eb22] flex items-start justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="bg-[#2563eb] p-2.5 rounded-xl shadow-[0_0_15px_#2563eb] shrink-0">
+                    {renderIcon(openService.icon)}
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-white text-lg leading-tight">{openService.title}</h3>
+                    <p className="text-[11px] text-slate-400 font-mono mt-0.5">Shadow Root service overview</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setOpenService(null)}
+                  className="text-slate-400 hover:text-white p-1.5 rounded-full hover:bg-white/5 transition-all cursor-pointer shrink-0"
+                  aria-label="Close details"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="p-6 md:p-8 space-y-7">
+                {/* Overview */}
+                <p className="text-sm text-slate-300 leading-relaxed">{openService.longDescription}</p>
+
+                {detail && (
+                  <>
+                    {/* Process */}
+                    <div className="space-y-3">
+                      <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
+                        <Route className="w-4 h-4" /> How we work
+                      </h4>
+                      <ol className="space-y-2.5">
+                        {detail.process.map((step, i) => (
+                          <li key={i} className="flex gap-3 text-xs text-slate-300 leading-relaxed">
+                            <span className="font-mono text-[10px] text-[#60a5fa] bg-[#2563eb]/10 border border-[#2563eb33] rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+
+                    {/* Deliverables */}
+                    <div className="space-y-3">
+                      <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
+                        <ListChecks className="w-4 h-4" /> What you receive
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        {detail.deliverables.map((d, i) => (
+                          <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
+                            <div className="bg-[#22c55e]/15 text-[#22c55e] p-0.5 rounded-full border border-[#22c55e]/30 mt-0.5 shrink-0">
+                              <Check className="w-3 h-3" />
+                            </div>
+                            <span>{d}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Technologies */}
+                    <div className="space-y-3">
+                      <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
+                        <Cpu className="w-4 h-4" /> Approach &amp; tooling
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {detail.technologies.map((t) => (
+                          <span key={t} className="text-[11px] font-mono text-slate-300 bg-[#070a0f] border border-[#2563eb33] rounded-full px-3 py-1">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Pricing */}
+                    <div className="bg-[#070a0f] border border-[#2563eb1a] rounded-2xl p-4 flex items-start gap-3">
+                      <Wallet className="w-4 h-4 text-[#60a5fa] shrink-0 mt-0.5" />
+                      <div>
+                        <div className="text-[11px] font-mono uppercase tracking-widest text-slate-500 mb-1">Indicative pricing</div>
+                        <p className="text-xs text-slate-300 leading-relaxed">{detail.pricing}</p>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {/* CTA */}
+                <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                  <button
+                    onClick={() => { const id = openService.id; setOpenService(null); onSelectService(id); }}
+                    className="flex-1 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-sm py-3 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(37,99,235,0.4)]"
+                  >
+                    <span>Book a consultation</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setOpenService(null)}
+                    className="sm:w-auto px-5 py-3 text-sm font-bold text-slate-300 hover:text-white border border-white/10 rounded-xl transition-all cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }
