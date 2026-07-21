@@ -30,7 +30,7 @@ interface Particle {
  */
 export default function HiggsField({
   className = "",
-  particleColor = "#A370FF",
+  particleColor = "#60a5fa",
   lineColor = "108, 0, 255",
   density = 70,
   linkDistance = 130,

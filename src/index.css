@@ -6,13 +6,13 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --font-display: "Space Grotesk", sans-serif;
   
-  --color-shadow-purple: #6c00ff;
-  --color-shadow-purple-light: #8e3aff;
-  --color-shadow-purple-dark: #4b00b3;
-  --color-slate-950: #05020a;
-  --color-slate-900: #0a0515;
-  --color-slate-800: #120826;
-  --color-slate-700: #1c0f3a;
+  --color-shadow-purple: #2563eb;
+  --color-shadow-purple-light: #1d4ed8;
+  --color-shadow-purple-dark: #1e40af;
+  --color-slate-950: #070a0f;
+  --color-slate-900: #0b0f14;
+  --color-slate-800: #0f1720;
+  --color-slate-700: #1e293b;
   --color-slate-200: #e2e8f0;
   --color-slate-400: #94a3b8;
 }
@@ -55,13 +55,13 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(108, 0, 255, 0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(37,99,235, 0.15), transparent);
   animation: glow-slide 3s infinite linear;
 }
 
 /* Background Atmospheric Blur blobs */
 .immersive-gradient-glow-1 {
-  background: radial-gradient(circle, rgba(108, 0, 255, 0.2) 0%, rgba(108, 0, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(37,99,235, 0.2) 0%, rgba(37,99,235, 0) 70%);
 }
 
 /* Carbon fiber overlay pattern */
@@ -78,9 +78,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(108, 0, 255, 0.2);
+  background: rgba(37,99,235, 0.2);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(108, 0, 255, 0.4);
+  background: rgba(37,99,235, 0.4);
 }

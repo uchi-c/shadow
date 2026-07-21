@@ -65,28 +65,28 @@ export default function Hover3DLogo() {
         className="relative w-full h-full flex items-center justify-center transition-all duration-300"
       >
         {/* Background Ambient Cyber Glow */}
-        <div className="absolute inset-4 bg-[#6C00FF]/10 rounded-full filter blur-xl group-hover:bg-[#6C00FF]/25 transition-all duration-500"></div>
+        <div className="absolute inset-4 bg-[#2563eb]/10 rounded-full filter blur-xl group-hover:bg-[#2563eb]/25 transition-all duration-500"></div>
 
         {/* Outer Tech Ring with CSS rotational animation */}
-        <div className="absolute inset-0 rounded-full border border-[#6C00FF]/30 border-dashed animate-[spin_50s_linear_infinite] pointer-events-none"></div>
+        <div className="absolute inset-0 rounded-full border border-[#2563eb]/30 border-dashed animate-[spin_50s_linear_infinite] pointer-events-none"></div>
         <div className="absolute inset-8 rounded-full border border-teal-500/15 border-double animate-[spin_25s_linear_infinite_reverse] pointer-events-none"></div>
 
         {/* Main Shield Hologram Card */}
         <div 
-          className="relative bg-gradient-to-b from-[#120826]/90 to-[#0a0515]/95 border border-[#6C00FF]/50 rounded-2xl p-6 flex flex-col items-center justify-center shadow-[0_15px_35px_rgba(0,0,0,0.6)] group-hover:border-teal-500/50 w-56 h-56 md:w-72 md:h-72 transition-colors duration-500"
+          className="relative bg-gradient-to-b from-[#0f1720]/90 to-[#0b0f14]/95 border border-[#2563eb]/50 rounded-2xl p-6 flex flex-col items-center justify-center shadow-[0_15px_35px_rgba(0,0,0,0.6)] group-hover:border-teal-500/50 w-56 h-56 md:w-72 md:h-72 transition-colors duration-500"
           style={{ transform: "translateZ(30px)" }}
         >
           {/* Internal Vector SVG Trace of the Authentic Logo (Image 3) */}
           <svg
             viewBox="0 0 200 240"
-            className="w-40 h-40 md:w-48 md:h-48 drop-shadow-[0_0_15px_#6C00FFCC]"
+            className="w-40 h-40 md:w-48 md:h-48 drop-shadow-[0_0_15px_#2563ebCC]"
             aria-hidden="true"
           >
             {/* The Hexagonal Shield Structure */}
             <path
               d="M 100 20 L 170 50 L 170 130 C 170 180 135 210 100 220 C 65 210 30 180 30 130 L 30 50 Z"
               fill="none"
-              stroke="#6C00FF"
+              stroke="#2563eb"
               strokeWidth="8"
               strokeLinejoin="round"
               className="group-hover:stroke-teal-400 transition-colors duration-500"
@@ -95,8 +95,8 @@ export default function Hover3DLogo() {
             {/* Hardened Inner Shield Segment */}
             <path
               d="M 100 35 L 155 60 L 155 125 C 155 165 125 190 100 200 C 75 190 45 165 45 125 L 45 60 Z"
-              fill="#120826"
-              stroke="#A370FF"
+              fill="#0f1720"
+              stroke="#60a5fa"
               strokeWidth="4"
               strokeLinejoin="round"
               className="opacity-80"
@@ -111,7 +111,7 @@ export default function Hover3DLogo() {
             <path
               d="M 100 100 L 75 120 L 75 165 L 55 185"
               fill="none"
-              stroke="#A370FF"
+              stroke="#60a5fa"
               strokeWidth="3.5"
               strokeLinecap="round"
             />
@@ -123,17 +123,17 @@ export default function Hover3DLogo() {
             <path
               d="M 100 125 L 85 140 L 85 185"
               fill="none"
-              stroke="#6C00FF"
+              stroke="#2563eb"
               strokeWidth="3.5"
               strokeLinecap="round"
             />
-            <circle cx="85" cy="185" r="3.5" fill="#A370FF" />
+            <circle cx="85" cy="185" r="3.5" fill="#60a5fa" />
 
             {/* Right root branch 1 */}
             <path
               d="M 100 100 L 125 120 L 125 165 L 145 185"
               fill="none"
-              stroke="#A370FF"
+              stroke="#60a5fa"
               strokeWidth="3.5"
               strokeLinecap="round"
             />
@@ -145,11 +145,11 @@ export default function Hover3DLogo() {
             <path
               d="M 100 125 L 115 140 L 115 185"
               fill="none"
-              stroke="#6C00FF"
+              stroke="#2563eb"
               strokeWidth="3.5"
               strokeLinecap="round"
             />
-            <circle cx="115" cy="185" r="3.5" fill="#A370FF" />
+            <circle cx="115" cy="185" r="3.5" fill="#60a5fa" />
 
             {/* Center trunk root end */}
             <path
@@ -170,7 +170,7 @@ export default function Hover3DLogo() {
             <div className="text-white font-display font-black tracking-widest text-xs uppercase group-hover:text-teal-400 transition-colors">
               SHADOW ROOT
             </div>
-            <div className="text-[9px] font-mono tracking-widest text-[#A370FF] uppercase mt-1">
+            <div className="text-[9px] font-mono tracking-widest text-[#60a5fa] uppercase mt-1">
               SECURITY TECHNOLOGIES
             </div>
           </div>

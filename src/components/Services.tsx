@@ -81,12 +81,12 @@ export default function Services({ onSelectService }: ServicesProps) {
   };
 
   return (
-    <div id="services" className="bg-transparent py-24 border-b border-[#6C00FF33]">
+    <div id="services" className="bg-transparent py-24 border-b border-[#2563eb33]">
       <div className="max-w-7xl mx-auto px-4 md:px-10">
         
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col space-y-4">
-          <div className="text-xs font-mono font-bold tracking-widest text-[#A370FF] uppercase">
+          <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
             Defense Capabilities
           </div>
           <h2 className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight">
@@ -105,17 +105,17 @@ export default function Services({ onSelectService }: ServicesProps) {
                 key={service.id}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative bg-[#120826]/70 hover:bg-[#120826] text-slate-100 rounded-2xl border border-[#6C00FF33] p-6 md:p-8 transition-all flex flex-col justify-between hover:shadow-[0_0_25px_rgba(108,0,255,0.15)]"
+                className="group relative bg-[#0f1720]/70 hover:bg-[#0f1720] text-slate-100 rounded-2xl border border-[#2563eb33] p-6 md:p-8 transition-all flex flex-col justify-between hover:shadow-[0_0_25px_rgba(37,99,235,0.15)]"
               >
                 <div>
                   {/* Icon Container */}
                   <div className="mb-6 flex justify-between items-start">
-                    <div className="bg-[#6C00FF] p-3 rounded-xl shadow-[0_0_15px_#6C00FF]">
+                    <div className="bg-[#2563eb] p-3 rounded-xl shadow-[0_0_15px_#2563eb]">
                       {renderIcon(service.icon)}
                     </div>
                     <button 
                       onClick={() => onSelectService(service.id)}
-                      className="opacity-60 group-hover:opacity-100 text-slate-400 group-hover:text-[#A370FF] hover:scale-110 transition-all p-1"
+                      className="opacity-60 group-hover:opacity-100 text-slate-400 group-hover:text-[#60a5fa] hover:scale-110 transition-all p-1"
                       title="Request a customized quote"
                     >
                       <ArrowUpRight className="w-5 h-5 pointer-events-none" />
@@ -123,7 +123,7 @@ export default function Services({ onSelectService }: ServicesProps) {
                   </div>
 
                   {/* Title & Descriptions */}
-                  <h3 className="font-display font-bold text-xl text-white group-hover:text-[#6C00FF] transition-colors">
+                  <h3 className="font-display font-bold text-xl text-white group-hover:text-[#2563eb] transition-colors">
                     {service.title}
                   </h3>
                   
@@ -131,7 +131,7 @@ export default function Services({ onSelectService }: ServicesProps) {
                     {service.description}
                   </p>
 
-                  <p className="font-sans text-xs text-slate-400 mt-3 leading-relaxed border-l-2 border-[#6C00FF66] pl-3">
+                  <p className="font-sans text-xs text-slate-400 mt-3 leading-relaxed border-l-2 border-[#2563eb66] pl-3">
                     {service.longDescription}
                   </p>
 
@@ -139,7 +139,7 @@ export default function Services({ onSelectService }: ServicesProps) {
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2 text-xs text-slate-300">
-                        <div className="bg-[#6C00FF22] text-[#A370FF] p-0.5 rounded-full flex items-center justify-center border border-[#6C00FF44]">
+                        <div className="bg-[#2563eb22] text-[#60a5fa] p-0.5 rounded-full flex items-center justify-center border border-[#2563eb44]">
                           <Check className="w-3 h-3" />
                         </div>
                         <span className="font-sans font-medium">{feature}</span>
@@ -152,10 +152,10 @@ export default function Services({ onSelectService }: ServicesProps) {
                 <div className="mt-8 pt-6 border-t border-white/5 flex justify-end">
                   <button
                     onClick={() => onSelectService(service.id)}
-                    className="text-xs font-sans font-bold text-slate-200 hover:text-[#A370FF] flex items-center space-x-1.5 transition-colors cursor-pointer"
+                    className="text-xs font-sans font-bold text-slate-200 hover:text-[#60a5fa] flex items-center space-x-1.5 transition-colors cursor-pointer"
                   >
                     <span>Request Custom Campaign Quote</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#A370FF]" />
+                    <ArrowUpRight className="w-4 h-4 text-[#60a5fa]" />
                   </button>
                 </div>
               </div>
@@ -164,8 +164,8 @@ export default function Services({ onSelectService }: ServicesProps) {
         </div>
 
         {/* Dynamic bottom Trust Banner */}
-        <div className="mt-16 bg-[#0a0515]/90 rounded-2xl border border-[#6C00FF66] p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#6C00FF1a] to-transparent pointer-events-none"></div>
+        <div className="mt-16 bg-[#0b0f14]/90 rounded-2xl border border-[#2563eb66] p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#2563eb1a] to-transparent pointer-events-none"></div>
           <div className="flex flex-col space-y-1.5 relative z-10 text-center md:text-left">
             <h3 className="font-display font-bold text-lg md:text-xl">
               Are you an NGO, school, or business in Lusaka?
@@ -176,7 +176,7 @@ export default function Services({ onSelectService }: ServicesProps) {
           </div>
           <button
             onClick={() => onSelectService("consultation")}
-            className="bg-[#6C00FF] hover:bg-[#8e3aff] text-white px-6 py-3 rounded-lg font-sans text-xs font-bold transition-all relative z-10 shadow-[0_0_15px_#6C00FF] cursor-pointer"
+            className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg font-sans text-xs font-bold transition-all relative z-10 shadow-[0_0_15px_#2563eb] cursor-pointer"
           >
             Schedule Free Vulnerability Consultation
           </button>
