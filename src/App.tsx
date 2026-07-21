@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Shield, Sparkles, Phone, ArrowUpRight, CheckCircle, Keyboard, PlayCircle, Layers } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ChatConcierge from "./components/ChatConcierge";
@@ -313,6 +314,9 @@ export default function App() {
         onNavigate={handleNavigate} 
         onOpenAdmin={() => setIsAdminOpen(true)}
       />
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
