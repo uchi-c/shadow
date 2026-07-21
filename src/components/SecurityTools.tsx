@@ -7,12 +7,13 @@ import LineSidebar from "./LineSidebar";
 
 interface SecurityToolsProps {
   onNavigate?: (section: string) => void;
+  onQuote?: (service: string, message?: string) => void;
 }
 
 const TOOL_ANCHORS = ["tool-password", "tool-phishing", "tool-maturity"];
 const TOOL_LABELS = ["Password Strength", "Phishing Detector", "Maturity Assessment"];
 
-export default function SecurityTools({ onNavigate }: SecurityToolsProps) {
+export default function SecurityTools({ onNavigate, onQuote }: SecurityToolsProps) {
   const scrollToTool = (index: number) => {
     document.getElementById(TOOL_ANCHORS[index])?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -56,7 +57,7 @@ export default function SecurityTools({ onNavigate }: SecurityToolsProps) {
         <div className="space-y-10 min-w-0">
           <div id="tool-password" className="scroll-mt-28"><PasswordAnalyzer /></div>
           <div id="tool-phishing" className="scroll-mt-28"><PhishingDetector /></div>
-          <div id="tool-maturity" className="scroll-mt-28"><SecurityMaturity onNavigate={onNavigate} /></div>
+          <div id="tool-maturity" className="scroll-mt-28"><SecurityMaturity onNavigate={onNavigate} onQuote={onQuote} /></div>
         </div>
       </div>
 

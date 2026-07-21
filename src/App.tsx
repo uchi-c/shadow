@@ -38,6 +38,7 @@ function ViewFallback() {
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [selectedService, setSelectedService] = useState("");
+  const [prefilledMessage, setPrefilledMessage] = useState("");
   const [isAdminOpen, setIsAdminOpen] = useState(false);
 
   // Apply search engine optimization based on active section
@@ -54,6 +55,16 @@ export default function App() {
 
   const handleSelectService = (serviceId: string) => {
     setSelectedService(serviceId);
+    setPrefilledMessage("");
+    handleNavigate("quote");
+  };
+
+  // Navigate to the quote form pre-tagged with the intent that sent the visitor
+  // there (a product waitlist, Academy interest, a tool's recommendation, …), so
+  // leads arrive with clear context for the team.
+  const handleRequestQuote = (serviceId: string, message = "") => {
+    setSelectedService(serviceId);
+    setPrefilledMessage(message);
     handleNavigate("quote");
   };
 
@@ -286,25 +297,25 @@ export default function App() {
 
             {activeSection === "tools" && (
               <div className="max-w-7xl mx-auto px-4 md:px-10">
-                <SecurityTools onNavigate={handleNavigate} />
+                <SecurityTools onNavigate={handleNavigate} onQuote={handleRequestQuote} />
               </div>
             )}
 
             {activeSection === "products" && (
               <div className="max-w-7xl mx-auto px-4 md:px-10">
-                <Products onNavigate={handleNavigate} />
+                <Products onNavigate={handleNavigate} onQuote={handleRequestQuote} />
               </div>
             )}
 
             {activeSection === "academy" && (
               <div className="max-w-7xl mx-auto px-4 md:px-10">
-                <Academy onNavigate={handleNavigate} />
+                <Academy onNavigate={handleNavigate} onQuote={handleRequestQuote} />
               </div>
             )}
 
             {activeSection === "quote" && (
               <div className="max-w-7xl mx-auto px-4 md:px-10">
-                <QuoteForm prefilledService={selectedService} />
+                <QuoteForm prefilledService={selectedService} prefilledMessage={prefilledMessage} />
               </div>
             )}
           </motion.div>
