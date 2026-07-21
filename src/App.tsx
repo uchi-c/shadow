@@ -13,6 +13,7 @@ import useSEO from "./lib/useSEO";
 // public site never needs on first paint. Strands pulls in `ogl` (WebGL), so it
 // is also split out and lazy-mounted to keep the initial bundle within budget.
 const Strands = lazy(() => import("./components/Strands"));
+const FaultyTerminal = lazy(() => import("./components/FaultyTerminal"));
 const Services = lazy(() => import("./components/Services"));
 const About = lazy(() => import("./components/About"));
 const CaseStudies = lazy(() => import("./components/CaseStudies"));
@@ -106,6 +107,42 @@ export default function App() {
               <div className="space-y-24">
                 {/* Hero Deck */}
                 <Hero onNavigate={handleNavigate} />
+
+                {/* Faulty-terminal signal band (React Bits, WebGL) — a decorative
+                    "live threat surface" strip. Lazy-mounted; degrades gracefully. */}
+                <div className="max-w-7xl mx-auto px-4 md:px-10">
+                  <div className="relative h-[300px] md:h-[340px] rounded-2xl overflow-hidden border border-[#22C55E]/25 shadow-[0_0_40px_rgba(34,197,94,0.08)]">
+                    <div className="absolute inset-0">
+                      <Suspense fallback={null}>
+                        <FaultyTerminal
+                          tint="#22C55E"
+                          brightness={0.62}
+                          scale={1.6}
+                          gridMul={[2, 1]}
+                          digitSize={1.2}
+                          scanlineIntensity={0.5}
+                          glitchAmount={1}
+                          flickerAmount={0.8}
+                          curvature={0.12}
+                          mouseReact
+                          mouseStrength={0.4}
+                          pageLoadAnimation
+                        />
+                      </Suspense>
+                    </div>
+                    {/* Scrim for legibility of the overlaid copy */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#05020a] via-[#05020a]/50 to-[#05020a]/10 pointer-events-none"></div>
+                    <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8">
+                      <div className="text-[10px] font-mono text-[#22C55E] tracking-widest uppercase flex items-center space-x-2">
+                        <Shield className="w-4 h-4" />
+                        <span>Live Threat Surface</span>
+                      </div>
+                      <h3 className="font-display font-medium text-xl md:text-3xl text-white mt-1.5 max-w-xl">
+                        We watch the shadows, so you don&apos;t have to.
+                      </h3>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Interactive accessible Video Presentation Deck */}
                 <div id="mission-video" className="max-w-7xl mx-auto px-4 md:px-10 space-y-8">
