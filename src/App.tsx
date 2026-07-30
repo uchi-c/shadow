@@ -324,11 +324,15 @@ export default function App() {
         </ChunkErrorBoundary>
       </main>
 
-      {/* Conversational concierge simulation with screen reader overrides */}
-      <ChatConcierge />
+      {/* Floating quick-action widgets, grouped in their own landmark so they
+          aren't left dangling outside main/nav/footer for assistive tech. */}
+      <aside aria-label="Quick contact actions">
+        {/* Conversational concierge simulation with screen reader overrides */}
+        <ChatConcierge />
 
-      {/* Floating click-to-WhatsApp direct rapid incident escalation channel */}
-      <FloatingWhatsApp />
+        {/* Floating click-to-WhatsApp direct rapid incident escalation channel */}
+        <FloatingWhatsApp />
+      </aside>
 
       {/* Secured supersonic leader administrative telemetry dashboard */}
       {isAdminOpen && (

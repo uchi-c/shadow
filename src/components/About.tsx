@@ -36,9 +36,9 @@ export default function About() {
           <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
             Corporate Identity & Leadership
           </div>
-          <h2 className="font-display font-bold text-3xl md:text-5xl text-white tracking-tight leading-tight">
+          <h1 className="font-display font-bold text-3xl md:text-5xl text-white tracking-tight leading-tight">
             Youth-led cybersecurity force scaling across Southern Africa
-          </h2>
+          </h1>
         </div>
 
         {/* Grid Split: Narrative & Interactive 3D Hovering Logo */}
@@ -46,16 +46,16 @@ export default function About() {
           
           {/* Left Column: Narrative & Mission */}
           <div className="lg:col-span-7 flex flex-col space-y-6">
-            <h3 className="font-display font-medium text-lg md:text-xl text-slate-100 flex items-center space-x-2">
+            <h2 className="font-display font-medium text-lg md:text-xl text-slate-100 flex items-center space-x-2">
               <ShieldCheck className="w-5 h-5 text-[#2563eb]" />
               <span>Shadow Root Mission & Roots</span>
-            </h3>
+            </h2>
 
-            <p className="text-sm text-slate-355 leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed">
               Shadow Root Security Technologies started in Lusaka as an ambitious initiative founded by <strong>Uchi Chinyama</strong>. Frustrated by seeing local NGOs, schools, and growing startup brands fall victim to credential phishing scams and poor coding practices because high-end corporate penetration auditing was prohibitively expensive, they decided to harden their region.
             </p>
 
-            <p className="text-sm text-slate-355 leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed">
               Today, Shadow Root is <strong>scaling up from 2 to 10 experienced security specialists and developers</strong>. We operate with standard, plain-spoken diagnostics that non-technical managers and agricultural donor groups appreciate. Because of our local threat context knowledge, we build highly reliable React frontends, customized mobile money replica simulations, and unhackable database security retainers.
             </p>
 
@@ -69,7 +69,7 @@ export default function About() {
                 <div className="bg-[#2563eb22] text-[#60a5fa] p-2 rounded-lg w-fit mb-3 border border-[#2563eb44]">
                   <Scaling className="w-5 h-5" />
                 </div>
-                <h4 className="font-display font-bold text-white text-sm">Scaling Local Talent</h4>
+                <h3 className="font-display font-bold text-white text-sm">Scaling Local Talent</h3>
                 <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">Our expanding cohort of security professionals represents the future of Zambian tech sovereignty.</p>
               </div>
 
@@ -81,7 +81,7 @@ export default function About() {
                 <div className="bg-[#2563eb22] text-[#60a5fa] p-2 rounded-lg w-fit mb-3 border border-[#2563eb44]">
                   <HeartHandshake className="w-5 h-5" />
                 </div>
-                <h4 className="font-display font-bold text-white text-sm">Ethical NGO Pricing</h4>
+                <h3 className="font-display font-bold text-white text-sm">Ethical NGO Pricing</h3>
                 <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">We adjust costs according to organization scale, ensuring donor funds are never spent on bloated licenses.</p>
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function About() {
               </span>
             </div>
             <Hover3DLogo />
-            <div className="text-[10px] text-slate-500 font-mono text-center mt-3 max-w-xs leading-normal">
+            <div className="text-[10px] text-slate-400 font-mono text-center mt-3 max-w-xs leading-normal">
               Hover, move, or tap using keyboard focus to inspect the circular root terminal circuit nodes in 3D perspective depth.
             </div>
           </div>
@@ -105,9 +105,9 @@ export default function About() {
         {/* Section 2: Meet the CEO & Co-Leaders (Corporate Profile with Image 1 representation) */}
         <div className="mt-28 space-y-12">
           <div className="flex flex-col space-y-2 border-b border-white/5 pb-4">
-            <h3 className="font-display font-bold text-2xl md:text-3xl text-white">
+            <h2 className="font-display font-bold text-2xl md:text-3xl text-white">
               Secured Leadership & Founders
-            </h3>
+            </h2>
             <p className="text-xs text-slate-400 max-w-md">
               Meet the key engineers and security advocates executing tactical defenses in Zambia.
             </p>
@@ -157,9 +157,9 @@ export default function About() {
                   <span className="text-[9px] font-mono font-bold leading-none uppercase tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full w-fit block">
                     FOUNDER &amp; CEO
                   </span>
-                  <h4 className="font-display font-black text-xl text-white leading-tight">
+                  <h3 className="font-display font-black text-xl text-white leading-tight">
                     Uchi Chinyama
-                  </h4>
+                  </h3>
                   <p className="text-xs text-slate-400 font-sans leading-relaxed">
                     Youth-led cybersecurity driver, security researcher, and lead web defensive compliance auditor. Dedicated to reinforcing the local NGO ecosystem.
                   </p>
@@ -226,7 +226,7 @@ export default function About() {
                     <span className="font-mono text-[#60a5fa] font-black text-sm bg-[#0b0f14]/90 w-8 h-8 rounded-full border border-[#2563eb44] flex items-center justify-center shrink-0">
                       {st.metric}
                     </span>
-                    <span className="text-[8px] font-mono text-slate-500 uppercase">ACTIVE</span>
+                    <span className="text-[8px] font-mono text-slate-400 uppercase">ACTIVE</span>
                   </div>
                   <div>
                     <h4 className="font-display font-bold text-xs text-slate-100 mt-4 leading-none">
@@ -241,7 +241,7 @@ export default function About() {
             </div>
 
             {/* Mission Badge footer */}
-            <div className="pt-4 border-t border-white/5 flex justify-between items-center text-[10px] font-mono text-slate-500">
+            <div className="pt-4 border-t border-white/5 flex justify-between items-center text-[10px] font-mono text-slate-400">
               <span>SECURITY VIGILANCE INDEX: HIGHLY ENFORCED</span>
               <span>ZAMBIA SHADOW FRAMEWORK V2.05</span>
             </div>

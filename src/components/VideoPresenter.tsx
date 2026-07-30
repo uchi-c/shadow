@@ -224,20 +224,20 @@ export default function VideoPresenter() {
 
           {/* Main Overlay Slogan from actual uploaded video */}
           <div className="my-auto max-w-xl md:pl-6 leading-tight select-none">
-            <h2 className="font-display font-black text-white text-3xl md:text-4xl lg:text-5xl tracking-tight text-glow-purple drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] leading-[1.15]">
+            <h4 className="font-display font-black text-white text-3xl md:text-4xl lg:text-5xl tracking-tight text-glow-purple drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] leading-[1.15]">
               Building Digital Trust for the <br />
               <span className="text-[#60a5fa] relative inline-block">
                 Next Era of Institutions.
                 <span className="absolute bottom-1 left-0 w-full h-1 bg-[#2563eb]"></span>
               </span>
-            </h2>
+            </h4>
             <p className="text-[10px] md:text-xs text-slate-400 font-mono tracking-widest uppercase mt-4 block">
               ZAMBIAN INNOVATION • DEFENSE SECURITY SYSTEMS
             </p>
           </div>
 
           {/* Operational Watermark Label */}
-          <div className="text-[10px] text-slate-500 font-mono flex items-center justify-between">
+          <div className="text-[10px] text-slate-400 font-mono flex items-center justify-between">
             <span>OFFICIAL MISSION OVERVIEW</span>
             <span>LUSAKA MAIN OFFICE</span>
           </div>

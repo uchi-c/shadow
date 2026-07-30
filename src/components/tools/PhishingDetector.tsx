@@ -140,7 +140,7 @@ export default function PhishingDetector() {
           <Mail className="w-5 h-5" />
         </div>
         <div>
-          <h3 className="font-display font-bold text-white text-base">Phishing Email Detector</h3>
+          <h2 className="font-display font-bold text-white text-base">Phishing Email Detector</h2>
           <p className="text-xs text-slate-400 font-mono">Paste a suspicious email to scan it for red flags.</p>
         </div>
       </div>
@@ -190,7 +190,7 @@ export default function PhishingDetector() {
         </div>
       )}
 
-      <p className="text-[10px] text-slate-500 font-mono leading-relaxed border-t border-white/5 pt-3 flex items-start gap-2">
+      <p className="text-[10px] text-slate-400 font-mono leading-relaxed border-t border-white/5 pt-3 flex items-start gap-2">
         <ShieldCheck className="w-3.5 h-3.5 text-[#22c55e] shrink-0 mt-0.5" />
         Heuristic analysis performed entirely in your browser — nothing is uploaded. It catches common tricks but cannot detect every attack; when in doubt, don&apos;t click, and confirm with the sender directly.
       </p>

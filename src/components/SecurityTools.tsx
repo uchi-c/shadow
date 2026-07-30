@@ -26,9 +26,9 @@ export default function SecurityTools({ onNavigate, onQuote }: SecurityToolsProp
           <Wrench className="w-4 h-4 text-[#2563eb]" />
           <span>Free Security Tools</span>
         </div>
-        <h2 id="tools-heading" className="font-display font-black text-3xl md:text-5xl text-white tracking-tight leading-tight">
+        <h1 id="tools-heading" className="font-display font-black text-3xl md:text-5xl text-white tracking-tight leading-tight">
           Test your defenses in seconds.
-        </h2>
+        </h1>
         <p className="text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed">
           Practical, no-signup security utilities that run entirely in your browser. Built by Shadow Root for businesses, NGOs, and schools across Southern Africa.
         </p>
@@ -40,7 +40,7 @@ export default function SecurityTools({ onNavigate, onQuote }: SecurityToolsProp
           <div className="sticky top-28">
             <LineSidebar
               items={TOOL_LABELS}
-              accentColor="#2563eb"
+              accentColor="#60a5fa"
               textColor="#94a3b8"
               markerColor="#334155"
               defaultActive={0}
@@ -64,7 +64,7 @@ export default function SecurityTools({ onNavigate, onQuote }: SecurityToolsProp
       </div>
 
       {/* More tools on the roadmap */}
-      <div className="flex items-center gap-2 text-[10px] font-mono text-slate-500 tracking-widest uppercase">
+      <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400 tracking-widest uppercase">
         <Lock className="w-3.5 h-3.5" />
         <span>More tools rolling out — tell us what you need.</span>
       </div>

@@ -86,15 +86,15 @@ export default function Hero({ onNavigate }: HeroProps) {
           <div className="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-3 gap-6 font-sans">
             <div>
               <div className="font-display font-bold text-3xl text-white leading-none">2 to 10+</div>
-              <div className="text-xs text-slate-500 mt-1.5 font-medium">Security Experts Scaling Up</div>
+              <div className="text-xs text-slate-400 mt-1.5 font-medium">Security Experts Scaling Up</div>
             </div>
             <div>
               <div className="font-display font-bold text-3xl text-white leading-none">98.2%</div>
-              <div className="text-xs text-slate-500 mt-1.5 font-medium">NGO Simulation Retainment</div>
+              <div className="text-xs text-slate-400 mt-1.5 font-medium">NGO Simulation Retainment</div>
             </div>
             <div className="col-span-2 sm:col-span-1">
               <div className="font-display font-bold text-3xl text-[#2563eb] leading-none text-shadow-purple">A+ SSL</div>
-              <div className="text-xs text-slate-500 mt-1.5 font-medium">Production Hardening Mark</div>
+              <div className="text-xs text-slate-400 mt-1.5 font-medium">Production Hardening Mark</div>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                <span className="text-slate-500 font-bold ml-1.5 text-[9px] tracking-wider uppercase">Sandbox Assessment V2</span>
+                <span className="text-slate-400 font-bold ml-1.5 text-[9px] tracking-wider uppercase">Sandbox Assessment V2</span>
               </div>
               <div className="flex items-center space-x-1">
                 <Server className="w-3.5 h-3.5 text-[#2563eb]" />
@@ -124,7 +124,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                     <ShieldCheck className="w-7 h-7" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-sm text-white">Shadow Sandbox Scan</h3>
+                    <h2 className="font-display font-bold text-sm text-white">Shadow Sandbox Scan</h2>
                     <p className="text-[10px] text-slate-400 max-w-[240px] mt-1.5 leading-relaxed">
                       Verify your public web endpoints alignment. Click below to execute local compliance audit.
                     </p>
@@ -172,10 +172,10 @@ export default function Hero({ onNavigate }: HeroProps) {
                       <ShieldCheck className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white text-[11px] leading-tight flex items-center space-x-2">
+                      <h2 className="font-bold text-white text-[11px] leading-tight flex items-center space-x-2">
                         <span>Handshake Compliant</span>
                         <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1 rounded text-[8px] font-mono">PASS</span>
-                      </h4>
+                      </h2>
                       <p className="text-[9.5px] text-slate-400 mt-1 leading-normal">
                         Your sandbox handshake validated successfully. Form sanitization, parameterized structures, and secured Express channels are 100% active.
                       </p>
@@ -193,7 +193,7 @@ export default function Hero({ onNavigate }: HeroProps) {
 
                   <button
                     onClick={() => setScanState("IDLE")}
-                    className="text-slate-500 hover:text-white transition-all text-center text-[10px] hover:underline"
+                    className="text-slate-400 hover:text-white transition-all text-center text-[10px] hover:underline"
                   >
                     Reset Security Diagnostic Sandbox
                   </button>
@@ -201,7 +201,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               )}
 
               {/* Console Footer */}
-              <div className="border-t border-[#2563eb1a] pt-3 flex items-center justify-between text-[9px] text-slate-500">
+              <div className="border-t border-[#2563eb1a] pt-3 flex items-center justify-between text-[9px] text-slate-400">
                 <span>ENCRYPTION CLIENT: SHA-256</span>
                 <span>STATUS: SECURE CONTEXT</span>
               </div>

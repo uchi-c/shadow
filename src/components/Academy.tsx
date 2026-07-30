@@ -40,9 +40,9 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
           <span>Shadow Root Academy</span>
           <span className="text-[9px] border border-[#2563eb33] text-[#60a5fa] rounded-full px-2 py-0.5">Launching soon</span>
         </div>
-        <h2 id="academy-heading" className="font-display font-black text-3xl md:text-5xl text-white tracking-tight leading-tight">
+        <h1 id="academy-heading" className="font-display font-black text-3xl md:text-5xl text-white tracking-tight leading-tight">
           Training Africa&apos;s next defenders.
-        </h2>
+        </h1>
         <p className="text-slate-400 text-sm md:text-base leading-relaxed">
           A practical, hands-on cybersecurity school built by working practitioners — designed to take beginners in Zambia and across Southern Africa all the way to job-ready. We&apos;re assembling the first cohorts now.
         </p>
@@ -57,7 +57,7 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
 
       {/* Learning tracks */}
       <div className="space-y-5">
-        <div className="text-[10px] font-mono text-slate-500 tracking-widest uppercase">Learning tracks</div>
+        <div className="text-[10px] font-mono text-slate-400 tracking-widest uppercase">Learning tracks</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {TRACKS.map((t) => {
             const Icon = t.icon;
@@ -66,7 +66,7 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
                 <div className="bg-[#0b0f14] border border-[#2563eb33] p-2 rounded-lg w-fit text-[#60a5fa]">
                   <Icon className="w-4 h-4" />
                 </div>
-                <h3 className="font-display font-bold text-white text-sm">{t.title}</h3>
+                <h2 className="font-display font-bold text-white text-sm">{t.title}</h2>
                 <p className="text-xs text-slate-400 leading-relaxed">{t.desc}</p>
               </div>
             );
@@ -76,7 +76,7 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
 
       {/* What you get */}
       <div className="space-y-5">
-        <div className="text-[10px] font-mono text-slate-500 tracking-widest uppercase">What every track includes</div>
+        <div className="text-[10px] font-mono text-slate-400 tracking-widest uppercase">What every track includes</div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {OFFERINGS.map((o) => {
             const Icon = o.icon;
@@ -86,7 +86,7 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
                   <Icon className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-white text-sm">{o.title}</h3>
+                  <h2 className="font-display font-bold text-white text-sm">{o.title}</h2>
                   <p className="text-xs text-slate-400 leading-relaxed mt-0.5">{o.desc}</p>
                 </div>
               </div>
@@ -98,7 +98,7 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
       {/* CTA banner */}
       <div className="rounded-2xl border border-[#2563eb44] bg-[#0b0f14]/90 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5">
         <div className="text-center md:text-left">
-          <h3 className="font-display font-bold text-white text-lg">Want in on the first cohort?</h3>
+          <h2 className="font-display font-bold text-white text-lg">Want in on the first cohort?</h2>
           <p className="text-xs text-slate-400 mt-1 max-w-xl">Register your interest and we&apos;ll reach out with dates, pricing, and scholarship options for students and NGOs.</p>
         </div>
         <button

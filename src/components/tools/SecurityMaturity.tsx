@@ -83,7 +83,7 @@ export default function SecurityMaturity({ onNavigate, onQuote }: { onNavigate?:
           <Gauge className="w-5 h-5" />
         </div>
         <div>
-          <h3 className="font-display font-bold text-white text-base">Security Maturity Assessment</h3>
+          <h2 className="font-display font-bold text-white text-base">Security Maturity Assessment</h2>
           <p className="text-xs text-slate-400 font-mono">Seven questions. An honest snapshot of your posture.</p>
         </div>
       </div>
@@ -123,15 +123,15 @@ export default function SecurityMaturity({ onNavigate, onQuote }: { onNavigate?:
       <div className="border-t border-white/5 pt-5 space-y-4">
         <div className="flex items-end justify-between">
           <div>
-            <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Posture score</div>
+            <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Posture score</div>
             <div className="flex items-baseline gap-2">
               <span className="font-display font-black text-4xl" style={{ color: complete ? level.color : "#475569" }}>
                 {complete ? pct : "—"}
               </span>
-              <span className="text-slate-500 text-sm font-mono">/ 100</span>
+              <span className="text-slate-400 text-sm font-mono">/ 100</span>
             </div>
           </div>
-          <span className="text-xs font-mono font-bold flex items-center gap-1.5" style={{ color: complete ? level.color : "#64748b" }}>
+          <span className="text-xs font-mono font-bold flex items-center gap-1.5" style={{ color: complete ? level.color : "#94a3b8" }}>
             {complete && pct >= 80 ? <CheckCircle2 className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />}
             {complete ? level.label : `${answeredCount}/${QUESTIONS.length} answered`}
           </span>
@@ -151,7 +151,7 @@ export default function SecurityMaturity({ onNavigate, onQuote }: { onNavigate?:
               </p>
             ) : (
               <>
-                <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Priority recommendations</div>
+                <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Priority recommendations</div>
                 <ul className="space-y-2">
                   {gaps.map(g => (
                     <li key={g.id} className="flex items-start gap-2 text-[11px] text-slate-300 leading-relaxed">
@@ -178,7 +178,7 @@ export default function SecurityMaturity({ onNavigate, onQuote }: { onNavigate?:
         )}
       </div>
 
-      <p className="text-[10px] text-slate-500 font-mono leading-relaxed border-t border-white/5 pt-3">
+      <p className="text-[10px] text-slate-400 font-mono leading-relaxed border-t border-white/5 pt-3">
         Indicative self-assessment computed in your browser — not a substitute for a full audit. Shadow Root can validate and prioritise these findings for your organisation.
       </p>
     </div>

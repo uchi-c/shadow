@@ -174,9 +174,9 @@ export default function Services({ onSelectService }: ServicesProps) {
           <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
             Defense Capabilities
           </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight">
+          <h1 className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight">
             Comprehensive services for security & growth
-          </h2>
+          </h1>
           <p className="font-sans text-slate-400 text-sm md:text-base">
             We operate behind the scenes to audit systems, simulate threats, write bulletproof client code, and implement intelligent AI assistants that run cleanly and safely.
           </p>
@@ -208,9 +208,9 @@ export default function Services({ onSelectService }: ServicesProps) {
                   </div>
 
                   {/* Title & Descriptions */}
-                  <h3 className="font-display font-bold text-xl text-white group-hover:text-[#2563eb] transition-colors">
+                  <h2 className="font-display font-bold text-xl text-white group-hover:text-[#2563eb] transition-colors">
                     {service.title}
-                  </h3>
+                  </h2>
                   
                   <p className="font-sans text-sm text-slate-300 mt-3 leading-relaxed">
                     {service.description}
@@ -259,9 +259,9 @@ export default function Services({ onSelectService }: ServicesProps) {
         <div className="mt-16 bg-[#0b0f14]/90 rounded-2xl border border-[#2563eb66] p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#2563eb1a] to-transparent pointer-events-none"></div>
           <div className="flex flex-col space-y-1.5 relative z-10 text-center md:text-left">
-            <h3 className="font-display font-bold text-lg md:text-xl">
+            <h2 className="font-display font-bold text-lg md:text-xl">
               Are you an NGO, school, or business in Lusaka?
-            </h3>
+            </h2>
             <p className="text-xs text-slate-400 font-sans max-w-xl">
               Shadow Root provides flexible, tiered packages. Get custom phishing simulations or secure web architectures suited exactly to your staff size.
             </p>
@@ -298,7 +298,7 @@ export default function Services({ onSelectService }: ServicesProps) {
                     {renderIcon(openService.icon)}
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-white text-lg leading-tight">{openService.title}</h3>
+                    <h2 className="font-display font-bold text-white text-lg leading-tight">{openService.title}</h2>
                     <p className="text-[11px] text-slate-400 font-mono mt-0.5">Shadow Root service overview</p>
                   </div>
                 </div>
@@ -319,9 +319,9 @@ export default function Services({ onSelectService }: ServicesProps) {
                   <>
                     {/* Process */}
                     <div className="space-y-3">
-                      <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
+                      <h3 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
                         <Route className="w-4 h-4" /> How we work
-                      </h4>
+                      </h3>
                       <ol className="space-y-2.5">
                         {detail.process.map((step, i) => (
                           <li key={i} className="flex gap-3 text-xs text-slate-300 leading-relaxed">
@@ -336,9 +336,9 @@ export default function Services({ onSelectService }: ServicesProps) {
 
                     {/* Deliverables */}
                     <div className="space-y-3">
-                      <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
+                      <h3 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
                         <ListChecks className="w-4 h-4" /> What you receive
-                      </h4>
+                      </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                         {detail.deliverables.map((d, i) => (
                           <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
@@ -353,9 +353,9 @@ export default function Services({ onSelectService }: ServicesProps) {
 
                     {/* Technologies */}
                     <div className="space-y-3">
-                      <h4 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
+                      <h3 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
                         <Cpu className="w-4 h-4" /> Approach &amp; tooling
-                      </h4>
+                      </h3>
                       <div className="flex flex-wrap gap-2">
                         {detail.technologies.map((t) => (
                           <span key={t} className="text-[11px] font-mono text-slate-300 bg-[#070a0f] border border-[#2563eb33] rounded-full px-3 py-1">
@@ -369,7 +369,7 @@ export default function Services({ onSelectService }: ServicesProps) {
                     <div className="bg-[#070a0f] border border-[#2563eb1a] rounded-2xl p-4 flex items-start gap-3">
                       <Wallet className="w-4 h-4 text-[#60a5fa] shrink-0 mt-0.5" />
                       <div>
-                        <div className="text-[11px] font-mono uppercase tracking-widest text-slate-500 mb-1">Indicative pricing</div>
+                        <div className="text-[11px] font-mono uppercase tracking-widest text-slate-400 mb-1">Indicative pricing</div>
                         <p className="text-xs text-slate-300 leading-relaxed">{detail.pricing}</p>
                       </div>
                     </div>

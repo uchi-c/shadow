@@ -45,9 +45,9 @@ export default function Footer({ onNavigate, onOpenAdmin }: FooterProps) {
 
         {/* Col 2: Navigation Links */}
         <div className="md:col-span-3 space-y-4 font-sans">
-          <h4 className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
+          <h2 className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
             Map Controls
-          </h4>
+          </h2>
           <ul className="text-slate-400 text-xs space-y-2.5">
             <li>
               <button onClick={() => onNavigate("home")} className="hover:text-[#2563eb] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] hover:underline transition-all cursor-pointer rounded px-1 text-left">
@@ -80,14 +80,14 @@ export default function Footer({ onNavigate, onOpenAdmin }: FooterProps) {
 
         {/* Col 3: Direct Clickable Contacts */}
         <div className="md:col-span-5 space-y-4 font-sans">
-          <h4 className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
+          <h2 className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
             Official Secure Takeovers
-          </h4>
+          </h2>
 
           <div className="space-y-3.5 text-xs">
             {/* Phone numbers */}
             <div className="flex flex-col space-y-2 bg-[#0f1720]/75 p-3 rounded-xl border border-[#2563eb33]">
-              <span className="text-[9px] font-mono text-slate-500 font-bold uppercase tracking-wider block">Rapid Human Takeover (WhatsApp / Call)</span>
+              <span className="text-[9px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Rapid Human Takeover (WhatsApp / Call)</span>
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <a
                   href="tel:+260979501830"
@@ -109,7 +109,7 @@ export default function Footer({ onNavigate, onOpenAdmin }: FooterProps) {
 
             {/* Emails */}
             <div className="flex flex-col space-y-2 bg-[#0f1720]/75 p-3 rounded-xl border border-[#2563eb33]">
-              <span className="text-[9px] font-mono text-slate-500 font-bold uppercase tracking-wider block">Corporate Correspondence</span>
+              <span className="text-[9px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Corporate Correspondence</span>
               <div className="flex flex-wrap items-center gap-x-4">
                 <a
                   href="mailto:uchichinyama@gmail.com"
@@ -133,7 +133,7 @@ export default function Footer({ onNavigate, onOpenAdmin }: FooterProps) {
       </div>
 
       {/* Extreme border base info */}
-      <div className="max-w-7xl mx-auto px-4 md:px-10 border-t border-white/5 mt-12 pt-6 flex flex-col md:flex-row sm:items-center justify-between text-[10px] text-slate-500 font-sans">
+      <div className="max-w-7xl mx-auto px-4 md:px-10 border-t border-white/5 mt-12 pt-6 flex flex-col md:flex-row sm:items-center justify-between text-[10px] text-slate-400 font-sans">
         <div>
           <span>© {currentYear} Shadow Root Security Technologies. Built & compiled securely in Lusaka, Zambia.</span>
         </div>

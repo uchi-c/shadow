@@ -128,9 +128,9 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
           <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
             Inquiry Center
           </div>
-          <h2 className="font-display font-bold text-3xl text-white tracking-tight leading-none">
+          <h1 className="font-display font-bold text-3xl text-white tracking-tight leading-none">
             Book a secure consultation
-          </h2>
+          </h1>
           <p className="text-sm text-slate-400">
             Tell us about your organization or project parameters. CEO Uchi Chinyama will securely review your case metrics and respond within business hours.
           </p>
@@ -148,7 +148,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                 <CheckCircle className="w-10 h-10 shrink-0" />
               </div>
               <div className="space-y-2 max-w-md">
-                <h3 className="font-display font-medium text-white text-xl">Consultation Securely Logged</h3>
+                <h2 className="font-display font-medium text-white text-xl">Consultation Securely Logged</h2>
                 <p className="text-xs text-slate-400 leading-normal">
                   Thank you! Your security inquiry data has been locked and recorded in our local parameterized records file. General takeover has routed alerts directly to Uchi. We will reach back using WhatsApp or email shortly.
                 </p>
@@ -178,7 +178,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                     }`}
                     aria-current={currentStep === 1 ? "step" : undefined}
                   >1</span>
-                  <span className={currentStep === 1 ? "text-white" : "text-slate-500"}>CONTACT CREDS</span>
+                  <span className={currentStep === 1 ? "text-white" : "text-slate-400"}>CONTACT CREDS</span>
                 </div>
                 <div className="h-px bg-white/5 grow mx-4 hidden sm:block"></div>
                 <div className="flex items-center space-x-2">
@@ -188,7 +188,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                     }`}
                     aria-current={currentStep === 2 ? "step" : undefined}
                   >2</span>
-                  <span className={currentStep === 2 ? "text-white" : "text-slate-500"}>SCOPE DETAILS</span>
+                  <span className={currentStep === 2 ? "text-white" : "text-slate-400"}>SCOPE DETAILS</span>
                 </div>
               </div>
 
@@ -337,7 +337,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                       required
                       aria-required="true"
                     ></textarea>
-                    <div className="text-[10px] text-slate-500 text-right">
+                    <div className="text-[10px] text-slate-400 text-right">
                       Max characters: 3000
                     </div>
                   </div>
