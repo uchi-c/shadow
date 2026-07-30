@@ -158,6 +158,7 @@ const LineSidebar: React.FC<LineSidebarProps> = ({
 
   return (
     <nav
+      aria-label="Tool sections"
       className={`line-sidebar${showMarker ? ' line-sidebar--markers' : ''}${scaleTick ? ' line-sidebar--scale-tick' : ''}${className ? ` ${className}` : ''}`}
       style={styleVars}
     >

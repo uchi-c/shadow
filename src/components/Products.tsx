@@ -69,9 +69,9 @@ export default function Products({ onNavigate, onQuote }: ProductsProps) {
           <Boxes className="w-4 h-4 text-[#2563eb]" />
           <span>The Shadow Root Ecosystem</span>
         </div>
-        <h2 id="products-heading" className="font-display font-black text-3xl md:text-5xl text-white tracking-tight leading-tight">
+        <h1 id="products-heading" className="font-display font-black text-3xl md:text-5xl text-white tracking-tight leading-tight">
           Products in the making.
-        </h2>
+        </h1>
         <p className="text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed">
           We&apos;re building an ecosystem of security products for African organizations. Some are live today; others are in active development — labelled honestly, because trust is the point.
         </p>
@@ -89,7 +89,7 @@ export default function Products({ onNavigate, onQuote }: ProductsProps) {
             <span className={`text-[10px] font-mono uppercase tracking-widest border rounded-full px-2.5 py-1 ${STATUS_STYLE["In development"]}`}>
               In development
             </span>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Flagship platform</span>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Flagship platform</span>
           </div>
           <p className="text-slate-300 text-sm md:text-base leading-relaxed">
             URUU is Shadow Root&apos;s flagship AI platform — one workspace that unifies <strong className="text-white">secure web development</strong>, <strong className="text-white">AI integration</strong>, <strong className="text-white">phishing defense</strong>, and <strong className="text-white">cybersecurity</strong>. It learns from real deployments — starting with this very site — to automate how organizations build and protect their digital presence.
@@ -130,8 +130,8 @@ export default function Products({ onNavigate, onQuote }: ProductsProps) {
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-white text-lg">{p.name}</h3>
-                  <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">{p.tagline}</p>
+                  <h2 className="font-display font-bold text-white text-lg">{p.name}</h2>
+                  <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">{p.tagline}</p>
                 </div>
                 <p className="text-xs text-slate-400 leading-relaxed">{p.desc}</p>
               </div>

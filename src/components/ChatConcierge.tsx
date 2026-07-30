@@ -156,6 +156,7 @@ export default function ChatConcierge() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
+          aria-label="Open Shadow AI security concierge chat"
           className="relative bg-slate-950 hover:bg-[#0f1720] text-white rounded-full p-4 border border-[#2563eb] flex items-center justify-center cursor-pointer shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group"
         >
           {/* Glowing pulse ring */}
@@ -192,6 +193,7 @@ export default function ChatConcierge() {
             </div>
             <button
               onClick={() => setIsOpen(false)}
+              aria-label="Close chat"
               className="text-slate-400 hover:text-white transition-all cursor-pointer p-1 rounded-full hover:bg-[#0f1720]"
             >
               <X className="w-5 h-5" />

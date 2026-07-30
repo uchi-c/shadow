@@ -88,7 +88,7 @@ export default function CveExplorer() {
           <Bug className="w-5 h-5" />
         </div>
         <div>
-          <h3 className="font-display font-bold text-white text-base">CVE Explorer</h3>
+          <h2 className="font-display font-bold text-white text-base">CVE Explorer</h2>
           <p className="text-xs text-slate-400 font-mono">Search live vulnerabilities from the NIST NVD by product or CVE id.</p>
         </div>
       </div>
@@ -97,7 +97,7 @@ export default function CveExplorer() {
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="flex flex-col sm:flex-row gap-2.5">
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={query}
@@ -117,7 +117,7 @@ export default function CveExplorer() {
           </button>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Try:</span>
+          <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Try:</span>
           {EXAMPLES.map((ex) => (
             <button
               key={ex}
@@ -142,7 +142,7 @@ export default function CveExplorer() {
       {/* Results */}
       {data && !error && (
         <div className="space-y-4">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
             {data.results.length > 0
               ? <>Showing {data.results.length} of {data.totalResults.toLocaleString()} known {data.totalResults === 1 ? "vulnerability" : "vulnerabilities"} for “{data.query}”</>
               : <>No vulnerabilities found for “{data.query}”.</>}
@@ -169,7 +169,7 @@ export default function CveExplorer() {
                   </a>
                 </div>
                 <p className="text-xs text-slate-300 leading-relaxed">{c.summary}</p>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] font-mono text-slate-500">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] font-mono text-slate-400">
                   <span>Published {formatDate(c.published)}</span>
                   {c.cwe.length > 0 && <span className="text-slate-400">{c.cwe.slice(0, 3).join(", ")}</span>}
                   {c.vector && <span className="hidden md:inline truncate max-w-full">{c.vector}</span>}
@@ -188,7 +188,7 @@ export default function CveExplorer() {
         </div>
       )}
 
-      <p className="flex items-start gap-1.5 text-[10px] text-slate-500 font-mono leading-relaxed border-t border-white/5 pt-3">
+      <p className="flex items-start gap-1.5 text-[10px] text-slate-400 font-mono leading-relaxed border-t border-white/5 pt-3">
         <Info className="w-3 h-3 shrink-0 mt-0.5" />
         <span>Live data from the NIST National Vulnerability Database (NVD). Results are informational; matching a CVE to your exact version and configuration is what a Shadow Root assessment does for you.</span>
       </p>

@@ -28,7 +28,7 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-40 bg-[#070a0f88] backdrop-blur-md border-b border-[#2563eb33] px-4 md:px-10 py-4 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+    <nav aria-label="Site header" className="fixed top-0 left-0 w-full z-40 bg-[#070a0f88] backdrop-blur-md border-b border-[#2563eb33] px-4 md:px-10 py-4 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
       <div className="flex justify-between items-center gap-3">
         {/* Brand Identity / Logo */}
         <button
@@ -60,8 +60,8 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
             <button
               key={item.target}
               onClick={() => onNavigate(item.target)}
-              className={`font-sans transition-all relative py-1 hover:text-[#2563eb] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] rounded px-1.5 ${
-                activeSection === item.target ? "text-[#2563eb]" : "text-slate-400"
+              className={`font-sans transition-all relative py-1 hover:text-[#60a5fa] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] rounded px-1.5 ${
+                activeSection === item.target ? "text-[#60a5fa]" : "text-slate-400"
               }`}
               aria-label={`Navigate to ${item.label} section`}
               aria-current={activeSection === item.target ? "page" : undefined}
@@ -93,7 +93,7 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
 
           <button
             onClick={() => onNavigate("quote")}
-            className="px-3.5 sm:px-5 py-2 bg-transparent border border-[#2563eb] text-[#2563eb] font-bold rounded hover:bg-[#2563eb] hover:text-white text-xs tracking-wider transition-all shadow-[0_0_10px_rgba(37,99,235,0.3)] flex items-center space-x-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
+            className="px-3.5 sm:px-5 py-2 bg-transparent border border-[#2563eb] text-[#60a5fa] font-bold rounded hover:bg-[#2563eb] hover:text-white text-xs tracking-wider transition-all shadow-[0_0_10px_rgba(37,99,235,0.3)] flex items-center space-x-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
             aria-label="Navigate to quote consultation form"
           >
             <span>GET SECURE</span>

@@ -38,9 +38,9 @@ export default function CaseStudies() {
             <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase mb-3.5">
               Mission Deliveries
             </div>
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight leading-tight">
+            <h1 className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight leading-tight">
               Real-world defense outcomes delivered locally
-            </h2>
+            </h1>
           </div>
 
           {/* Tab Selector Buttons */}
@@ -80,18 +80,18 @@ export default function CaseStudies() {
               <span className="font-mono text-[10px] text-[#60a5fa] font-extrabold uppercase bg-[#2563eb22] border border-[#2563eb44] px-2.5 py-1 rounded-full">
                 CASE ANALYSIS REPORT
               </span>
-              <h3 className="font-display font-bold text-2xl text-white mt-4 leading-tight">
+              <h2 className="font-display font-bold text-2xl text-white mt-4 leading-tight">
                 {activeStudy.title}
-              </h3>
+              </h2>
             </div>
 
             <div className="space-y-3 font-sans text-xs">
               <div>
-                <span className="text-slate-500 font-medium font-mono uppercase">ORGANIZATION</span>
+                <span className="text-slate-400 font-medium font-mono uppercase">ORGANIZATION</span>
                 <p className="text-slate-200 font-bold text-sm mt-0.5">{activeStudy.client}</p>
               </div>
               <div className="pt-2 border-t border-white/5">
-                <span className="text-slate-500 font-medium font-mono uppercase">OPERATIONAL REGION</span>
+                <span className="text-slate-400 font-medium font-mono uppercase">OPERATIONAL REGION</span>
                 <p className="text-slate-200 font-bold text-sm mt-0.5">{activeStudy.location}</p>
               </div>
               <div className="pt-2 border-t border-white/5 flex items-center space-x-2 text-emerald-400">
@@ -107,10 +107,10 @@ export default function CaseStudies() {
             <div className="space-y-6">
               {/* Challenge */}
               <div className="space-y-1.5">
-                <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
+                <h3 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
                   <span>THE THREAT INTERACTION (CHALLENGE)</span>
-                </h4>
+                </h3>
                 <p className="text-sm text-slate-300 leading-relaxed pl-3.5">
                   {activeStudy.challenge}
                 </p>
@@ -118,10 +118,10 @@ export default function CaseStudies() {
 
               {/* Solution */}
               <div className="space-y-1.5">
-                <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
+                <h3 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#2563eb]"></span>
                   <span>THE SHADOW PLAN (RECON/IMPLEMENTATION)</span>
-                </h4>
+                </h3>
                 <p className="text-sm text-slate-300 leading-relaxed pl-3.5">
                   {activeStudy.solution}
                 </p>
@@ -129,10 +129,10 @@ export default function CaseStudies() {
 
               {/* Results */}
               <div className="space-y-1.5">
-                <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
+                <h3 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                   <span>SECURITY OUTCOMES RECORDED</span>
-                </h4>
+                </h3>
                 <p className="text-sm text-slate-200 bg-[#0b0f14]/60 border border-[#2563eb33] rounded-lg p-4 font-medium leading-relaxed">
                   {activeStudy.results}
                 </p>
@@ -140,7 +140,7 @@ export default function CaseStudies() {
             </div>
 
             {/* Bottom Disclaimer */}
-            <div className="pt-4 border-t border-white/5 text-[10px] text-slate-500 italic flex items-center space-x-1.5">
+            <div className="pt-4 border-t border-white/5 text-[10px] text-slate-400 italic flex items-center space-x-1.5">
               <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
               <span>Identifying client records has been completed safely with consent under strict NDA agreements.</span>
             </div>

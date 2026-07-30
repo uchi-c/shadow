@@ -127,7 +127,7 @@ export default function PasswordAnalyzer() {
           <Lock className="w-5 h-5" />
         </div>
         <div>
-          <h3 className="font-display font-bold text-white text-base">Password Strength Analyzer</h3>
+          <h2 className="font-display font-bold text-white text-base">Password Strength Analyzer</h2>
           <p className="text-xs text-slate-400 font-mono">Estimate entropy &amp; time-to-crack in real time.</p>
         </div>
       </div>
@@ -168,7 +168,7 @@ export default function PasswordAnalyzer() {
           ))}
         </div>
         <div className="flex items-center justify-between text-xs font-mono">
-          <span className="flex items-center gap-1.5" style={{ color: meta?.color ?? "#64748b" }}>
+          <span className="flex items-center gap-1.5" style={{ color: meta?.color ?? "#94a3b8" }}>
             {analysis && analysis.score >= 3 ? <ShieldCheck className="w-3.5 h-3.5" /> : <ShieldAlert className="w-3.5 h-3.5" />}
             {meta ? meta.label : "Awaiting input"}
           </span>
@@ -188,14 +188,14 @@ export default function PasswordAnalyzer() {
               {c.ok
                 ? <Check className="w-3.5 h-3.5 text-[#22c55e] shrink-0" />
                 : <X className="w-3.5 h-3.5 text-slate-600 shrink-0" />}
-              <span className={c.ok ? "text-slate-300" : "text-slate-500"}>{c.text}</span>
+              <span className={c.ok ? "text-slate-300" : "text-slate-400"}>{c.text}</span>
             </li>
           ))}
         </ul>
       )}
 
       {/* Privacy note — important for a security brand */}
-      <p className="text-[10px] text-slate-500 font-mono leading-relaxed border-t border-white/5 pt-3 flex items-start gap-2">
+      <p className="text-[10px] text-slate-400 font-mono leading-relaxed border-t border-white/5 pt-3 flex items-start gap-2">
         <ShieldCheck className="w-3.5 h-3.5 text-[#22c55e] shrink-0 mt-0.5" />
         Analyzed entirely in your browser. Your password is never transmitted, logged, or stored — estimates assume a fast offline attack (~10 billion guesses/second).
       </p>
