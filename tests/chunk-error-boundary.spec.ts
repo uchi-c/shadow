@@ -11,12 +11,16 @@ test("shows a recovery card when a routed chunk fails to load", async ({ page, i
   await page.route("**/assets/Products-*.js", (route) => route.abort("failed"));
   await page.goto("/");
 
-  // Refresh the boundary's reload-cooldown timestamp immediately before
-  // triggering the error (not via addInitScript before goto — a slow initial
-  // load, e.g. waiting out blocked external font/video requests, can let that
-  // earlier timestamp go stale past the 10s cooldown by the time the error
-  // actually fires, causing a real reload instead of the observable fallback).
-  await page.evaluate(() => sessionStorage.setItem("sr_chunk_reload_at", String(Date.now())));
+  // Prime the boundary's reload-cooldown timestamp into the future (not
+  // Date.now()): on a slower/contended CI runner the gap between this line
+  // and the chunk error actually surfacing can exceed the real 10s cooldown,
+  // letting a genuine reload fire and wipe out the fallback UI before the
+  // assertion below sees it. A future timestamp makes "elapsed since last
+  // reload" negative — always within the cooldown — regardless of how long
+  // the rest of this test takes on a given runner. (window.location.reload
+  // can't be stubbed here: browsers make `location` unforgeable, so
+  // redefining it is a silent no-op, not an override.)
+  await page.evaluate(() => sessionStorage.setItem("sr_chunk_reload_at", String(Date.now() + 10 * 60 * 1000)));
 
   if (isMobile) {
     await page.getByRole("button", { name: "Open navigation menu" }).click();
@@ -34,7 +38,6 @@ test("shows a recovery card when a routed chunk fails to load", async ({ page, i
 test("other pages remain usable after a chunk failure elsewhere", async ({ page, isMobile }) => {
   await page.route("**/assets/Products-*.js", (route) => route.abort("failed"));
   await page.goto("/");
-  await page.evaluate(() => sessionStorage.setItem("sr_chunk_reload_at", String(Date.now())));
 
   if (isMobile) {
     await page.getByRole("button", { name: "Open navigation menu" }).click();
