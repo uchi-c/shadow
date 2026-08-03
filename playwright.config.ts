@@ -17,8 +17,11 @@ export default defineConfig({
   reporter: process.env.CI ? [["github"], ["html", { open: "never" }]] : "list",
   // Generous enough for an axe-core scan (itself CPU-heavy) plus animation
   // settle time under parallel load, without being so long a genuine hang
-  // goes unnoticed.
-  timeout: 60_000,
+  // goes unnoticed. Doubled in CI: a shared GitHub Actions runner is
+  // noticeably slower than this project's sandboxed dev environment,
+  // and tests like the mobile nav's 8-section chain accumulate enough
+  // per-step animation/chunk-load delay to blow past 60s there.
+  timeout: process.env.CI ? 120_000 : 60_000,
   use: {
     baseURL: "http://localhost:4400",
     trace: "on-first-retry",
