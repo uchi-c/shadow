@@ -1,5 +1,7 @@
 # Shadow Root Security Technologies
 
+[![CI](https://github.com/uchi-c/shadow/actions/workflows/ci.yml/badge.svg)](https://github.com/uchi-c/shadow/actions/workflows/ci.yml)
+
 Marketing site + lead platform for Shadow Root Security Technologies (Lusaka, Zambia):
 a React 19 + Vite single-page app with an Express API that runs as a Vercel
 serverless function. Includes the Kuma AI concierge (Google Gemini + a RAG
@@ -48,6 +50,19 @@ message rather than failing. To add one:
    or on Vercel under Project → Settings → Environment Variables → Production).
 3. Redeploy so the serverless function picks it up. The endpoint sends it to NVD
    as the `apiKey` header automatically — no code change needed.
+
+## Testing
+
+`npm test` runs the Playwright suite (`tests/`) against the real production
+build (compiled Vite output + the Express app), so it exercises real
+code-splitting and chunk behavior — not the dev server's Vite middleware.
+Covers navigation (desktop + mobile), accessibility (axe-core, zero
+violations required), responsive layout, the security tools, the quote-form
+prefill flow, and the chunk-load error boundary. `npm run test:ui` opens
+Playwright's interactive UI mode for debugging.
+
+CI (`.github/workflows/ci.yml`) runs lint, build, and the full test suite on
+every push to `main` and every pull request against it.
 
 ## Deployment
 
