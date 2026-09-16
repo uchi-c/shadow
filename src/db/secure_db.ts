@@ -80,8 +80,8 @@ const SEED_KNOWLEDGE_BASE: KnowledgeBaseEntry[] = [
     id: "about_shadow_root",
     title: "About Shadow Root Security Technologies",
     category: "company",
-    content: "Shadow Root Security Technologies is a premier youth-led cybersecurity startup based in Lusaka, Zambia. Scaling rapidly from 2 to 10 experienced security specialists and full-stack developers, the company operates under the powerful brand motto: 'We start in the shadows. We bring threats to light.' Founded by Uchi Chinyama, Shadow Root bridges local talent with defense-grade digital solutions. It operates with approachability and high security, providing cybersecurity protection and modern web infrastructures to organizations, businesses, and non-profits across Southern Africa.",
-    keywords: ["about", "shadow root", "company", "team", "founder", "uchi chinyama", "zambia", "lusaka", "youth", "startup"]
+    content: "Shadow Root Security Technologies is a founder-led digital trust and secure infrastructure company based in Lusaka, Zambia. It operates under the brand motto: 'We start in the shadows. We bring threats to light.' Founded and led by Uchi Chinyama, Founder & Lead Strategist, Shadow Root builds practical, trust-sensitive systems — secure infrastructure, structured workflow automation, and institutional resilience tools — for government, NGOs, schools, and universities across Africa. Its flagship product, URUU, is a secure workflow and intelligence platform incubated under the Shadow Root Innovation Lab.",
+    keywords: ["about", "shadow root", "company", "team", "founder", "uchi chinyama", "zambia", "lusaka", "digital trust", "institutions"]
   },
   {
     id: "service_phishing",
@@ -106,10 +106,10 @@ const SEED_KNOWLEDGE_BASE: KnowledgeBaseEntry[] = [
   },
   {
     id: "service_ai_integration",
-    title: "AI Integration Services (Gemini & WhatsApp)",
+    title: "AI Workflow Automation",
     category: "service",
-    content: "We build smarter custom workflows for your brand using advanced AI modeling. Shadow Root builds customized, server-side secure Virtual Concierges and AI-driven client assistants powered by Google's state-of-the-art Gemini API. These assistants are safely enclosed inside secure servers to mask all access tokens. In addition to web-based widgets, we build direct WhatsApp Business API integrations, connecting your AI workflows directly to WhatsApp numbers so your customer support and lead generation run 24/7 without developer friction.",
-    keywords: ["ai", "gemini", "whatsapp", "integration", "concierge", "model", "chatbot", "automation", "api"]
+    content: "Shadow Root's active AI offer is AI Workflow Automation for institutions — fixing weak manual processes like approvals, reporting, routing, and admin handling for government, NGO, school, and university clients. We build customized, server-side secure Virtual Concierges and workflow assistants powered by Google's Gemini API, safely enclosed inside secure servers to mask all access tokens. In addition to web-based widgets, we build direct WhatsApp Business API integrations, connecting workflows directly to WhatsApp numbers so approvals, reporting, and support run 24/7 without developer friction.",
+    keywords: ["ai", "workflow automation", "gemini", "whatsapp", "integration", "concierge", "approvals", "reporting", "automation", "api"]
   },
   {
     id: "pricing_approach",

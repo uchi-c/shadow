@@ -7,7 +7,7 @@ export default function FloatingWhatsApp() {
   const [isHovered, setIsHovered] = useState(false);
   const { scale, bottomOffset, leftOffset, isMobile } = useViewportReachability();
   
-  // CEO Uchi Chinyama's secure direct messaging link
+  // Uchi Chinyama's (Founder & Lead Strategist) secure direct messaging link
   const phoneNumber = "260979501830";
   const defaultMessage = "Hello Uchi, I visited the Shadow Root Security Technologies portal and would like to request an expert consultation or cybersecurity breach audit for my systems.";
   const clickToWhatsAppUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
@@ -45,7 +45,7 @@ export default function FloatingWhatsApp() {
               </div>
               <div className="space-y-1">
                 <p className="text-[11px] font-bold text-emerald-400 font-mono tracking-wider uppercase">
-                  Direct Escalate to CEO
+                  Direct Escalate to Founder
                 </p>
                 <p className="text-[10px] text-slate-300 leading-normal">
                   Connect with Uchi Chinyama directly on WhatsApp for real-time incident responses.
@@ -69,7 +69,7 @@ export default function FloatingWhatsApp() {
         className={`relative bg-slate-950 hover:bg-[#071d11] text-white rounded-full border border-emerald-500/70 flex items-center justify-center cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.55)] transition-all group ${
           isMobile ? "p-3" : "p-4"
         }`}
-        aria-label="Direct escalation chat with Cyber CEO Uchi Chinyama on WhatsApp"
+        aria-label="Direct escalation chat with Shadow Root Founder Uchi Chinyama on WhatsApp"
       >
         {/* Pulse ring indicating direct live communication channel */}
         <div className="absolute inset-0 rounded-full border border-emerald-500/20 animate-pulse-ring pointer-events-none"></div>

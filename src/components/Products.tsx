@@ -89,13 +89,13 @@ export default function Products({ onNavigate, onQuote }: ProductsProps) {
             <span className={`text-[10px] font-mono uppercase tracking-widest border rounded-full px-2.5 py-1 ${STATUS_STYLE["In development"]}`}>
               In development
             </span>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Flagship platform</span>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Flagship product · Innovation Lab</span>
           </div>
           <p className="text-slate-300 text-sm md:text-base leading-relaxed">
-            URUU is Shadow Root&apos;s flagship AI platform — one workspace that unifies <strong className="text-white">secure web development</strong>, <strong className="text-white">AI integration</strong>, <strong className="text-white">phishing defense</strong>, and <strong className="text-white">cybersecurity</strong>. It learns from real deployments — starting with this very site — to automate how organizations build and protect their digital presence.
+            URUU is Shadow Root&apos;s flagship product, incubated under our Innovation Lab — a <strong className="text-white">secure workflow and intelligence platform</strong> for reporting, visibility, and trust-sensitive processes. It gives institutions one governed place to track approvals, monitor risk, and act on prioritized intelligence.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {["Secure web build automation", "AI assistants grounded in your data", "Phishing simulation & awareness engine", "Continuous, prioritized threat intelligence"].map((f) => (
+            {["Structured reporting & visibility workflows", "Trust-sensitive process automation", "Grounded in your institutional data", "Continuous, prioritized threat intelligence"].map((f) => (
               <div key={f} className="flex items-center gap-2 text-xs text-slate-300">
                 <div className="bg-[#2563eb]/15 text-[#60a5fa] p-0.5 rounded-full border border-[#2563eb44]">
                   <Check className="w-3 h-3" />

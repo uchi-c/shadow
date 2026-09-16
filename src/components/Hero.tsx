@@ -53,15 +53,15 @@ export default function Hero({ onNavigate }: HeroProps) {
         {/* Left Hand Copy Content */}
         <div className="lg:col-span-7 flex flex-col space-y-6">
           <div className="inline-block px-3 py-1 bg-[#2563eb22] border border-[#2563eb44] rounded text-[#60a5fa] text-xs font-bold uppercase tracking-widest mb-2 w-fit font-mono">
-            Lusaka&apos;s Premier Security Partner
+            Zambia&apos;s Digital Trust &amp; Secure Systems Partner
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-black leading-none text-white tracking-tight leading-[1.1]">
-            We start in the <span className="text-[#2563eb]">shadows.</span>
+          <h1 className="text-4xl md:text-6xl font-black leading-none text-white tracking-tight leading-[1.1]">
+            Building digital trust for the <span className="text-[#2563eb]">next era of institutions.</span>
           </h1>
 
           <p className="font-sans text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
-            We bring threats to light through elite penetration testing, AI integration, and secure web engineering. Protecting local businesses, NGOs, and growing startup brands.
+            Secure systems, structured workflows, and institutional intelligence — delivered through phishing simulation, AI workflow automation, and strategic digital trust advisory for government, NGOs, schools, and universities across Zambia.
           </p>
 
           {/* Call to Actions */}
@@ -85,8 +85,8 @@ export default function Hero({ onNavigate }: HeroProps) {
           {/* Quick Metrics */}
           <div className="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-3 gap-6 font-sans">
             <div>
-              <div className="font-display font-bold text-3xl text-white leading-none">2 to 10+</div>
-              <div className="text-xs text-slate-400 mt-1.5 font-medium">Security Experts Scaling Up</div>
+              <div className="font-display font-bold text-3xl text-white leading-none">Founder-Led</div>
+              <div className="text-xs text-slate-400 mt-1.5 font-medium">Structured Functional Roles</div>
             </div>
             <div>
               <div className="font-display font-bold text-3xl text-white leading-none">98.2%</div>
