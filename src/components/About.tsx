@@ -1,9 +1,42 @@
 import React from "react";
-import { ShieldAlert, Scaling, HeartHandshake, Swords, ShieldCheck, Mail, Phone, ExternalLink } from "lucide-react";
+import { ShieldAlert, Scaling, HeartHandshake, Swords, ShieldCheck, Mail, Phone, ExternalLink, Boxes, BrainCircuit, FlaskConical, GraduationCap } from "lucide-react";
 import Hover3DLogo from "./Hover3DLogo";
 import uchiChinyamaPhoto from "../assets/images/uchi_chinyama_founder_portrait.jpg";
 
 export default function About() {
+  const departments = [
+    {
+      icon: Boxes,
+      name: "Product & Platform",
+      meaning: "Builds structured products and platform systems for institutional use.",
+      scope: "URUU roadmap, product logic, platform design"
+    },
+    {
+      icon: BrainCircuit,
+      name: "AI Systems & Automation",
+      meaning: "Modernizes weak processes through practical, governance-aware AI.",
+      scope: "Workflow automation, implementation, process support"
+    },
+    {
+      icon: ShieldCheck,
+      name: "Governance, Risk & Compliance",
+      meaning: "Treats trust, ethics, and control as part of the delivery model.",
+      scope: "Government-facing work, consent, standards, oversight"
+    },
+    {
+      icon: FlaskConical,
+      name: "Research & Innovation",
+      meaning: "Studies local institutional problems and tests future capabilities.",
+      scope: "Use-case discovery, concept development, prototype logic"
+    },
+    {
+      icon: GraduationCap,
+      name: "Training & Awareness",
+      meaning: "Helps institutions reduce user-risk and strengthen awareness culture.",
+      scope: "Phishing simulation, awareness programs, human-risk interventions"
+    }
+  ];
+
   const steps = [
     {
       metric: "01",
@@ -200,6 +233,36 @@ export default function About() {
 
             </div>
 
+          </div>
+        </div>
+
+        {/* Section 2.5: Public-Facing Department Structure */}
+        <div className="mt-28 space-y-8">
+          <div className="flex flex-col space-y-2 border-b border-white/5 pb-4">
+            <h2 className="font-display font-bold text-2xl md:text-3xl text-white">
+              How Shadow Root Is Structured
+            </h2>
+            <p className="text-xs text-slate-400 max-w-md">
+              Five functional departments carry out the work, under a single founder rather than a bloated executive structure.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {departments.map((dept) => (
+              <div
+                key={dept.name}
+                className="bg-[#0f1720]/70 border border-[#2563eb33] p-5 rounded-xl hover:border-[#2563eb] hover:shadow-[0_0_15px_rgba(37,99,235,0.1)] focus-within:ring-2 focus-within:ring-[#2563eb] transition-all"
+                tabIndex={0}
+                aria-label={`Department: ${dept.name}. ${dept.meaning} Primary scope: ${dept.scope}.`}
+              >
+                <div className="bg-[#2563eb22] text-[#60a5fa] p-2 rounded-lg w-fit mb-3 border border-[#2563eb44]">
+                  <dept.icon className="w-5 h-5" />
+                </div>
+                <h3 className="font-display font-bold text-white text-sm">{dept.name}</h3>
+                <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">{dept.meaning}</p>
+                <p className="text-[10px] font-mono text-slate-400 mt-3 uppercase tracking-wider">{dept.scope}</p>
+              </div>
+            ))}
           </div>
         </div>
 
