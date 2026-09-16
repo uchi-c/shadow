@@ -113,7 +113,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
         hasTimeline: "flexible"
       });
     } catch (err: any) {
-      setSubmitError(err.message || "Failed to catalog lead. Please check your connectivity.");
+      setSubmitError(err.message || "Failed to send your request. Please check your connectivity.");
     } finally {
       setLoading(false);
     }
@@ -125,32 +125,32 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 flex flex-col space-y-4">
-          <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
-            Inquiry Center
+          <div className="text-xs font-semibold uppercase tracking-wide text-[#60a5fa]">
+            Get in Touch
           </div>
           <h1 className="font-display font-bold text-3xl text-white tracking-tight leading-none">
             Book a secure consultation
           </h1>
           <p className="text-sm text-slate-400">
-            Tell us about your organization or project parameters. Founder Uchi Chinyama will securely review your case metrics and respond within business hours.
+            Tell us about your organization or project. Founder Uchi Chinyama will review your request and respond within business hours.
           </p>
         </div>
 
         {/* Multi-step card container */}
-        <div className="bg-[#0f1720]/70 rounded-2xl border border-[#2563eb33] p-6 md:p-8 shadow-2xl relative">
-          
+        <div className="bg-[#0f1720] rounded-2xl border border-white/10 p-6 md:p-8 relative">
+
           {submitSuccess ? (
-            <div 
+            <div
               className="flex flex-col items-center justify-center text-center py-12 space-y-5 font-sans"
               aria-live="polite"
             >
-              <div className="bg-emerald-950/20 text-emerald-400 border border-emerald-800/40 p-3 h-16 w-16 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+              <div className="bg-emerald-950/20 text-emerald-400 border border-emerald-800/40 p-3 h-16 w-16 rounded-full flex items-center justify-center">
                 <CheckCircle className="w-10 h-10 shrink-0" />
               </div>
               <div className="space-y-2 max-w-md">
-                <h2 className="font-display font-medium text-white text-xl">Consultation Securely Logged</h2>
+                <h2 className="font-display font-medium text-white text-xl">Consultation Request Sent</h2>
                 <p className="text-xs text-slate-400 leading-normal">
-                  Thank you! Your security inquiry data has been locked and recorded in our local parameterized records file. General takeover has routed alerts directly to Uchi. We will reach back using WhatsApp or email shortly.
+                  Thank you! Your request has been received and routed directly to Uchi. We&apos;ll reach back using WhatsApp or email shortly.
                 </p>
               </div>
               <button
@@ -158,7 +158,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                   setSubmitSuccess(false);
                   setCurrentStep(1);
                 }}
-                className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-5 py-2.5 rounded-lg text-xs font-semibold cursor-pointer transition-all shadow-[0_0_12px_#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb] focus:outline-none"
+                className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-5 py-2.5 rounded-lg text-xs font-semibold cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-[#2563eb] focus:outline-none"
                 aria-label="Submit another consultation inquiry form"
               >
                 Submit another inquiry
@@ -167,28 +167,28 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
           ) : (
             <form onSubmit={handleSubmit} className="font-sans">
               {/* Step indicator pipeline */}
-              <div 
-                className="flex items-center justify-between mb-8 pb-4 border-b border-white/5 text-xs font-mono font-bold text-slate-400"
+              <div
+                className="flex items-center justify-between mb-8 pb-4 border-b border-white/5 text-xs font-semibold text-slate-400"
                 aria-label="Multi-step form progress pipeline"
               >
                 <div className="flex items-center space-x-2">
-                  <span 
+                  <span
                     className={`w-6 h-6 rounded-full flex items-center justify-center border ${
-                      currentStep === 1 ? "bg-[#2563eb] text-white border-[#2563eb] shadow-[0_0_10px_#2563eb]" : "bg-[#0b0f14]/60 border-white/10 text-slate-400"
+                      currentStep === 1 ? "bg-[#2563eb] text-white border-[#2563eb]" : "bg-[#0b0f14]/60 border-white/10 text-slate-400"
                     }`}
                     aria-current={currentStep === 1 ? "step" : undefined}
                   >1</span>
-                  <span className={currentStep === 1 ? "text-white" : "text-slate-400"}>CONTACT CREDS</span>
+                  <span className={currentStep === 1 ? "text-white" : "text-slate-400"}>Contact Details</span>
                 </div>
                 <div className="h-px bg-white/5 grow mx-4 hidden sm:block"></div>
                 <div className="flex items-center space-x-2">
-                  <span 
+                  <span
                     className={`w-6 h-6 rounded-full flex items-center justify-center border ${
-                      currentStep === 2 ? "bg-[#2563eb] text-white border-[#2563eb] shadow-[0_0_10px_#2563eb]" : "bg-[#0b0f14]/60 border-white/10 text-slate-400"
+                      currentStep === 2 ? "bg-[#2563eb] text-white border-[#2563eb]" : "bg-[#0b0f14]/60 border-white/10 text-slate-400"
                     }`}
                     aria-current={currentStep === 2 ? "step" : undefined}
                   >2</span>
-                  <span className={currentStep === 2 ? "text-white" : "text-slate-400"}>SCOPE DETAILS</span>
+                  <span className={currentStep === 2 ? "text-white" : "text-slate-400"}>Scope Details</span>
                 </div>
               </div>
 
@@ -208,7 +208,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-1.5 flex flex-col">
-                      <label htmlFor="quote-name" className="text-xs font-bold text-slate-300 uppercase tracking-wide font-mono">Full Name *</label>
+                      <label htmlFor="quote-name" className="text-xs font-semibold text-slate-300 uppercase tracking-wide">Full Name *</label>
                       <input
                         id="quote-name"
                         type="text"
@@ -222,7 +222,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                       />
                     </div>
                     <div className="space-y-1.5 flex flex-col">
-                      <label htmlFor="quote-company" className="text-xs font-bold text-slate-300 uppercase tracking-wide font-mono">Company / Organization</label>
+                      <label htmlFor="quote-company" className="text-xs font-semibold text-slate-300 uppercase tracking-wide">Company / Organization</label>
                       <input
                         id="quote-company"
                         type="text"
@@ -237,7 +237,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-1.5 flex flex-col">
-                      <label htmlFor="quote-email" className="text-xs font-bold text-slate-300 uppercase tracking-wide font-mono">Primary Email *</label>
+                      <label htmlFor="quote-email" className="text-xs font-semibold text-slate-300 uppercase tracking-wide">Primary Email *</label>
                       <input
                         id="quote-email"
                         type="email"
@@ -251,7 +251,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                       />
                     </div>
                     <div className="space-y-1.5 flex flex-col">
-                      <label htmlFor="quote-phone" className="text-xs font-bold text-slate-300 uppercase tracking-wide font-mono">Phone / WhatsApp Number *</label>
+                      <label htmlFor="quote-phone" className="text-xs font-semibold text-slate-300 uppercase tracking-wide">Phone / WhatsApp Number *</label>
                       <input
                         id="quote-phone"
                         type="tel"
@@ -268,7 +268,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
 
                   {/* Service Preference Dropdown */}
                   <div className="space-y-1.5 flex flex-col">
-                    <label htmlFor="quote-service" className="text-xs font-bold text-slate-300 uppercase tracking-wide font-mono">Service of Interest</label>
+                    <label htmlFor="quote-service" className="text-xs font-semibold text-slate-300 uppercase tracking-wide">Service of Interest</label>
                     <select
                       id="quote-service"
                       name="service"
@@ -293,7 +293,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-1.5 flex flex-col">
-                      <label htmlFor="quote-size" className="text-xs font-bold text-slate-300 uppercase tracking-wide font-mono">Organization Size</label>
+                      <label htmlFor="quote-size" className="text-xs font-semibold text-slate-300 uppercase tracking-wide">Organization Size</label>
                       <select
                         id="quote-size"
                         name="size"
@@ -309,7 +309,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                     </div>
 
                     <div className="space-y-1.5 flex flex-col">
-                      <label htmlFor="quote-timeline" className="text-xs font-bold text-slate-300 uppercase tracking-wide font-mono">Desired Project Timeline</label>
+                      <label htmlFor="quote-timeline" className="text-xs font-semibold text-slate-300 uppercase tracking-wide">Desired Project Timeline</label>
                       <select
                         id="quote-timeline"
                         name="hasTimeline"
@@ -325,14 +325,14 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                   </div>
 
                   <div className="space-y-1.5 flex flex-col">
-                    <label htmlFor="quote-message" className="text-xs font-bold text-slate-300 uppercase tracking-wide font-mono">Project Details / Security Focus *</label>
+                    <label htmlFor="quote-message" className="text-xs font-semibold text-slate-300 uppercase tracking-wide">Project Details / Security Focus *</label>
                     <textarea
                       id="quote-message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                       rows={5}
-                      placeholder="Describe your current system challenges, specific anti-phishing training goals, or Web/AI portal ideas. This input is escapable and encrypted on server write."
+                      placeholder="Describe your current system challenges, specific anti-phishing training goals, or web/AI project ideas."
                       className="w-full bg-[#0b0f14]/80 border border-[#2563eb33] rounded-lg p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb] focus:bg-[#0b0f14] transition-all resize-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
                       required
                       aria-required="true"
@@ -363,7 +363,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-5 py-2.5 rounded-lg text-xs font-bold cursor-pointer transition-all flex items-center space-x-1 shadow-[0_0_12px_#2563eb] ml-auto focus-visible:ring-2 focus-visible:ring-[#2563eb] focus:outline-none"
+                    className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-5 py-2.5 rounded-lg text-xs font-bold cursor-pointer transition-all flex items-center space-x-1 ml-auto focus-visible:ring-2 focus-visible:ring-[#2563eb] focus:outline-none"
                   >
                     <span>Continue</span>
                     <ChevronRight className="w-4 h-4 shrink-0" />
@@ -372,12 +372,12 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
                   <button
                     type="submit"
                     disabled={loading}
-                    className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-2.5 rounded-lg text-xs font-bold cursor-pointer transition-all flex items-center space-x-2 disabled:opacity-50 ml-auto shadow-[0_0_15px_#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb] focus:outline-none"
+                    className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-2.5 rounded-lg text-xs font-bold cursor-pointer transition-all flex items-center space-x-2 disabled:opacity-50 ml-auto focus-visible:ring-2 focus-visible:ring-[#2563eb] focus:outline-none"
                   >
                     {loading ? (
                       <>
                         <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                        <span>Cataloging...</span>
+                        <span>Sending...</span>
                       </>
                     ) : (
                       <>
