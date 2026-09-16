@@ -35,7 +35,7 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
   return (
     <section aria-labelledby="academy-heading" className="space-y-12">
       <div className="space-y-4 max-w-3xl">
-        <div className="text-[10px] font-mono text-[#60a5fa] tracking-widest uppercase flex items-center gap-2">
+        <div className="text-xs font-semibold text-[#60a5fa] uppercase tracking-wide flex items-center gap-2">
           <GraduationCap className="w-4 h-4 text-[#2563eb]" />
           <span>Shadow Root Academy</span>
           <span className="text-[9px] border border-[#2563eb33] text-[#60a5fa] rounded-full px-2 py-0.5">Launching soon</span>
@@ -48,7 +48,7 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
         </p>
         <button
           onClick={registerInterest}
-          className="inline-flex items-center gap-1.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-xl transition-all cursor-pointer shadow-[0_0_15px_rgba(37,99,235,0.4)]"
+          className="inline-flex items-center gap-1.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-xl transition-all cursor-pointer"
         >
           <span>Register your interest</span>
           <ArrowUpRight className="w-4 h-4" />
@@ -57,12 +57,12 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
 
       {/* Learning tracks */}
       <div className="space-y-5">
-        <div className="text-[10px] font-mono text-slate-400 tracking-widest uppercase">Learning tracks</div>
+        <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Learning tracks</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {TRACKS.map((t) => {
             const Icon = t.icon;
             return (
-              <div key={t.title} className="bg-[#0f1720]/60 border border-[#2563eb1a] rounded-2xl p-5 space-y-2.5 hover:border-[#2563eb44] transition-all">
+              <div key={t.title} className="surface-card p-5 space-y-2.5">
                 <div className="bg-[#0b0f14] border border-[#2563eb33] p-2 rounded-lg w-fit text-[#60a5fa]">
                   <Icon className="w-4 h-4" />
                 </div>
@@ -76,12 +76,12 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
 
       {/* What you get */}
       <div className="space-y-5">
-        <div className="text-[10px] font-mono text-slate-400 tracking-widest uppercase">What every track includes</div>
+        <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">What every track includes</div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {OFFERINGS.map((o) => {
             const Icon = o.icon;
             return (
-              <div key={o.title} className="bg-[#0f1720]/60 border border-[#2563eb1a] rounded-2xl p-5 flex items-start gap-3">
+              <div key={o.title} className="surface-card p-5 flex items-start gap-3">
                 <div className="bg-[#22c55e]/10 border border-[#22c55e]/25 p-2 rounded-lg text-[#22c55e] shrink-0">
                   <Icon className="w-4 h-4" />
                 </div>
@@ -96,14 +96,14 @@ export default function Academy({ onNavigate, onQuote }: AcademyProps) {
       </div>
 
       {/* CTA banner */}
-      <div className="rounded-2xl border border-[#2563eb44] bg-[#0b0f14]/90 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5">
+      <div className="rounded-2xl border border-white/10 bg-[#0b0f14] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5">
         <div className="text-center md:text-left">
           <h2 className="font-display font-bold text-white text-lg">Want in on the first cohort?</h2>
           <p className="text-xs text-slate-400 mt-1 max-w-xl">Register your interest and we&apos;ll reach out with dates, pricing, and scholarship options for students and NGOs.</p>
         </div>
         <button
           onClick={registerInterest}
-          className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg text-xs font-bold transition-all cursor-pointer shadow-[0_0_15px_rgba(37,99,235,0.4)] shrink-0"
+          className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg text-xs font-bold transition-all cursor-pointer shrink-0"
         >
           Register your interest
         </button>
