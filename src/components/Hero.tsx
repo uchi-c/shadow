@@ -93,7 +93,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               <div className="text-xs text-slate-400 mt-1.5 font-medium">NGO Simulation Retainment</div>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <div className="font-display font-bold text-3xl text-[#2563eb] leading-none text-shadow-purple">A+ SSL</div>
+              <div className="font-display font-bold text-3xl text-[#2563eb] leading-none">A+ SSL</div>
               <div className="text-xs text-slate-400 mt-1.5 font-medium">Production Hardening Mark</div>
             </div>
           </div>

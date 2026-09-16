@@ -12,9 +12,8 @@ import useSEO from "./lib/useSEO";
 
 // Code-split the heavier, navigation-gated views so they are not in the initial
 // bundle. AdminPanel in particular drags in @supabase/supabase-js, which the
-// public site never needs on first paint. Strands pulls in `ogl` (WebGL), so it
-// is also split out and lazy-mounted to keep the initial bundle within budget.
-const Strands = lazy(() => import("./components/Strands"));
+// public site never needs on first paint. FaultyTerminal pulls in `ogl`
+// (WebGL), so it stays split out too.
 const FaultyTerminal = lazy(() => import("./components/FaultyTerminal"));
 const Services = lazy(() => import("./components/Services"));
 const About = lazy(() => import("./components/About"));
@@ -70,29 +69,12 @@ export default function App() {
 
   return (
     <div className="bg-[#070a0f] min-h-screen text-slate-200 selection:bg-[#2563eb]/30 selection:text-white leading-normal relative isolate overflow-x-hidden flex flex-col justify-between">
-      
-      {/* Animated Strands backdrop (React Bits, WebGL) — fixed behind all content.
-          Lazy-mounted so `ogl` stays out of the initial bundle; the component
-          itself renders a single static frame under prefers-reduced-motion. */}
-      <div className="fixed inset-0 -z-10 h-full w-full pointer-events-none" aria-hidden="true">
-        <ChunkErrorBoundary reloadOnChunkError={false} fallback={null}>
-          <Suspense fallback={null}>
-            <Strands
-              colors={["#22C55E", "#2563EB", "#06B6D4"]}
-              count={3}
-              speed={0.45}
-              glow={2.4}
-              intensity={0.55}
-              opacity={0.85}
-              scale={1.5}
-            />
-          </Suspense>
-        </ChunkErrorBoundary>
-      </div>
 
-      {/* Background Ambient Cosmic Gradients */}
-      <div className="fixed top-0 left-0 w-[400px] h-[400px] bg-[#2563eb] rounded-full mix-blend-screen filter blur-[120px] opacity-15 pointer-events-none -z-10"></div>
-      <div className="fixed bottom-0 right-0 w-[500px] h-[500px] bg-[#2563eb] rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none -z-10"></div>
+      {/* Static background: a subtle top-down gradient, no animation loop. */}
+      <div
+        className="fixed inset-0 -z-10 h-full w-full pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(37,99,235,0.12),transparent)]"
+        aria-hidden="true"
+      ></div>
 
       {/* Skip Navigation Link for Screen Readers (WCAG AA accessibility) */}
       <a 

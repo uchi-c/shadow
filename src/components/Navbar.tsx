@@ -28,7 +28,7 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
   };
 
   return (
-    <nav aria-label="Site header" className="fixed top-0 left-0 w-full z-40 bg-[#070a0f88] backdrop-blur-md border-b border-[#2563eb33] px-4 md:px-10 py-4 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+    <nav aria-label="Site header" className="fixed top-0 left-0 w-full z-40 bg-[#070a0f] border-b border-white/10 px-4 md:px-10 py-4">
       <div className="flex justify-between items-center gap-3">
         {/* Brand Identity / Logo */}
         <button
@@ -36,16 +36,13 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
           className="flex items-center space-x-2.5 cursor-pointer group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] rounded-lg p-1 min-w-0"
           aria-label="Shadow Root Security Technologies homepage"
         >
-          <div className="relative shrink-0">
-            <div className="absolute inset-0 bg-[#2563eb]/25 rounded-lg blur-sm group-hover:blur-md transition-all"></div>
-            <BrandLogo className="relative w-9 h-9 drop-shadow-[0_0_10px_rgba(34,197,94,0.35)]" />
-          </div>
+          <BrandLogo className="w-9 h-9 shrink-0" />
           <div className="min-w-0">
             <div className="font-display font-bold text-white text-base sm:text-lg leading-none tracking-tight flex items-center">
               SHADOW<span className="text-[#22c55e] ml-1">ROOT</span>
             </div>
-            <div className="text-[9px] font-mono tracking-widest text-[#60a5fa] uppercase font-semibold mt-1">
-              Security Tech
+            <div className="text-[10px] text-slate-400 font-medium mt-1">
+              Security Technologies
             </div>
           </div>
         </button>
@@ -76,10 +73,10 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
 
         {/* Right Action Widgets */}
         <div className="flex items-center space-x-2 sm:space-x-3.5 shrink-0">
-          {/* Connection status dot - trust builder */}
-          <div className="hidden lg:flex items-center space-x-2 bg-[#ffffff05] border border-white/10 px-3 py-1.5 rounded-full font-mono text-[10px] text-emerald-400 font-semibold" aria-label="SSL Connection status: Enforced">
-            <Radio className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-            <span>SSL ENFORCED</span>
+          {/* Connection status - trust builder */}
+          <div className="hidden lg:flex items-center space-x-2 bg-[#ffffff05] border border-white/10 px-3 py-1.5 rounded-full text-[11px] text-emerald-400 font-medium" aria-label="SSL Connection status: Enforced">
+            <Radio className="w-3.5 h-3.5 text-emerald-400" />
+            <span>SSL Enforced</span>
           </div>
 
           <button
@@ -93,7 +90,7 @@ export default function Navbar({ onNavigate, activeSection, onOpenAdmin }: Navba
 
           <button
             onClick={() => onNavigate("quote")}
-            className="px-3.5 sm:px-5 py-2 bg-transparent border border-[#2563eb] text-[#60a5fa] font-bold rounded hover:bg-[#2563eb] hover:text-white text-xs tracking-wider transition-all shadow-[0_0_10px_rgba(37,99,235,0.3)] flex items-center space-x-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
+            className="px-3.5 sm:px-5 py-2 bg-transparent border border-[#2563eb] text-[#60a5fa] font-bold rounded hover:bg-[#2563eb] hover:text-white text-xs tracking-wider transition-all flex items-center space-x-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb]"
             aria-label="Navigate to quote consultation form"
           >
             <span>GET SECURE</span>

@@ -268,7 +268,7 @@ export default function About() {
 
         {/* Section 3: Interactive Diagram of "The Shadow Methodology" */}
         <div className="mt-28 bg-[#0f1720]/80 text-white rounded-2xl border border-[#2563eb44] p-6 md:p-10 relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-shadow-purple-dark/25 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-shadow-blue-dark/25 rounded-full blur-3xl pointer-events-none"></div>
           
           <div className="relative z-10 flex flex-col space-y-8">
             <div className="flex items-center space-x-2.5 pb-4 border-b border-white/5">

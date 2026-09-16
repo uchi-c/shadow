@@ -25,7 +25,7 @@ export default function Footer({ onNavigate, onOpenAdmin }: FooterProps) {
         {/* Col 1: Brand & Tagline */}
         <div className="md:col-span-4 space-y-4">
           <div className="flex items-center space-x-2.5">
-            <BrandLogo className="w-10 h-10 drop-shadow-[0_0_10px_rgba(34,197,94,0.3)]" />
+            <BrandLogo className="w-10 h-10" />
             <span className="font-display font-black tracking-tight text-lg">
               SHADOW<span className="text-[#22c55e]">ROOT</span>
             </span>

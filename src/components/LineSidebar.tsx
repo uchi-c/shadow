@@ -35,7 +35,7 @@ const DEFAULT_ITEMS = ['Overview', 'Components', 'Animations', 'Backgrounds', 'S
 
 const LineSidebar: React.FC<LineSidebarProps> = ({
   items = DEFAULT_ITEMS,
-  accentColor = '#A855F7',
+  accentColor = '#60a5fa',
   textColor = '#c4c4c4',
   markerColor = '#6c6c6c',
   showIndex = true,
