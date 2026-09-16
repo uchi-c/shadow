@@ -1,58 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { ArrowRight, ShieldCheck, HelpCircle, RefreshCw, Zap, Server } from "lucide-react";
+import React from "react";
+import { ArrowRight, ShieldCheck, Workflow, Mail, Building2 } from "lucide-react";
 
 interface HeroProps {
   onNavigate: (section: string) => void;
 }
 
+const DELIVERABLES = [
+  { icon: Mail, label: "Phishing Simulation & Awareness Training" },
+  { icon: Workflow, label: "AI Workflow Automation for Institutions" },
+  { icon: ShieldCheck, label: "Secure Systems Development & Auditing" },
+  { icon: Building2, label: "Strategic Digital Trust Advisory" }
+];
+
 export default function Hero({ onNavigate }: HeroProps) {
-  // Defensive scanner simulator parameters for trust signaling
-  const [scanState, setScanState] = useState<"IDLE" | "SCANNING" | "SECURE">("IDLE");
-  const [analyzedTargets, setAnalyzedTargets] = useState<string[]>([]);
-  const [scanProgress, setScanProgress] = useState(0);
-
-  const testAttackVectors = [
-    "SQLi concatenations validation checker",
-    "Dependency vulnerabilities scanned CVE-2025",
-    "Social Engineering Phishing mimic gates",
-    "Open CORS headers validation check",
-    "Sensitive data leakage & unmasked API keys",
-    "Secure cookie policies confirmation",
-    "Client-side frame injection defense check"
-  ];
-
-  useEffect(() => {
-    if (scanState === "SCANNING") {
-      setScanProgress(0);
-      setAnalyzedTargets([]);
-      
-      const interval = setInterval(() => {
-        setScanProgress((prev) => {
-          const next = prev + 15;
-          if (next >= 100) {
-            clearInterval(interval);
-            setScanState("SECURE");
-            setAnalyzedTargets(testAttackVectors);
-            return 100;
-          }
-          
-          // Gradually pull targets
-          const count = Math.min(Math.floor((next / 100) * testAttackVectors.length), testAttackVectors.length - 1);
-          setAnalyzedTargets(testAttackVectors.slice(0, count + 1));
-          return next;
-        });
-      }, 350);
-
-      return () => clearInterval(interval);
-    }
-  }, [scanState]);
-
   return (
     <div id="home" className="relative bg-transparent min-h-screen pt-28 pb-16 flex flex-col justify-center overflow-hidden border-b border-[#2563eb33]">
       <div className="max-w-7xl mx-auto px-4 md:px-10 relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full z-10">
         {/* Left Hand Copy Content */}
         <div className="lg:col-span-7 flex flex-col space-y-6">
-          <div className="inline-block px-3 py-1 bg-[#2563eb22] border border-[#2563eb44] rounded text-[#60a5fa] text-xs font-bold uppercase tracking-widest mb-2 w-fit font-mono">
+          <div className="inline-block px-3 py-1 bg-[#2563eb22] border border-[#2563eb44] rounded text-[#60a5fa] text-xs font-semibold w-fit">
             Zambia&apos;s Digital Trust &amp; Secure Systems Partner
           </div>
 
@@ -68,7 +34,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
             <button
               onClick={() => onNavigate("quote")}
-              className="px-8 py-4 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold rounded shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all flex items-center justify-center space-x-2.5 cursor-pointer"
+              className="px-8 py-4 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold rounded transition-all flex items-center justify-center space-x-2.5 cursor-pointer"
             >
               <span>Request Free Audit</span>
               <ArrowRight className="w-4 h-4 text-white" />
@@ -82,128 +48,42 @@ export default function Hero({ onNavigate }: HeroProps) {
             </button>
           </div>
 
-          {/* Quick Metrics */}
+          {/* Quick Facts */}
           <div className="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-3 gap-6 font-sans">
             <div>
               <div className="font-display font-bold text-3xl text-white leading-none">Founder-Led</div>
               <div className="text-xs text-slate-400 mt-1.5 font-medium">Structured Functional Roles</div>
             </div>
             <div>
-              <div className="font-display font-bold text-3xl text-white leading-none">98.2%</div>
-              <div className="text-xs text-slate-400 mt-1.5 font-medium">NGO Simulation Retainment</div>
+              <div className="font-display font-bold text-3xl text-white leading-none">5</div>
+              <div className="text-xs text-slate-400 mt-1.5 font-medium">Functional Departments</div>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <div className="font-display font-bold text-3xl text-[#2563eb] leading-none">A+ SSL</div>
-              <div className="text-xs text-slate-400 mt-1.5 font-medium">Production Hardening Mark</div>
+              <div className="font-display font-bold text-3xl text-[#2563eb] leading-none">4</div>
+              <div className="text-xs text-slate-400 mt-1.5 font-medium">Institution Types Served</div>
             </div>
           </div>
         </div>
 
-        {/* Right Hand Side: Dynamic interactive security sandbox console */}
+        {/* Right Hand Side: What we deliver */}
         <div className="lg:col-span-5 relative w-full h-full max-w-lg mx-auto">
-          <div className="relative bg-[#0f1720] rounded-2xl border border-[#2563eb66] shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden font-mono text-[11px] leading-relaxed text-slate-300">
-            {/* Console Header */}
-            <div className="bg-[#0b0f14] px-4 py-3 border-b border-[#2563eb33] flex justify-between items-center">
-              <div className="flex items-center space-x-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                <span className="text-slate-400 font-bold ml-1.5 text-[9px] tracking-wider uppercase">Sandbox Assessment V2</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Server className="w-3.5 h-3.5 text-[#2563eb]" />
-                <span className="text-[10px] text-slate-400 font-semibold uppercase">SECURE-PORT</span>
-              </div>
+          <div className="bg-[#0f1720] rounded-2xl border border-white/10 p-6 md:p-8">
+            <div className="text-xs font-semibold text-[#60a5fa] uppercase tracking-wide mb-5">
+              What We Deliver
             </div>
-
-            {/* Console Body */}
-            <div className="p-5 flex flex-col space-y-4 min-h-[300px] justify-between">
-              {scanState === "IDLE" && (
-                <div className="flex flex-col items-center justify-center text-center py-8 space-y-4">
-                  <div className="w-14 h-14 rounded-full bg-[#2563eb22] border border-[#2563eb44] flex items-center justify-center text-[#2563eb] animate-pulse">
-                    <ShieldCheck className="w-7 h-7" />
+            <ul className="space-y-4">
+              {DELIVERABLES.map((item) => (
+                <li key={item.label} className="flex items-center space-x-3.5">
+                  <div className="bg-[#2563eb]/15 border border-[#2563eb44] text-[#60a5fa] p-2 rounded-lg shrink-0">
+                    <item.icon className="w-4 h-4" />
                   </div>
-                  <div>
-                    <h2 className="font-display font-bold text-sm text-white">Shadow Sandbox Scan</h2>
-                    <p className="text-[10px] text-slate-400 max-w-[240px] mt-1.5 leading-relaxed">
-                      Verify your public web endpoints alignment. Click below to execute local compliance audit.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setScanState("SCANNING")}
-                    className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-5 py-2.5 rounded text-[10px] font-bold cursor-pointer flex items-center space-x-1.5 shadow-[0_0_15px_#2563eb] transition-all"
-                  >
-                    <RefreshCw className="w-3.5 h-3.5" />
-                    <span>Run Security Handshake</span>
-                  </button>
-                </div>
-              )}
-
-              {scanState === "SCANNING" && (
-                <div className="flex flex-col space-y-3">
-                  <div className="flex items-center justify-between text-[10px] bg-[#0b0f14] p-2 rounded border border-[#2563eb33]">
-                    <span className="font-bold text-[#2563eb] animate-pulse-ring">AUDITING CORE DIRECTIVES...</span>
-                    <span>{scanProgress}%</span>
-                  </div>
-                  
-                  {/* Progress bar */}
-                  <div className="w-full bg-[#1e293b] rounded-full h-1.5 overflow-hidden">
-                    <div 
-                      className="bg-[#2563eb] h-full rounded-full transition-all duration-300 shadow-[0_0_8px_#2563eb]" 
-                      style={{ width: `${scanProgress}%` }}
-                    ></div>
-                  </div>
-
-                  <div className="space-y-1.5 text-slate-400 text-[10px] mt-2 max-h-[140px] overflow-y-auto">
-                    {analyzedTargets.map((target, idx) => (
-                      <div key={idx} className="flex items-center space-x-2 text-slate-300">
-                        <span className="text-emerald-400 font-bold">✔</span>
-                        <span className="text-slate-400 font-mono text-[9.5px]">{target}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {scanState === "SECURE" && (
-                <div className="flex flex-col space-y-4">
-                  <div className="bg-emerald-950/20 border border-emerald-800/40 p-3 rounded-lg flex items-start space-x-3">
-                    <div className="bg-emerald-500/20 p-1 rounded text-emerald-400 mt-0.5">
-                      <ShieldCheck className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h2 className="font-bold text-white text-[11px] leading-tight flex items-center space-x-2">
-                        <span>Handshake Compliant</span>
-                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1 rounded text-[8px] font-mono">PASS</span>
-                      </h2>
-                      <p className="text-[9.5px] text-slate-400 mt-1 leading-normal">
-                        Your sandbox handshake validated successfully. Form sanitization, parameterized structures, and secured Express channels are 100% active.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-1 bg-[#0b0f14]/80 p-2.5 rounded border border-[#2563eb33] max-h-[120px] overflow-y-auto">
-                    {testAttackVectors.map((target, idx) => (
-                      <div key={idx} className="flex items-center justify-between text-[9px] text-slate-400">
-                        <span className="truncate">{target}</span>
-                        <span className="text-emerald-400 font-bold ml-2">PASS</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() => setScanState("IDLE")}
-                    className="text-slate-400 hover:text-white transition-all text-center text-[10px] hover:underline"
-                  >
-                    Reset Security Diagnostic Sandbox
-                  </button>
-                </div>
-              )}
-
-              {/* Console Footer */}
-              <div className="border-t border-[#2563eb1a] pt-3 flex items-center justify-between text-[9px] text-slate-400">
-                <span>ENCRYPTION CLIENT: SHA-256</span>
-                <span>STATUS: SECURE CONTEXT</span>
+                  <span className="text-sm text-slate-200 font-medium">{item.label}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 pt-5 border-t border-white/10">
+              <div className="text-xs text-slate-400 leading-relaxed">
+                Serving government offices, NGOs, schools, and universities across Zambia and Africa.
               </div>
             </div>
           </div>

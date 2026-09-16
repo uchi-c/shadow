@@ -1,7 +1,10 @@
-import React from "react";
-import { ShieldAlert, Scaling, HeartHandshake, Swords, ShieldCheck, Mail, Phone, ExternalLink, Boxes, BrainCircuit, FlaskConical, GraduationCap } from "lucide-react";
+import React, { lazy, Suspense } from "react";
+import { ShieldAlert, Scaling, HeartHandshake, Swords, ShieldCheck, Mail, Phone, ExternalLink, Boxes, BrainCircuit, FlaskConical, GraduationCap, PlayCircle } from "lucide-react";
 import Hover3DLogo from "./Hover3DLogo";
+import ChunkErrorBoundary from "./ChunkErrorBoundary";
 import uchiChinyamaPhoto from "../assets/images/uchi_chinyama_founder_portrait.jpg";
+
+const VideoPresenter = lazy(() => import("./VideoPresenter"));
 
 export default function About() {
   const departments = [
@@ -133,6 +136,19 @@ export default function About() {
             </div>
           </div>
 
+        </div>
+
+        {/* Optional overview video — not on the forced homepage path */}
+        <div className="mt-20 space-y-6">
+          <div className="flex items-center space-x-2 text-[10px] font-mono text-[#60a5fa] tracking-widest uppercase">
+            <PlayCircle className="w-4 h-4 text-[#2563eb]" />
+            <span>Watch the overview</span>
+          </div>
+          <ChunkErrorBoundary reloadOnChunkError={false} fallback={null}>
+            <Suspense fallback={null}>
+              <VideoPresenter />
+            </Suspense>
+          </ChunkErrorBoundary>
         </div>
 
         {/* Section 2: Founder & Lead Strategist (Corporate Profile with Image 1 representation) */}

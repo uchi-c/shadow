@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Shield, Sparkles, Phone, ArrowUpRight, CheckCircle, Keyboard, PlayCircle, Layers } from "lucide-react";
+import { Sparkles, ArrowUpRight, Keyboard, Layers } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -12,9 +12,7 @@ import useSEO from "./lib/useSEO";
 
 // Code-split the heavier, navigation-gated views so they are not in the initial
 // bundle. AdminPanel in particular drags in @supabase/supabase-js, which the
-// public site never needs on first paint. FaultyTerminal pulls in `ogl`
-// (WebGL), so it stays split out too.
-const FaultyTerminal = lazy(() => import("./components/FaultyTerminal"));
+// public site never needs on first paint.
 const Services = lazy(() => import("./components/Services"));
 const About = lazy(() => import("./components/About"));
 const CaseStudies = lazy(() => import("./components/CaseStudies"));
@@ -22,7 +20,6 @@ const SecurityTools = lazy(() => import("./components/SecurityTools"));
 const Products = lazy(() => import("./components/Products"));
 const Academy = lazy(() => import("./components/Academy"));
 const QuoteForm = lazy(() => import("./components/QuoteForm"));
-const VideoPresenter = lazy(() => import("./components/VideoPresenter"));
 const AdminPanel = lazy(() => import("./components/AdminPanel"));
 
 // Minimal, theme-matched fallback while a split chunk loads.
@@ -105,92 +102,30 @@ export default function App() {
             className="w-full"
           >
             {activeSection === "home" && (
-              <div className="space-y-24">
+              <div className="space-y-16">
                 {/* Hero Deck */}
                 <Hero onNavigate={handleNavigate} />
 
-                {/* Faulty-terminal signal band (React Bits, WebGL) — a decorative
-                    "live threat surface" strip. Lazy-mounted; degrades gracefully. */}
+                {/* Quick links */}
                 <div className="max-w-7xl mx-auto px-4 md:px-10">
-                  <div className="relative h-[300px] md:h-[340px] rounded-2xl overflow-hidden border border-[#22C55E]/25 shadow-[0_0_40px_rgba(34,197,94,0.08)]">
-                    <div className="absolute inset-0">
-                      <ChunkErrorBoundary reloadOnChunkError={false} fallback={null}>
-                        <Suspense fallback={null}>
-                          <FaultyTerminal
-                            tint="#22C55E"
-                            brightness={0.62}
-                            scale={1.6}
-                            gridMul={[2, 1]}
-                            digitSize={1.2}
-                            scanlineIntensity={0.5}
-                            glitchAmount={1}
-                            flickerAmount={0.8}
-                            curvature={0.12}
-                            mouseReact
-                            mouseStrength={0.4}
-                            pageLoadAnimation
-                          />
-                        </Suspense>
-                      </ChunkErrorBoundary>
-                    </div>
-                    {/* Scrim for legibility of the overlaid copy */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#070a0f] via-[#070a0f]/50 to-[#070a0f]/10 pointer-events-none"></div>
-                    <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8">
-                      <div className="text-[10px] font-mono text-[#22C55E] tracking-widest uppercase flex items-center space-x-2">
-                        <Shield className="w-4 h-4" />
-                        <span>Live Threat Surface</span>
-                      </div>
-                      <h3 className="font-display font-medium text-xl md:text-3xl text-white mt-1.5 max-w-xl">
-                        We watch the shadows, so you don&apos;t have to.
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                  <div className="bg-[#0f1720] border border-white/10 rounded-2xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
 
-                {/* Interactive accessible Video Presentation Deck */}
-                <div id="mission-video" className="max-w-7xl mx-auto px-4 md:px-10 space-y-8">
-                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/5 pb-4">
-                    <div className="space-y-1">
-                      <div className="text-[10px] font-mono text-[#60a5fa] tracking-widest uppercase flex items-center space-x-2">
-                        <PlayCircle className="w-4 h-4 text-[#2563eb]" />
-                        <span>Interactive Broadcast</span>
-                      </div>
-                      <h3 className="font-display font-medium text-xl md:text-3xl text-white">
-                        Official Slide Presentation & Mission Loop
-                      </h3>
-                    </div>
-                    <p className="text-slate-400 text-xs max-w-sm font-sans leading-relaxed">
-                      Press play to review the visual slides summarizing how Shadow Root drives cyber defense across civic and nonprofit sectors in Zambia.
-                    </p>
-                  </div>
-                  
-                  <div className="py-4">
-                    <Suspense fallback={<ViewFallback />}>
-                      <VideoPresenter />
-                    </Suspense>
-                  </div>
-                </div>
-
-                {/* Cyber Matrix Quick Stats & Portal Preview links */}
-                <div className="max-w-7xl mx-auto px-4 md:px-10">
-                  <div className="bg-gradient-to-r from-[#0f1720] to-[#0b0f14] border border-[#2563eb33] rounded-2xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
-                    
-                    <div 
+                    <div
                       className="space-y-3 p-4 rounded-xl border border-transparent hover:border-[#2563eb22] transition-colors"
                       tabIndex={0}
                       aria-label="Direct consultation shortcut: Click get secure to book a review."
                     >
-                      <div className="text-[#60a5fa] font-mono text-xs font-bold uppercase tracking-wider flex items-center space-x-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>Direct On-site Help</span>
+                      <div className="text-[#60a5fa] text-xs font-semibold uppercase tracking-wide flex items-center space-x-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        <span>Direct Consultation</span>
                       </div>
-                      <h4 className="font-display font-bold text-white text-sm">Need active incident oversight?</h4>
+                      <h2 className="font-display font-bold text-white text-sm">Talk to our team</h2>
                       <p className="text-xs text-slate-400 leading-relaxed">
-                        Uchi Chinyama takes direct WhatsApp consultation inquiries for scaling start-ups and donor NGOs.
+                        Reach the Shadow Root team directly for a consultation on your institution&apos;s security or workflow needs.
                       </p>
-                      <button 
+                      <button
                         onClick={() => handleNavigate("quote")}
-                        className="text-xs font-mono text-[#60a5fa] hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#2563eb] rounded px-1"
+                        className="text-xs font-semibold text-[#60a5fa] hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#2563eb] rounded px-1"
                         aria-label="Navigate to contact and quote form"
                       >
                         <span>Request support</span>
@@ -198,22 +133,22 @@ export default function App() {
                       </button>
                     </div>
 
-                    <div 
+                    <div
                       className="space-y-3 p-4 rounded-xl border border-transparent hover:border-[#2563eb22] transition-colors"
                       tabIndex={0}
-                      aria-label="Defensive capabilities summary shortcut. Review our custom phishing parameters."
+                      aria-label="Services summary shortcut."
                     >
-                      <div className="text-teal-400 font-mono text-xs font-bold uppercase tracking-wider flex items-center space-x-2">
+                      <div className="text-teal-400 text-xs font-semibold uppercase tracking-wide flex items-center space-x-2">
                         <Layers className="w-4 h-4" />
-                        <span>TACTICAL CODING</span>
+                        <span>Capabilities</span>
                       </div>
-                      <h4 className="font-display font-bold text-white text-sm">Pragmatic Defense Systems</h4>
+                      <h2 className="font-display font-bold text-white text-sm">Secure systems, built right</h2>
                       <p className="text-xs text-slate-400 leading-relaxed">
-                        We build hardened and escrowed React, Next, and Express portals under zero-trust database principles.
+                        Hardened React, Next.js, and Express applications built with input validation, security headers, and rate limiting from day one.
                       </p>
-                      <button 
+                      <button
                         onClick={() => handleNavigate("services")}
-                        className="text-xs font-mono text-teal-400 hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#2563eb] rounded px-1"
+                        className="text-xs font-semibold text-teal-400 hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#2563eb] rounded px-1"
                         aria-label="Navigate to services view"
                       >
                         <span>Learn solutions</span>
@@ -221,22 +156,22 @@ export default function App() {
                       </button>
                     </div>
 
-                    <div 
+                    <div
                       className="space-y-3 p-4 rounded-xl border border-transparent hover:border-[#2563eb22] transition-colors"
                       tabIndex={0}
-                      aria-label="Security education outreach summary."
+                      aria-label="Leadership and structure summary."
                     >
-                      <div className="text-[#60a5fa] font-mono text-xs font-bold uppercase tracking-wider flex items-center space-x-2">
+                      <div className="text-[#60a5fa] text-xs font-semibold uppercase tracking-wide flex items-center space-x-2">
                         <Sparkles className="w-4 h-4 text-[#2563eb]" />
                         <span>Leadership & Story</span>
                       </div>
-                      <h4 className="font-display font-bold text-white text-sm">Founder-Led, Institution-Ready</h4>
+                      <h2 className="font-display font-bold text-white text-sm">Founder-Led, Institution-Ready</h2>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         Read about Founder &amp; Lead Strategist Uchi Chinyama and how Shadow Root is structured for disciplined growth.
                       </p>
-                      <button 
+                      <button
                         onClick={() => handleNavigate("about")}
-                        className="text-xs font-mono text-[#60a5fa] hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#2563eb] rounded px-1"
+                        className="text-xs font-semibold text-[#60a5fa] hover:text-white flex items-center space-x-1 pt-1.5 focus:outline-none focus:ring-1 focus:ring-[#2563eb] rounded px-1"
                         aria-label="Navigate to about and leadership page"
                       >
                         <span>Meet our team</span>
@@ -247,12 +182,12 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Secondary Assistive Accessibility hotkey instructions overlay */}
+                {/* Accessibility notice */}
                 <div className="max-w-7xl mx-auto px-4 md:px-10">
-                  <div className="border border-[#2563eb1a] bg-[#0f1720]/30 rounded-xl p-4 flex items-center space-x-3 text-slate-400 text-xs font-sans">
+                  <div className="border border-white/10 bg-[#0f1720]/30 rounded-xl p-4 flex items-center space-x-3 text-slate-400 text-xs font-sans">
                     <Keyboard className="w-5 h-5 text-[#2563eb] shrink-0" />
                     <p>
-                      <strong>Accessibility Notice:</strong> This defensive portal conforms strictly to WCAG AA benchmarks. You can jump directly to interactive components, skip blocks, and use keyboard standard shortcuts for direct element control.
+                      This site follows WCAG AA accessibility guidelines, including skip links and full keyboard navigation.
                     </p>
                   </div>
                 </div>
