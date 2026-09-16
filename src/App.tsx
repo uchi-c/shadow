@@ -248,9 +248,9 @@ export default function App() {
                         <Sparkles className="w-4 h-4 text-[#2563eb]" />
                         <span>Leadership & Story</span>
                       </div>
-                      <h4 className="font-display font-bold text-white text-sm">Youth-Led Collective</h4>
+                      <h4 className="font-display font-bold text-white text-sm">Founder-Led, Institution-Ready</h4>
                       <p className="text-xs text-slate-400 leading-relaxed">
-                        Read about CEO Uchi Chinyama and how our Lusaka command hub expands.
+                        Read about Founder &amp; Lead Strategist Uchi Chinyama and how Shadow Root is structured for disciplined growth.
                       </p>
                       <button 
                         onClick={() => handleNavigate("about")}

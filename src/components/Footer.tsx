@@ -32,7 +32,7 @@ export default function Footer({ onNavigate, onOpenAdmin }: FooterProps) {
           </div>
           <p className="font-sans text-xs text-slate-400 leading-relaxed max-w-sm">
             &quot;We start in the shadows. We bring threats to light.&quot; <br />
-            Our mission is providing defense-grade security monitoring, simulation campaigns, full-stack React safety audits, and unhackable server-side AI concierges to local businesses across Southern Africa.
+            Building digital trust for the next era of institutions — secure systems, structured workflows, and institutional intelligence for government, NGOs, schools, and universities across Zambia and Africa.
           </p>
 
           <div className="bg-[#0f1720]/80 border border-[#2563eb33] p-3 rounded-xl flex items-center space-x-2 w-fit">
@@ -94,7 +94,7 @@ export default function Footer({ onNavigate, onOpenAdmin }: FooterProps) {
                   className="flex items-center space-x-2 text-slate-300 hover:text-white transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#2563eb] shrink-0" />
-                  <span>CEO Uchi: +260 97 950 1830</span>
+                  <span>Founder Uchi: +260 97 950 1830</span>
                 </a>
                 <a
                   href="https://wa.me/260979501830"

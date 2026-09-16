@@ -7,34 +7,46 @@ interface SEOMetadata {
 
 const SECTION_SEO_MAP: Record<string, SEOMetadata> = {
   home: {
-    title: "Shadow Root Security Technologies | Lusaka, Zambia Cybersecurity Force",
-    description: "Shadow Root Security Technologies is Zambia's leading youth-led cybersecurity & secure React developer in Lusaka. We provide cyber defense audits, mobile wallet simulations, NGO hardening, and high-security web architectures.",
+    title: "Shadow Root Security Technologies | Building Digital Trust for Institutions",
+    description: "Shadow Root is a Zambia-based digital trust and secure infrastructure company building practical AI, secure systems, and institutional resilience tools for government, NGOs, schools, and universities across Africa.",
   },
   services: {
-    title: "Cybersecurity Capabilities & Phishing Audits | Shadow Root Zambia",
-    description: "Explore our defense-grade capabilities in Lusaka, Zambia: credential phishing drills, mobile money replicas, database security audits (OWASP), and zero-trust React web engineering.",
+    title: "Phishing Simulation, AI Workflow Automation & Secure Systems | Shadow Root",
+    description: "Structured services for institutions: phishing simulation and user-risk testing, AI workflow automation, secure systems development, and strategic digital trust advisory — in Lusaka, Zambia and across Africa.",
+  },
+  products: {
+    title: "URUU & the Shadow Root Ecosystem | Shadow Root Security Technologies",
+    description: "URUU is Shadow Root's flagship secure workflow and intelligence platform, incubated for institutional reporting, visibility, and trust-sensitive processes — alongside Kuma AI and other tools in active development.",
+  },
+  academy: {
+    title: "Shadow Root Academy | Cyber Skills Training for Africa",
+    description: "Structured, hands-on cybersecurity learning tracks for schools, universities, and institutions across Southern Africa — from fundamentals to job-ready defensive skills.",
+  },
+  tools: {
+    title: "Free Security Tools | Shadow Root Security Technologies",
+    description: "Free, in-browser security tools from Shadow Root: password strength analysis, phishing email detection, a security maturity assessment, and a live CVE explorer.",
   },
   about: {
-    title: "Founder Uchi Chinyama & Cyber Mission | Shadow Root Zambia",
-    description: "Discover our youth-led security force scaling from Lusaka. Founded by Uchi Chinyama, Shadow Root provides ethical security audits for donor groups, NGOs, and Zambian startups.",
+    title: "Founder & Lead Strategist Uchi Chinyama | Shadow Root Zambia",
+    description: "Shadow Root is a founder-led digital trust and secure infrastructure company based in Lusaka, Zambia, led by Founder & Lead Strategist Uchi Chinyama, with structured functional roles across product, AI, governance, and research.",
   },
   case: {
-    title: "Completed Cybersecurity Missions & Audits | Shadow Root Zambia",
-    description: "Review case studies of our completed cyber missions: secure seed distribution databases, mobile payment simulations, and educational digital trust infrastructures.",
+    title: "Case Studies: Digital Trust & Secure Systems Work | Shadow Root Zambia",
+    description: "Review completed engagements where Shadow Root strengthened digital trust, workflows, and secure systems for institutions, NGOs, and schools in Zambia.",
   },
   quote: {
-    title: "Request a Cyber Defense Audit & Consultancy | Shadow Root",
-    description: "Get a tactical security review quote in Zambia. Partner with CEO Uchi Chinyama's team to scan inputs, perform phishing simulation testing, and harden your servers.",
+    title: "Request a Consultation | Shadow Root Security Technologies",
+    description: "Get a tailored proposal from Shadow Root: phishing simulation, AI workflow automation, secure systems development, or strategic digital trust advisory for your institution.",
   },
 };
 
 export default function useSEO(activeSection: string) {
   useEffect(() => {
     const seo = SECTION_SEO_MAP[activeSection] || SECTION_SEO_MAP.home;
-    
+
     // Set document title
     document.title = seo.title;
-    
+
     // Find or create description meta tag
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {

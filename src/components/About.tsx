@@ -37,7 +37,7 @@ export default function About() {
             Corporate Identity & Leadership
           </div>
           <h1 className="font-display font-bold text-3xl md:text-5xl text-white tracking-tight leading-tight">
-            Youth-led cybersecurity force scaling across Southern Africa
+            Founder-led digital trust and secure infrastructure for institutions
           </h1>
         </div>
 
@@ -52,11 +52,11 @@ export default function About() {
             </h2>
 
             <p className="text-sm text-slate-300 leading-relaxed">
-              Shadow Root Security Technologies started in Lusaka as an ambitious initiative founded by <strong>Uchi Chinyama</strong>. Frustrated by seeing local NGOs, schools, and growing startup brands fall victim to credential phishing scams and poor coding practices because high-end corporate penetration auditing was prohibitively expensive, they decided to harden their region.
+              Shadow Root Security Technologies is a Lusaka-based digital trust and secure infrastructure company, founded and led by <strong>Uchi Chinyama</strong>. We started by seeing local NGOs, schools, and growing institutions fall victim to credential phishing scams and poor coding practices because high-end corporate security auditing was prohibitively expensive — and set out to close that gap.
             </p>
 
             <p className="text-sm text-slate-300 leading-relaxed">
-              Today, Shadow Root is <strong>scaling up from 2 to 10 experienced security specialists and developers</strong>. We operate with standard, plain-spoken diagnostics that non-technical managers and agricultural donor groups appreciate. Because of our local threat context knowledge, we build highly reliable React frontends, customized mobile money replica simulations, and unhackable database security retainers.
+              Today, Shadow Root builds practical, trust-sensitive systems for government, NGOs, schools, and universities across Africa — combining secure infrastructure, structured workflow automation, and plain-spoken diagnostics that non-technical managers and donor-funded teams can act on with confidence.
             </p>
 
             {/* Core Pillars Grid */}
@@ -64,13 +64,13 @@ export default function About() {
               <div 
                 className="bg-[#0f1720]/70 border border-[#2563eb33] p-5 rounded-xl hover:shadow-[0_0_15px_rgba(37,99,235,0.1)] focus-within:ring-2 focus-within:ring-[#2563eb] transition-all"
                 tabIndex={0}
-                aria-label="Core pillar: Scaling Local Talent. Our expanding cohort of security professionals represents the future of Zambian tech sovereignty."
+                aria-label="Core pillar: Structured Growth. Shadow Root is built on disciplined, founder-led execution with clear functional roles across product, security, and governance."
               >
                 <div className="bg-[#2563eb22] text-[#60a5fa] p-2 rounded-lg w-fit mb-3 border border-[#2563eb44]">
                   <Scaling className="w-5 h-5" />
                 </div>
-                <h3 className="font-display font-bold text-white text-sm">Scaling Local Talent</h3>
-                <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">Our expanding cohort of security professionals represents the future of Zambian tech sovereignty.</p>
+                <h3 className="font-display font-bold text-white text-sm">Structured Growth</h3>
+                <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">Shadow Root is built on disciplined, founder-led execution with clear functional roles across product, security, and governance.</p>
               </div>
 
               <div 
@@ -102,44 +102,44 @@ export default function About() {
 
         </div>
 
-        {/* Section 2: Meet the CEO & Co-Leaders (Corporate Profile with Image 1 representation) */}
+        {/* Section 2: Founder & Lead Strategist (Corporate Profile with Image 1 representation) */}
         <div className="mt-28 space-y-12">
           <div className="flex flex-col space-y-2 border-b border-white/5 pb-4">
             <h2 className="font-display font-bold text-2xl md:text-3xl text-white">
-              Secured Leadership & Founders
+              Founder-Led, Structured for Growth
             </h2>
             <p className="text-xs text-slate-400 max-w-md">
-              Meet the key engineers and security advocates executing tactical defenses in Zambia.
+              Shadow Root is led by a single founder with clear functional roles and strategic collaborators across product, security, and governance.
             </p>
           </div>
 
           <div className="flex justify-center">
-            
-            {/* CEO Profile Card: Uchi Chinyama */}
-            <div 
+
+            {/* Founder Profile Card: Uchi Chinyama */}
+            <div
               className="bg-[#0f1720]/70 border border-[#2563eb44] rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row gap-6 hover:border-[#2563eb] hover:shadow-[0_0_20px_rgba(37,99,235,0.15)] transition-all focus-within:ring-2 focus-within:ring-[#2563eb] max-w-2xl w-full"
               tabIndex={0}
-              aria-label="Profile of Uchi Chinyama, Chief Executive Officer and Founder of Shadow Root Security Technologies."
+              aria-label="Profile of Uchi Chinyama, Founder and Lead Strategist of Shadow Root Security Technologies."
             >
-              
-              {/* Profile Image of CEO Uchi Chinyama */}
+
+              {/* Profile Image of Founder Uchi Chinyama */}
               <div
                 className="w-44 h-60 rounded-xl bg-slate-950 border border-[#2563eb55] shrink-0 overflow-hidden relative group mx-auto sm:mx-0"
                 role="img"
-                aria-label="Professional portrait of CEO Uchi Chinyama in a suit outside Shadow Root headquarters"
+                aria-label="Professional portrait of Founder Uchi Chinyama in a suit outside Shadow Root headquarters"
               >
                 {/* Simulated Monitor Grid Background (blue bars & maps) */}
                 <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(11,15,20,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(11,15,20,0.5)_1px,transparent_1px)] bg-[size:10px_10px] z-20 pointer-events-none"></div>
                 <div className="absolute top-2 left-2 w-32 h-1 bg-cyan-500/20 rounded z-20 pointer-events-none"></div>
                 
-                {/* High Contrast Photograph of CEO */}
+                {/* High Contrast Photograph of Founder */}
                 <img
                   src={uchiChinyamaPhoto}
-                  alt="Uchi Chinyama, Founder and Chief Executive Officer of Shadow Root Security Technologies"
+                  alt="Uchi Chinyama, Founder and Lead Strategist of Shadow Root Security Technologies"
                   className="w-full h-full object-cover object-top relative z-10 filter brightness-95 contrast-[1.05]"
                   referrerPolicy="no-referrer"
                 />
-                
+
                 {/* Globe Map trace decoration */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" viewBox="0 0 160 192">
                   <circle cx="110" cy="50" r="28" fill="none" stroke="rgba(0,240,255,0.08)" strokeWidth="1" strokeDasharray="3,3" />
@@ -147,7 +147,7 @@ export default function About() {
 
                 {/* Stitched 'Shadow Root' Suit pocket label graphic */}
                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-[#2563eb]/25 border border-[#2563eb55] rounded px-1.5 py-0.5 text-[7px] font-mono uppercase text-teal-400 font-bold z-20">
-                  Shadow Root CEO
+                  Shadow Root Founder
                 </div>
               </div>
 
@@ -155,13 +155,13 @@ export default function About() {
               <div className="flex flex-col justify-between space-y-4">
                 <div className="space-y-1.5">
                   <span className="text-[9px] font-mono font-bold leading-none uppercase tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full w-fit block">
-                    FOUNDER &amp; CEO
+                    FOUNDER &amp; LEAD STRATEGIST
                   </span>
                   <h3 className="font-display font-black text-xl text-white leading-tight">
                     Uchi Chinyama
                   </h3>
                   <p className="text-xs text-slate-400 font-sans leading-relaxed">
-                    Youth-led cybersecurity driver, security researcher, and lead web defensive compliance auditor. Dedicated to reinforcing the local NGO ecosystem.
+                    Founder and Lead Strategist, security researcher, and lead web defensive compliance auditor. Dedicated to building digital trust for institutions across Africa.
                   </p>
                 </div>
 
@@ -181,7 +181,7 @@ export default function About() {
                   <a
                     href="mailto:uchichinyama@gmail.com"
                     className="bg-[#2563eb]/20 hover:bg-[#2563eb] border border-[#2563eb66] text-white px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all flex items-center space-x-1"
-                    title="Send secure email to CEO Uchi Chinyama"
+                    title="Send secure email to Founder Uchi Chinyama"
                   >
                     <Mail className="w-3.5 h-3.5" />
                     <span>Email Uchi</span>
@@ -191,7 +191,7 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-emerald-500/20 hover:bg-emerald-500 border border-emerald-500/40 text-emerald-300 hover:text-white px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all flex items-center space-x-1"
-                    title="Open WhatsApp message chat with CEO Uchi Chinyama"
+                    title="Open WhatsApp message chat with Founder Uchi Chinyama"
                   >
                     💬 Chat WA
                   </a>

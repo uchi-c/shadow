@@ -11,12 +11,12 @@ export interface SectionFixture {
 // navigation, accessibility, and responsive-overflow tests all exercise the
 // exact same set of pages instead of drifting out of sync with each other.
 export const SECTIONS: SectionFixture[] = [
-  { label: "Home", target: "home", expectText: "We start in the" },
+  { label: "Home", target: "home", expectText: "Building digital trust for the" },
   { label: "Services", target: "services", expectText: "Comprehensive services for security" },
   { label: "Products", target: "products", expectText: "Products in the making" },
   { label: "Academy", target: "academy", expectText: "Training Africa" },
   { label: "Tools", target: "tools", expectText: "Test your defenses" },
   { label: "Case Studies", target: "case", expectText: "Real-world defense outcomes" },
-  { label: "About", target: "about", expectText: "Youth-led cybersecurity force" },
+  { label: "About", target: "about", expectText: "Founder-led digital trust" },
   { label: "Quote", target: "quote", expectText: "Book a secure consultation" }
 ];

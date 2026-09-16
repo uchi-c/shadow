@@ -132,7 +132,7 @@ export default function QuoteForm({ prefilledService = "", prefilledMessage = ""
             Book a secure consultation
           </h1>
           <p className="text-sm text-slate-400">
-            Tell us about your organization or project parameters. CEO Uchi Chinyama will securely review your case metrics and respond within business hours.
+            Tell us about your organization or project parameters. Founder Uchi Chinyama will securely review your case metrics and respond within business hours.
           </p>
         </div>
 

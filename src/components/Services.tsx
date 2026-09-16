@@ -72,21 +72,21 @@ const SERVICE_DETAILS: Record<string, ServiceDetail> = {
   },
   ai_workflows: {
     process: [
-      "Use-case mapping — where AI adds real value (support, leads)",
+      "Process mapping — find the weak manual steps (approvals, reporting, routing, admin)",
       "Architecture — server-side, key-hidden design (like this site's concierge)",
-      "RAG setup — ground answers in your own knowledge base",
+      "RAG setup — ground automation in your own institutional data",
       "Integration — web widget and/or WhatsApp Business API",
       "Safety — escalation routing, PII-safe logging, rate limits",
       "Launch & tune — monitor and refine over time"
     ],
     deliverables: [
-      "Secure server-side AI concierge",
+      "Automated approval, reporting & routing workflows",
       "Retrieval-augmented answers grounded in your content",
       "WhatsApp Business API integration (optional)",
-      "Human-takeover routing + lead capture"
+      "Human-takeover routing + audit trail"
     ],
     technologies: ["Google Gemini", "RAG", "Express (hidden keys)", "WhatsApp Business API"],
-    pricing: "Scoped to integration complexity and volume. Assessed in a free consultation."
+    pricing: "Scoped to process complexity and volume. Assessed in a free consultation."
   }
 };
 
@@ -136,12 +136,12 @@ export default function Services({ onSelectService }: ServicesProps) {
     },
     {
       id: "ai_workflows",
-      title: "Secure AI Integration (Gemini & WhatsApp)",
-      description: "Server-side secure virtual concierges and automated chatbots that safely enclose access keys and boost leads.",
-      longDescription: "We design AI widgets powered by Google Gemini (like this site's concierge) and WhatsApp business integrations. All AI workflows are deployed inside secure, client-hidden servers to prevent authorization key leaks. It provides customer interactions and leads scheduling 24/7.",
+      title: "AI Workflow Automation",
+      description: "We fix weak manual processes — approvals, reporting, routing, and admin handling — for institutions with secure, server-side AI automation.",
+      longDescription: "Government offices, NGOs, schools, and universities lose time to slow approvals, manual reporting, and ad-hoc routing. Shadow Root builds AI-driven workflow automation, powered by Google Gemini (like this site's concierge), deployed inside secure, client-hidden servers so institutional data and access keys stay protected.",
       icon: "BrainCircuit",
       features: [
-        "Google Gemini Flash server deployment",
+        "Automated approvals & reporting pipelines",
         "WhatsApp Business API connections",
         "PII-safe conversation histories logging",
         "Intelligent human-takeover routers"
