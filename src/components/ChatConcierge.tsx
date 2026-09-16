@@ -33,7 +33,7 @@ export default function ChatConcierge() {
       {
         id: "msg_greet",
         role: "model",
-        text: "Greetings, visitor. I am Shadow, the 24/7 Virtual Concierge for Shadow Root Security Technologies. \n\nI can outline our phishing simulations, custom React web builds, penetration audits, and estimated retainer models. How can I protect your digital systems today?",
+        text: "Hi, I'm Shadow, the virtual assistant for Shadow Root Security Technologies. \n\nI can answer questions about phishing simulations, secure web development, penetration audits, and AI workflow automation. How can I help?",
         timestamp: Date.now()
       }
     ]);
@@ -80,7 +80,7 @@ export default function ChatConcierge() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "A secure connection timeout occurred.");
+        throw new Error(result.error || "Something went wrong. Please try again.");
       }
 
       const botMsg: ChatMessage = {
@@ -94,7 +94,7 @@ export default function ChatConcierge() {
 
       if (result.isEscalated) {
         setIsEscalated(true);
-        setEscalationReason(result.escalationReason || "Human-takeover condition triggered.");
+        setEscalationReason(result.escalationReason || "A team member will follow up.");
         // Prompt for details if not already saved
         if (!infoSaved) {
           setIsCapturingInfo(true);
@@ -105,7 +105,7 @@ export default function ChatConcierge() {
       const errorMsg: ChatMessage = {
         id: `msg_err_${Date.now()}`,
         role: "model",
-        text: err.message || "My network gateway timed out. Please contact Uchi directly via our WhatsApp/Email links.",
+        text: err.message || "That didn't go through. Please contact Uchi directly via our WhatsApp/email links.",
         timestamp: Date.now()
       };
       setMessages(prev => [...prev, errorMsg]);
@@ -138,7 +138,7 @@ export default function ChatConcierge() {
       const confirmationMsg: ChatMessage = {
         id: `msg_card_${Date.now()}`,
         role: "model",
-        text: `Thank you, ${visitorName}. Your contact credentials have been validated and compiled in our pending takeover database for Uchi. They will reach you shortly on ${visitorContact}.`,
+        text: `Thanks, ${visitorName}. We've got your details and Uchi will reach out shortly on ${visitorContact}.`,
         timestamp: Date.now()
       };
       setMessages(prev => [...prev, confirmationMsg]);
@@ -157,37 +157,32 @@ export default function ChatConcierge() {
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Open Shadow AI security concierge chat"
-          className="relative bg-slate-950 hover:bg-[#0f1720] text-white rounded-full p-4 border border-[#2563eb] flex items-center justify-center cursor-pointer shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:scale-105 transition-all group"
+          className="relative bg-slate-950 hover:bg-[#0f1720] text-white rounded-full p-4 border border-[#2563eb] flex items-center justify-center cursor-pointer hover:scale-105 transition-all group"
         >
-          {/* Glowing pulse ring */}
-          <div className="absolute inset-0 rounded-full border border-[#2563eb33] animate-pulse-ring pointer-events-none"></div>
           <MessageSquare className="w-6 h-6 text-[#60a5fa] group-hover:rotate-6 transition-all" />
-          <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1d4ed8] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#2563eb]"></span>
-          </span>
+          <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-[#2563eb]"></span>
         </button>
       )}
 
       {/* Embedded Chat Modal Panel */}
       {isOpen && (
-        <div className="w-[360px] sm:w-[410px] h-[580px] bg-[#0b0f14]/95 rounded-2xl border border-[#2563eb44] shadow-2xl flex flex-col justify-between overflow-hidden">
-          
+        <div className="w-[360px] sm:w-[410px] h-[580px] bg-[#0b0f14]/95 rounded-2xl border border-white/10 flex flex-col justify-between overflow-hidden">
+
           {/* Header Panel */}
-          <div className="bg-[#0f1720] text-white px-4.5 py-4 border-b border-[#2563eb33] flex justify-between items-center">
+          <div className="bg-[#0f1720] text-white px-4.5 py-4 border-b border-white/10 flex justify-between items-center">
             <div className="flex items-center space-x-3">
               <div className="relative">
                 <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-slate-950"></span>
-                <div className="bg-[#0b0f14] border border-[#2563eb33] p-2 rounded-xl text-[#60a5fa] flex items-center justify-center shadow-[0_0_8px_rgba(37,99,235,0.3)]">
+                <div className="bg-[#0b0f14] border border-[#2563eb33] p-2 rounded-xl text-[#60a5fa] flex items-center justify-center">
                   <Shield className="w-4 h-4" />
                 </div>
               </div>
               <div>
                 <h3 className="font-display font-black text-sm tracking-tight flex items-center">
-                  SHADOW <span className="text-[10px] bg-[#2563eb22] border border-[#2563eb44] px-1.5 py-0.5 rounded ml-2 text-[#60a5fa] font-mono uppercase font-extrabold">Online</span>
+                  Shadow <span className="text-[10px] bg-[#2563eb22] border border-[#2563eb44] px-1.5 py-0.5 rounded ml-2 text-[#60a5fa] font-semibold">Online</span>
                 </h3>
-                <p className="text-[9px] text-slate-400 font-mono tracking-widest leading-none mt-1">
-                  SECURE CHAT CONCIERGE
+                <p className="text-[10px] text-slate-400 leading-none mt-1">
+                  Chat with our team
                 </p>
               </div>
             </div>
@@ -200,15 +195,15 @@ export default function ChatConcierge() {
             </button>
           </div>
 
-          {/* Active Escalated takeover banner if alert triggered */}
+          {/* Team-follow-up banner if triggered */}
           {isEscalated && (
-            <div className="bg-gradient-to-r from-[#2563eb22] to-transparent border-b border-[#2563eb33] px-4.5 py-2 flex items-center justify-between text-[10px] text-[#60a5fa] font-medium space-x-2 shrink-0">
+            <div className="bg-[#2563eb22] border-b border-white/10 px-4.5 py-2 flex items-center justify-between text-[10px] text-[#60a5fa] font-medium space-x-2 shrink-0">
               <div className="flex items-center space-x-2">
-                <AlertCircle className="w-3.5 h-3.5 text-[#60a5fa] animate-pulse" />
-                <span className="font-mono text-[9px] font-bold">HUMAN TAKE-OVER ESCALATION INITIATED: {escalationReason}</span>
+                <AlertCircle className="w-3.5 h-3.5 text-[#60a5fa]" />
+                <span className="font-semibold">{escalationReason}</span>
               </div>
-              <span className="bg-[#2563eb] text-white font-mono text-[8px] font-bold px-1.5 py-0.5 rounded shrink-0">
-                PENDING
+              <span className="bg-[#2563eb] text-white text-[9px] font-semibold px-1.5 py-0.5 rounded shrink-0">
+                Pending
               </span>
             </div>
           )}
@@ -243,25 +238,25 @@ export default function ChatConcierge() {
               );
             })}
 
-            {/* Simulated typing dot */}
+            {/* Typing indicator */}
             {loading && !isCapturingInfo && (
               <div className="flex items-center space-x-1.5 text-slate-400 text-xs py-2 pl-1.5">
                 <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#60a5fa]" />
-                <span className="font-mono text-[9px] uppercase tracking-widest text-[#60a5fa] font-extrabold animate-pulse">
-                  Shadow decrypting...
+                <span className="text-[#60a5fa] font-medium">
+                  Shadow is typing...
                 </span>
               </div>
             )}
 
-            {/* Dynamic Card Prompt if Escalated */}
+            {/* Contact card prompt */}
             {isCapturingInfo && (
-              <div className="bg-[#0f1720] border border-[#2563eb44] rounded-xl p-4 shadow-md font-sans text-xs space-y-3.5 border-l-4 border-l-[#2563eb]">
-                <div className="flex items-center space-x-2 text-white font-mono font-bold">
+              <div className="bg-[#0f1720] border border-[#2563eb44] rounded-xl p-4 font-sans text-xs space-y-3.5 border-l-4 border-l-[#2563eb]">
+                <div className="flex items-center space-x-2 text-white font-semibold">
                   <KeyRound className="w-4 h-4 text-[#60a5fa] shrink-0" />
-                  <span>Takeover Contact Card</span>
+                  <span>Share your contact details</span>
                 </div>
                 <p className="text-[10px] text-slate-400 leading-normal">
-                  Shadow has detected quote negotiations or complex parameters. Fill this quick card to escalate details directly to Uchi.
+                  This looks like something Uchi should follow up on directly. Leave your details and we&apos;ll reach out.
                 </p>
                 <form onSubmit={handleSaveContactDetails} className="space-y-2.5 text-white">
                   <input
@@ -283,10 +278,10 @@ export default function ChatConcierge() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold py-2 rounded text-[10px] cursor-pointer shadow-[0_0_10px_#2563eb] transition-all flex items-center justify-center space-x-1"
+                    className="w-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold py-2 rounded text-[10px] cursor-pointer transition-all flex items-center justify-center space-x-1"
                   >
                     <Check className="w-3 h-3 shrink-0" />
-                    <span>Confirm takeover credentials</span>
+                    <span>Send details</span>
                   </button>
                 </form>
               </div>
@@ -298,20 +293,20 @@ export default function ChatConcierge() {
           {/* Chat Form Control Footer */}
           <form
             onSubmit={handleSendMessage}
-            className="p-3 bg-[#0b0f14]/95 border-t border-[#2563eb33] flex items-center space-x-2"
+            className="p-3 bg-[#0b0f14]/95 border-t border-white/10 flex items-center space-x-2"
           >
             <input
               type="text"
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
-              placeholder={isCapturingInfo ? "Please fulfill the contact card first..." : "Inquire about simulations, pricing ret..."}
+              placeholder={isCapturingInfo ? "Please fill in your details first..." : "Ask about our services, pricing..."}
               disabled={loading || isCapturingInfo}
               className="flex-1 bg-[#0f1720]/90 border border-[#2563eb33] rounded-lg px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2563eb] focus:bg-[#0f1720] transition-all disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={loading || !inputMessage.trim() || isCapturingInfo}
-              className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white rounded-lg p-3 cursor-pointer transition-all disabled:opacity-50 flex items-center justify-center shadow-[0_0_10px_#2563eb]"
+              className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white rounded-lg p-3 cursor-pointer transition-all disabled:opacity-50 flex items-center justify-center"
             >
               <Send className="w-3.5 h-3.5 text-white shrink-0" />
             </button>
