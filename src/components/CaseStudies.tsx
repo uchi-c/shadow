@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FolderGit, CheckCircle, Database, HelpCircle, FileSpreadsheet, Lock } from "lucide-react";
+import { CheckCircle, Lock } from "lucide-react";
 import { CaseStudyItem } from "../types";
 
 export default function CaseStudies() {
@@ -35,8 +35,8 @@ export default function CaseStudies() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="max-w-xl mb-6 md:mb-0">
-            <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase mb-3.5">
-              Mission Deliveries
+            <div className="text-xs font-semibold uppercase tracking-wide text-[#60a5fa] mb-3.5">
+              Case Studies
             </div>
             <h1 className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight leading-tight">
               Real-world defense outcomes delivered locally
@@ -44,12 +44,12 @@ export default function CaseStudies() {
           </div>
 
           {/* Tab Selector Buttons */}
-          <div className="flex bg-[#0f1720]/70 border border-[#2563eb33] p-1 rounded-xl shrink-0 space-x-1.5 font-sans">
+          <div className="flex bg-[#0f1720] border border-white/10 p-1 rounded-xl shrink-0 space-x-1.5 font-sans">
             <button
               onClick={() => setActiveTab("ngo_phishing")}
               className={`px-4 py-2.5 rounded-lg text-xs font-semibold cursor-pointer transition-all ${
                 activeTab === "ngo_phishing"
-                  ? "bg-[#2563eb] text-white shadow-[0_0_15px_#2563eb]"
+                  ? "bg-[#2563eb] text-white"
                   : "text-slate-400 hover:text-white"
               }`}
             >
@@ -59,7 +59,7 @@ export default function CaseStudies() {
               onClick={() => setActiveTab("dist_retail")}
               className={`px-4 py-2.5 rounded-lg text-xs font-semibold cursor-pointer transition-all ${
                 activeTab === "dist_retail"
-                  ? "bg-[#2563eb] text-white shadow-[0_0_15px_#2563eb]"
+                  ? "bg-[#2563eb] text-white"
                   : "text-slate-400 hover:text-white"
               }`}
             >
@@ -68,17 +68,12 @@ export default function CaseStudies() {
           </div>
         </div>
 
-        {/* Mission Card Structure */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0f1720]/70 border border-[#2563eb33] rounded-3xl p-6 md:p-10 relative overflow-hidden">
-          {/* Subtle watermarks */}
-          <div className="absolute top-10 right-10 opacity-[0.02] pointer-events-none text-[#2563eb]">
-            <FolderGit className="w-80 h-80" />
-          </div>
-
+        {/* Case Study Card */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0f1720] border border-white/10 rounded-3xl p-6 md:p-10">
           <div className="lg:col-span-4 space-y-6">
             <div>
-              <span className="font-mono text-[10px] text-[#60a5fa] font-extrabold uppercase bg-[#2563eb22] border border-[#2563eb44] px-2.5 py-1 rounded-full">
-                CASE ANALYSIS REPORT
+              <span className="text-[10px] font-semibold uppercase tracking-wide text-[#60a5fa] bg-[#2563eb22] border border-[#2563eb44] px-2.5 py-1 rounded-full">
+                Case Study
               </span>
               <h2 className="font-display font-bold text-2xl text-white mt-4 leading-tight">
                 {activeStudy.title}
@@ -87,53 +82,53 @@ export default function CaseStudies() {
 
             <div className="space-y-3 font-sans text-xs">
               <div>
-                <span className="text-slate-400 font-medium font-mono uppercase">ORGANIZATION</span>
+                <span className="text-slate-400 font-medium">Organization</span>
                 <p className="text-slate-200 font-bold text-sm mt-0.5">{activeStudy.client}</p>
               </div>
               <div className="pt-2 border-t border-white/5">
-                <span className="text-slate-400 font-medium font-mono uppercase">OPERATIONAL REGION</span>
+                <span className="text-slate-400 font-medium">Region</span>
                 <p className="text-slate-200 font-bold text-sm mt-0.5">{activeStudy.location}</p>
               </div>
               <div className="pt-2 border-t border-white/5 flex items-center space-x-2 text-emerald-400">
-                <Lock className="w-4 h-4 text-emerald-400 shrink-0 animate-pulse" />
-                <span className="font-bold uppercase tracking-wider text-[10px] font-mono">VERIFIED MITIGATION COMPLETE</span>
+                <Lock className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="font-semibold text-[10px]">Completed with client consent</span>
               </div>
             </div>
           </div>
 
-          {/* Right Columns: Challenge, Solution, Result breakdown */}
-          <div className="lg:col-span-8 flex flex-col justify-between space-y-6 border-t lg:border-t-0 lg:border-l border-white/5 pt-6 lg:pt-0 lg:pl-10 relative z-10 font-sans">
-            
+          {/* Right Columns: Challenge, Approach, Outcome breakdown */}
+          <div className="lg:col-span-8 flex flex-col justify-between space-y-6 border-t lg:border-t-0 lg:border-l border-white/5 pt-6 lg:pt-0 lg:pl-10 font-sans">
+
             <div className="space-y-6">
               {/* Challenge */}
               <div className="space-y-1.5">
-                <h3 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
+                <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wide flex items-center space-x-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                  <span>THE THREAT INTERACTION (CHALLENGE)</span>
+                  <span>Challenge</span>
                 </h3>
                 <p className="text-sm text-slate-300 leading-relaxed pl-3.5">
                   {activeStudy.challenge}
                 </p>
               </div>
 
-              {/* Solution */}
+              {/* Approach */}
               <div className="space-y-1.5">
-                <h3 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
+                <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wide flex items-center space-x-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#2563eb]"></span>
-                  <span>THE SHADOW PLAN (RECON/IMPLEMENTATION)</span>
+                  <span>Approach</span>
                 </h3>
                 <p className="text-sm text-slate-300 leading-relaxed pl-3.5">
                   {activeStudy.solution}
                 </p>
               </div>
 
-              {/* Results */}
+              {/* Outcome */}
               <div className="space-y-1.5">
-                <h3 className="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center space-x-2 font-mono">
+                <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wide flex items-center space-x-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  <span>SECURITY OUTCOMES RECORDED</span>
+                  <span>Outcome</span>
                 </h3>
-                <p className="text-sm text-slate-200 bg-[#0b0f14]/60 border border-[#2563eb33] rounded-lg p-4 font-medium leading-relaxed">
+                <p className="text-sm text-slate-200 bg-[#0b0f14]/60 border border-white/10 rounded-lg p-4 font-medium leading-relaxed">
                   {activeStudy.results}
                 </p>
               </div>

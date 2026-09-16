@@ -22,7 +22,7 @@ export default function SecurityTools({ onNavigate, onQuote }: SecurityToolsProp
   return (
     <section id="tools" aria-labelledby="tools-heading" className="space-y-10">
       <div className="space-y-3">
-        <div className="text-[10px] font-mono text-[#60a5fa] tracking-widest uppercase flex items-center gap-2">
+        <div className="text-xs font-semibold text-[#60a5fa] uppercase tracking-wide flex items-center gap-2">
           <Wrench className="w-4 h-4 text-[#2563eb]" />
           <span>Free Security Tools</span>
         </div>
@@ -64,7 +64,7 @@ export default function SecurityTools({ onNavigate, onQuote }: SecurityToolsProp
       </div>
 
       {/* More tools on the roadmap */}
-      <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400 tracking-widest uppercase">
+      <div className="flex items-center gap-2 text-xs text-slate-400">
         <Lock className="w-3.5 h-3.5" />
         <span>More tools rolling out — tell us what you need.</span>
       </div>
