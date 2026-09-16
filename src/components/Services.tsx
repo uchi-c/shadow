@@ -112,7 +112,7 @@ export default function Services({ onSelectService }: ServicesProps) {
       id: "secure_web_dev",
       title: "Defense-Grade Web Development",
       description: "Custom full-stack software built with security first. Escape unvalidated templates with high-performance and resilient React apps.",
-      longDescription: "Standard agencies ignore secure headers, sanitization, and brute-force protection. Shadow Root builds ultra-fast, mobile-first websites and React frontends configured with CSP headers, rigid input validation, and DDoS rate-limiting to prevent hackers from defacing or exploiting your backend.",
+      longDescription: "Standard agencies ignore secure headers, sanitization, and brute-force protection. Shadow Root builds fast, mobile-first websites and React frontends configured with CSP headers, rigid input validation, and DDoS rate-limiting to protect against defacement and backend exploitation.",
       icon: "Terminal",
       features: [
         "React & Express tailored stack",
@@ -171,14 +171,14 @@ export default function Services({ onSelectService }: ServicesProps) {
         
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col space-y-4">
-          <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
-            Defense Capabilities
+          <div className="text-xs font-semibold uppercase tracking-wide text-[#60a5fa]">
+            Capabilities
           </div>
           <h1 className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight">
             Comprehensive services for security & growth
           </h1>
           <p className="font-sans text-slate-400 text-sm md:text-base">
-            We operate behind the scenes to audit systems, simulate threats, write bulletproof client code, and implement intelligent AI assistants that run cleanly and safely.
+            We audit systems, simulate threats, build secure client code, and implement AI automation that runs cleanly and safely.
           </p>
         </div>
 
@@ -190,12 +190,12 @@ export default function Services({ onSelectService }: ServicesProps) {
                 key={service.id}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative bg-[#0f1720]/70 hover:bg-[#0f1720] text-slate-100 rounded-2xl border border-[#2563eb33] p-6 md:p-8 transition-all flex flex-col justify-between hover:shadow-[0_0_25px_rgba(37,99,235,0.15)]"
+                className="group relative surface-card text-slate-100 p-6 md:p-8 transition-all flex flex-col justify-between"
               >
                 <div>
                   {/* Icon Container */}
                   <div className="mb-6 flex justify-between items-start">
-                    <div className="bg-[#2563eb] p-3 rounded-xl shadow-[0_0_15px_#2563eb]">
+                    <div className="bg-[#2563eb] p-3 rounded-xl">
                       {renderIcon(service.icon)}
                     </div>
                     <button 
@@ -255,10 +255,9 @@ export default function Services({ onSelectService }: ServicesProps) {
           })}
         </div>
 
-        {/* Dynamic bottom Trust Banner */}
-        <div className="mt-16 bg-[#0b0f14]/90 rounded-2xl border border-[#2563eb66] p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#2563eb1a] to-transparent pointer-events-none"></div>
-          <div className="flex flex-col space-y-1.5 relative z-10 text-center md:text-left">
+        {/* Bottom CTA Banner */}
+        <div className="mt-16 bg-[#0b0f14] rounded-2xl border border-white/10 p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <div className="flex flex-col space-y-1.5 text-center md:text-left">
             <h2 className="font-display font-bold text-lg md:text-xl">
               Are you an NGO, school, or business in Lusaka?
             </h2>
@@ -268,7 +267,7 @@ export default function Services({ onSelectService }: ServicesProps) {
           </div>
           <button
             onClick={() => onSelectService("consultation")}
-            className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg font-sans text-xs font-bold transition-all relative z-10 shadow-[0_0_15px_#2563eb] cursor-pointer"
+            className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg font-sans text-xs font-bold transition-all cursor-pointer"
           >
             Schedule Free Vulnerability Consultation
           </button>
@@ -288,18 +287,18 @@ export default function Services({ onSelectService }: ServicesProps) {
             onClick={() => setOpenService(null)}
           >
             <div
-              className="bg-[#0b0f14] border border-[#2563eb44] rounded-3xl w-full max-w-2xl max-h-[88vh] overflow-y-auto shadow-[0_0_60px_rgba(37,99,235,0.18)]"
+              className="bg-[#0b0f14] border border-white/10 rounded-3xl w-full max-w-2xl max-h-[88vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="sticky top-0 bg-[#0b0f14]/95 backdrop-blur px-6 md:px-8 py-5 border-b border-[#2563eb22] flex items-start justify-between gap-4">
+              <div className="sticky top-0 bg-[#0b0f14]/95 backdrop-blur px-6 md:px-8 py-5 border-b border-white/10 flex items-start justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="bg-[#2563eb] p-2.5 rounded-xl shadow-[0_0_15px_#2563eb] shrink-0">
+                  <div className="bg-[#2563eb] p-2.5 rounded-xl shrink-0">
                     {renderIcon(openService.icon)}
                   </div>
                   <div>
                     <h2 className="font-display font-bold text-white text-lg leading-tight">{openService.title}</h2>
-                    <p className="text-[11px] text-slate-400 font-mono mt-0.5">Shadow Root service overview</p>
+                    <p className="text-[11px] text-slate-400 mt-0.5">Shadow Root service overview</p>
                   </div>
                 </div>
                 <button
@@ -319,7 +318,7 @@ export default function Services({ onSelectService }: ServicesProps) {
                   <>
                     {/* Process */}
                     <div className="space-y-3">
-                      <h3 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
+                      <h3 className="text-xs font-semibold uppercase tracking-wide text-[#60a5fa] flex items-center gap-2">
                         <Route className="w-4 h-4" /> How we work
                       </h3>
                       <ol className="space-y-2.5">
@@ -336,7 +335,7 @@ export default function Services({ onSelectService }: ServicesProps) {
 
                     {/* Deliverables */}
                     <div className="space-y-3">
-                      <h3 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
+                      <h3 className="text-xs font-semibold uppercase tracking-wide text-[#60a5fa] flex items-center gap-2">
                         <ListChecks className="w-4 h-4" /> What you receive
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -353,7 +352,7 @@ export default function Services({ onSelectService }: ServicesProps) {
 
                     {/* Technologies */}
                     <div className="space-y-3">
-                      <h3 className="text-[11px] font-mono uppercase tracking-widest text-[#60a5fa] flex items-center gap-2">
+                      <h3 className="text-xs font-semibold uppercase tracking-wide text-[#60a5fa] flex items-center gap-2">
                         <Cpu className="w-4 h-4" /> Approach &amp; tooling
                       </h3>
                       <div className="flex flex-wrap gap-2">
@@ -369,7 +368,7 @@ export default function Services({ onSelectService }: ServicesProps) {
                     <div className="bg-[#070a0f] border border-[#2563eb1a] rounded-2xl p-4 flex items-start gap-3">
                       <Wallet className="w-4 h-4 text-[#60a5fa] shrink-0 mt-0.5" />
                       <div>
-                        <div className="text-[11px] font-mono uppercase tracking-widest text-slate-400 mb-1">Indicative pricing</div>
+                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Indicative pricing</div>
                         <p className="text-xs text-slate-300 leading-relaxed">{detail.pricing}</p>
                       </div>
                     </div>
@@ -380,7 +379,7 @@ export default function Services({ onSelectService }: ServicesProps) {
                 <div className="flex flex-col sm:flex-row gap-3 pt-1">
                   <button
                     onClick={() => { const id = openService.id; setOpenService(null); onSelectService(id); }}
-                    className="flex-1 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-sm py-3 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(37,99,235,0.4)]"
+                    className="flex-1 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-sm py-3 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Book a consultation</span>
                     <ArrowUpRight className="w-4 h-4" />

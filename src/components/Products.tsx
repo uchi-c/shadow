@@ -65,7 +65,7 @@ export default function Products({ onNavigate, onQuote }: ProductsProps) {
   return (
     <section aria-labelledby="products-heading" className="space-y-12">
       <div className="space-y-3">
-        <div className="text-[10px] font-mono text-[#60a5fa] tracking-widest uppercase flex items-center gap-2">
+        <div className="text-xs font-semibold text-[#60a5fa] uppercase tracking-wide flex items-center gap-2">
           <Boxes className="w-4 h-4 text-[#2563eb]" />
           <span>The Shadow Root Ecosystem</span>
         </div>
@@ -78,18 +78,17 @@ export default function Products({ onNavigate, onQuote }: ProductsProps) {
       </div>
 
       {/* Flagship: URUU */}
-      <div className="relative rounded-3xl border border-[#2563eb44] bg-gradient-to-br from-[#0f1720] to-[#0b0f14] p-6 md:p-10 overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#2563eb] rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+      <div className="relative rounded-3xl border border-white/10 bg-[#0f1720] p-6 md:p-10">
         <div className="relative space-y-5 max-w-3xl">
           <div className="flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-2 text-white font-display font-black text-2xl md:text-3xl tracking-tight">
               <Sparkles className="w-6 h-6 text-[#60a5fa]" />
               URUU
             </div>
-            <span className={`text-[10px] font-mono uppercase tracking-widest border rounded-full px-2.5 py-1 ${STATUS_STYLE["In development"]}`}>
+            <span className={`text-[10px] font-semibold uppercase tracking-wide border rounded-full px-2.5 py-1 ${STATUS_STYLE["In development"]}`}>
               In development
             </span>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Flagship product · Innovation Lab</span>
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Flagship product · Innovation Lab</span>
           </div>
           <p className="text-slate-300 text-sm md:text-base leading-relaxed">
             URUU is Shadow Root&apos;s flagship product, incubated under our Innovation Lab — a <strong className="text-white">secure workflow and intelligence platform</strong> for reporting, visibility, and trust-sensitive processes. It gives institutions one governed place to track approvals, monitor risk, and act on prioritized intelligence.
@@ -106,7 +105,7 @@ export default function Products({ onNavigate, onQuote }: ProductsProps) {
           </div>
           <button
             onClick={() => requestQuote("uruu", "I'd like to join the URUU early-access waitlist.")}
-            className="inline-flex items-center gap-1.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-xl transition-all cursor-pointer shadow-[0_0_15px_rgba(37,99,235,0.4)]"
+            className="inline-flex items-center gap-1.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-xl transition-all cursor-pointer"
           >
             <span>Join the early-access waitlist</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -119,19 +118,19 @@ export default function Products({ onNavigate, onQuote }: ProductsProps) {
         {PRODUCTS.map((p) => {
           const Icon = p.icon;
           return (
-            <div key={p.id} className="bg-[#0f1720]/70 border border-[#2563eb22] rounded-2xl p-6 flex flex-col justify-between gap-5 hover:border-[#2563eb55] transition-all">
+            <div key={p.id} className="surface-card p-6 flex flex-col justify-between gap-5">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="bg-[#2563eb]/15 border border-[#2563eb44] p-2.5 rounded-xl text-[#60a5fa]">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className={`text-[9px] font-mono uppercase tracking-widest border rounded-full px-2 py-0.5 ${STATUS_STYLE[p.status]}`}>
+                  <span className={`text-[9px] font-semibold uppercase tracking-wide border rounded-full px-2 py-0.5 ${STATUS_STYLE[p.status]}`}>
                     {p.status}
                   </span>
                 </div>
                 <div>
                   <h2 className="font-display font-bold text-white text-lg">{p.name}</h2>
-                  <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">{p.tagline}</p>
+                  <p className="text-[11px] text-slate-400 uppercase tracking-wide">{p.tagline}</p>
                 </div>
                 <p className="text-xs text-slate-400 leading-relaxed">{p.desc}</p>
               </div>
