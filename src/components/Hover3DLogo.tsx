@@ -64,22 +64,15 @@ export default function Hover3DLogo() {
         }}
         className="relative w-full h-full flex items-center justify-center transition-all duration-300"
       >
-        {/* Background Ambient Cyber Glow */}
-        <div className="absolute inset-4 bg-[#2563eb]/10 rounded-full filter blur-xl group-hover:bg-[#2563eb]/25 transition-all duration-500"></div>
-
-        {/* Outer Tech Ring with CSS rotational animation */}
-        <div className="absolute inset-0 rounded-full border border-[#2563eb]/30 border-dashed animate-[spin_50s_linear_infinite] pointer-events-none"></div>
-        <div className="absolute inset-8 rounded-full border border-teal-500/15 border-double animate-[spin_25s_linear_infinite_reverse] pointer-events-none"></div>
-
-        {/* Main Shield Hologram Card */}
-        <div 
-          className="relative bg-gradient-to-b from-[#0f1720]/90 to-[#0b0f14]/95 border border-[#2563eb]/50 rounded-2xl p-6 flex flex-col items-center justify-center shadow-[0_15px_35px_rgba(0,0,0,0.6)] group-hover:border-teal-500/50 w-56 h-56 md:w-72 md:h-72 transition-colors duration-500"
+        {/* Main Shield Card */}
+        <div
+          className="relative bg-gradient-to-b from-[#0f1720]/90 to-[#0b0f14]/95 border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center group-hover:border-teal-500/50 w-56 h-56 md:w-72 md:h-72 transition-colors duration-500"
           style={{ transform: "translateZ(30px)" }}
         >
           {/* Internal Vector SVG Trace of the Authentic Logo (Image 3) */}
           <svg
             viewBox="0 0 200 240"
-            className="w-40 h-40 md:w-48 md:h-48 drop-shadow-[0_0_15px_#2563ebCC]"
+            className="w-40 h-40 md:w-48 md:h-48"
             aria-hidden="true"
           >
             {/* The Hexagonal Shield Structure */}
@@ -104,7 +97,7 @@ export default function Hover3DLogo() {
 
             {/* Electronic Circuit Roots branching down */}
             {/* Center trunk */}
-            <line x1="100" y1="65" x2="100" y2="150" stroke="#00F0FF" strokeWidth="4" className="animate-pulse" />
+            <line x1="100" y1="65" x2="100" y2="150" stroke="#00F0FF" strokeWidth="4" />
             <circle cx="100" cy="65" r="4.5" fill="#00F0FF" />
 
             {/* Left root branch 1 */}
@@ -116,7 +109,7 @@ export default function Hover3DLogo() {
               strokeLinecap="round"
             />
             {/* Left node terminal connector */}
-            <circle cx="55" cy="185" r="5" fill="#00F0FF" className="animate-ping" style={{ animationDuration: "3s" }} />
+            <circle cx="55" cy="185" r="5" fill="#00F0FF" />
             <circle cx="55" cy="185" r="3.5" fill="#00F0FF" />
 
             {/* Left branch 2 (closer to center) */}
@@ -138,7 +131,7 @@ export default function Hover3DLogo() {
               strokeLinecap="round"
             />
             {/* Right node terminal connector */}
-            <circle cx="145" cy="185" r="5" fill="#00F0FF" className="animate-ping" style={{ animationDuration: "3s" }} />
+            <circle cx="145" cy="185" r="5" fill="#00F0FF" />
             <circle cx="145" cy="185" r="3.5" fill="#00F0FF" />
 
             {/* Right branch 2 (closer to center) */}

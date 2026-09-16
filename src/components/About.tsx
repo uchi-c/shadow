@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { ShieldAlert, Scaling, HeartHandshake, Swords, ShieldCheck, Mail, Phone, ExternalLink, Boxes, BrainCircuit, FlaskConical, GraduationCap, PlayCircle } from "lucide-react";
+import { Scaling, HeartHandshake, Swords, ShieldCheck, Mail, Boxes, BrainCircuit, FlaskConical, GraduationCap, PlayCircle } from "lucide-react";
 import Hover3DLogo from "./Hover3DLogo";
 import ChunkErrorBoundary from "./ChunkErrorBoundary";
 import uchiChinyamaPhoto from "../assets/images/uchi_chinyama_founder_portrait.jpg";
@@ -69,7 +69,7 @@ export default function About() {
         
         {/* Section Title */}
         <div className="mb-12 flex flex-col space-y-3.5">
-          <div className="text-xs font-mono font-bold tracking-widest text-[#60a5fa] uppercase">
+          <div className="text-xs font-semibold uppercase tracking-wide text-[#60a5fa]">
             Corporate Identity & Leadership
           </div>
           <h1 className="font-display font-bold text-3xl md:text-5xl text-white tracking-tight leading-tight">
@@ -97,8 +97,8 @@ export default function About() {
 
             {/* Core Pillars Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 font-sans">
-              <div 
-                className="bg-[#0f1720]/70 border border-[#2563eb33] p-5 rounded-xl hover:shadow-[0_0_15px_rgba(37,99,235,0.1)] focus-within:ring-2 focus-within:ring-[#2563eb] transition-all"
+              <div
+                className="surface-card p-5"
                 tabIndex={0}
                 aria-label="Core pillar: Structured Growth. Shadow Root is built on disciplined, founder-led execution with clear functional roles across product, security, and governance."
               >
@@ -109,38 +109,30 @@ export default function About() {
                 <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">Shadow Root is built on disciplined, founder-led execution with clear functional roles across product, security, and governance.</p>
               </div>
 
-              <div 
-                className="bg-[#0f1720]/70 border border-[#2563eb33] p-5 rounded-xl hover:shadow-[0_0_15px_rgba(37,99,235,0.1)] focus-within:ring-2 focus-within:ring-[#2563eb] transition-all"
+              <div
+                className="surface-card p-5"
                 tabIndex={0}
-                aria-label="Core pillar: Ethical NGO Pricing. We adjust costs according to organization scale, ensuring donor funds are never spent on bloated licenses."
+                aria-label="Core pillar: Scaled Pricing. Costs are structured to an organization's size, so smaller institutions and NGOs aren't priced out."
               >
                 <div className="bg-[#2563eb22] text-[#60a5fa] p-2 rounded-lg w-fit mb-3 border border-[#2563eb44]">
                   <HeartHandshake className="w-5 h-5" />
                 </div>
-                <h3 className="font-display font-bold text-white text-sm">Ethical NGO Pricing</h3>
-                <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">We adjust costs according to organization scale, ensuring donor funds are never spent on bloated licenses.</p>
+                <h3 className="font-display font-bold text-white text-sm">Scaled Pricing</h3>
+                <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">Costs are structured to an organization&apos;s size, so smaller institutions and NGOs aren&apos;t priced out.</p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: 3D Hologram Hovering Shield Logo */}
+          {/* Right Column: Brand Mark */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <div className="text-center mb-4">
-              <span className="text-[10px] font-mono tracking-widest text-[#60a5fa] uppercase bg-[#0f1720] border border-[#2563eb33] px-3 py-1 rounded-full">
-                Interactive Cursor Perspective
-              </span>
-            </div>
             <Hover3DLogo />
-            <div className="text-[10px] text-slate-400 font-mono text-center mt-3 max-w-xs leading-normal">
-              Hover, move, or tap using keyboard focus to inspect the circular root terminal circuit nodes in 3D perspective depth.
-            </div>
           </div>
 
         </div>
 
         {/* Optional overview video — not on the forced homepage path */}
         <div className="mt-20 space-y-6">
-          <div className="flex items-center space-x-2 text-[10px] font-mono text-[#60a5fa] tracking-widest uppercase">
+          <div className="flex items-center space-x-2 text-xs font-semibold text-[#60a5fa] uppercase tracking-wide">
             <PlayCircle className="w-4 h-4 text-[#2563eb]" />
             <span>Watch the overview</span>
           </div>
@@ -166,38 +158,19 @@ export default function About() {
 
             {/* Founder Profile Card: Uchi Chinyama */}
             <div
-              className="bg-[#0f1720]/70 border border-[#2563eb44] rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row gap-6 hover:border-[#2563eb] hover:shadow-[0_0_20px_rgba(37,99,235,0.15)] transition-all focus-within:ring-2 focus-within:ring-[#2563eb] max-w-2xl w-full"
+              className="surface-card p-6 md:p-8 flex flex-col sm:flex-row gap-6 max-w-2xl w-full"
               tabIndex={0}
               aria-label="Profile of Uchi Chinyama, Founder and Lead Strategist of Shadow Root Security Technologies."
             >
 
               {/* Profile Image of Founder Uchi Chinyama */}
-              <div
-                className="w-44 h-60 rounded-xl bg-slate-950 border border-[#2563eb55] shrink-0 overflow-hidden relative group mx-auto sm:mx-0"
-                role="img"
-                aria-label="Professional portrait of Founder Uchi Chinyama in a suit outside Shadow Root headquarters"
-              >
-                {/* Simulated Monitor Grid Background (blue bars & maps) */}
-                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(11,15,20,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(11,15,20,0.5)_1px,transparent_1px)] bg-[size:10px_10px] z-20 pointer-events-none"></div>
-                <div className="absolute top-2 left-2 w-32 h-1 bg-cyan-500/20 rounded z-20 pointer-events-none"></div>
-                
-                {/* High Contrast Photograph of Founder */}
+              <div className="w-44 h-60 rounded-xl bg-slate-950 border border-white/10 shrink-0 overflow-hidden mx-auto sm:mx-0">
                 <img
                   src={uchiChinyamaPhoto}
                   alt="Uchi Chinyama, Founder and Lead Strategist of Shadow Root Security Technologies"
-                  className="w-full h-full object-cover object-top relative z-10 filter brightness-95 contrast-[1.05]"
+                  className="w-full h-full object-cover object-top"
                   referrerPolicy="no-referrer"
                 />
-
-                {/* Globe Map trace decoration */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" viewBox="0 0 160 192">
-                  <circle cx="110" cy="50" r="28" fill="none" stroke="rgba(0,240,255,0.08)" strokeWidth="1" strokeDasharray="3,3" />
-                </svg>
-
-                {/* Stitched 'Shadow Root' Suit pocket label graphic */}
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-[#2563eb]/25 border border-[#2563eb55] rounded px-1.5 py-0.5 text-[7px] font-mono uppercase text-teal-400 font-bold z-20">
-                  Shadow Root Founder
-                </div>
               </div>
 
               {/* Bio & Details Column */}
@@ -214,14 +187,10 @@ export default function About() {
                   </p>
                 </div>
 
-                <div className="space-y-2 text-xs font-mono">
-                  <div className="flex items-center space-x-2 text-slate-355">
+                <div className="space-y-2 text-xs">
+                  <div className="flex items-center space-x-2 text-slate-300">
                     <span className="text-[#2563eb]">✔</span>
                     <span>Direct Phishing Architect</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-slate-355">
-                    <span className="text-[#2563eb]">✔</span>
-                    <span>10+ Years Security Passion</span>
                   </div>
                 </div>
 
@@ -267,7 +236,7 @@ export default function About() {
             {departments.map((dept) => (
               <div
                 key={dept.name}
-                className="bg-[#0f1720]/70 border border-[#2563eb33] p-5 rounded-xl hover:border-[#2563eb] hover:shadow-[0_0_15px_rgba(37,99,235,0.1)] focus-within:ring-2 focus-within:ring-[#2563eb] transition-all"
+                className="surface-card p-5"
                 tabIndex={0}
                 aria-label={`Department: ${dept.name}. ${dept.meaning} Primary scope: ${dept.scope}.`}
               >
@@ -276,37 +245,32 @@ export default function About() {
                 </div>
                 <h3 className="font-display font-bold text-white text-sm">{dept.name}</h3>
                 <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">{dept.meaning}</p>
-                <p className="text-[10px] font-mono text-slate-400 mt-3 uppercase tracking-wider">{dept.scope}</p>
+                <p className="text-[10px] text-slate-400 mt-3">{dept.scope}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Section 3: Interactive Diagram of "The Shadow Methodology" */}
-        <div className="mt-28 bg-[#0f1720]/80 text-white rounded-2xl border border-[#2563eb44] p-6 md:p-10 relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-shadow-blue-dark/25 rounded-full blur-3xl pointer-events-none"></div>
-          
-          <div className="relative z-10 flex flex-col space-y-8">
+        {/* Section 3: The Shadow Audit Methodology */}
+        <div className="mt-28 bg-[#0f1720] text-white rounded-2xl border border-white/10 p-6 md:p-10">
+          <div className="flex flex-col space-y-8">
             <div className="flex items-center space-x-2.5 pb-4 border-b border-white/5">
-              <Swords className="w-5 h-5 text-[#2563eb] animate-pulse" />
-              <span className="font-display font-bold text-sm tracking-tight uppercase font-mono">The Shadow Audit Methodology (Step-by-Step Security)</span>
+              <Swords className="w-5 h-5 text-[#2563eb]" />
+              <span className="font-display font-bold text-sm">The Shadow Audit Methodology</span>
             </div>
 
             {/* Steps timeline horizontal on md, vertical on mobile */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {steps.map((st, index) => (
-                <div 
-                  key={index} 
-                  className="bg-[#0b0f14]/70 border border-[#2563eb33] p-5 rounded-xl hover:border-[#60a5fa] focus:ring-2 focus:ring-[#2563eb] transition-all flex flex-col justify-between"
+                <div
+                  key={index}
+                  className="bg-[#0b0f14]/70 border border-white/10 p-5 rounded-xl hover:border-[#60a5fa] focus:ring-2 focus:ring-[#2563eb] transition-all flex flex-col justify-between"
                   tabIndex={0}
                   aria-label={`Step ${st.metric}: ${st.title}. ${st.desc}`}
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[#60a5fa] font-black text-sm bg-[#0b0f14]/90 w-8 h-8 rounded-full border border-[#2563eb44] flex items-center justify-center shrink-0">
-                      {st.metric}
-                    </span>
-                    <span className="text-[8px] font-mono text-slate-400 uppercase">ACTIVE</span>
-                  </div>
+                  <span className="font-mono text-[#60a5fa] font-black text-sm bg-[#0b0f14]/90 w-8 h-8 rounded-full border border-[#2563eb44] flex items-center justify-center shrink-0">
+                    {st.metric}
+                  </span>
                   <div>
                     <h4 className="font-display font-bold text-xs text-slate-100 mt-4 leading-none">
                       {st.title}
@@ -317,12 +281,6 @@ export default function About() {
                   </div>
                 </div>
               ))}
-            </div>
-
-            {/* Mission Badge footer */}
-            <div className="pt-4 border-t border-white/5 flex justify-between items-center text-[10px] font-mono text-slate-400">
-              <span>SECURITY VIGILANCE INDEX: HIGHLY ENFORCED</span>
-              <span>ZAMBIA SHADOW FRAMEWORK V2.05</span>
             </div>
           </div>
         </div>
