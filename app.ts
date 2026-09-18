@@ -34,37 +34,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-// === SECURITY CONTROLS: IN-MEMORY RATE LIMITERS ===
-interface RateLimitBucket {
-  count: number;
-  resetTime: number;
-}
-const quoteLimitStore = new Map<string, RateLimitBucket>();
-const chatLimitStore = new Map<string, RateLimitBucket>();
-
-function checkRateLimit(ip: string, store: Map<string, RateLimitBucket>, limit: number, windowMs: number): boolean {
-  const now = Date.now();
-  const record = store.get(ip);
-
-  if (!record) {
-    store.set(ip, { count: 1, resetTime: now + windowMs });
-    return true;
-  }
-
-  if (now > record.resetTime) {
-    record.count = 1;
-    record.resetTime = now + windowMs;
-    return true;
-  }
-
-  if (record.count >= limit) {
-    return false;
-  }
-
-  record.count += 1;
-  return true;
-}
-
 // === INPUT SANITIZATION UTILITIES ===
 function sanitize(input: any, maxLength = 2000): string {
   if (typeof input !== "string") return "";
@@ -360,7 +329,7 @@ app.post("/api/leads", async (req: Request, res: Response) => {
   const clientIp = req.ip || req.headers["x-forwarded-for"]?.toString() || "anonymous";
 
   // Rate Limit check: Max 5 inquiries per 30 minutes per IP
-  const allowed = checkRateLimit(clientIp, quoteLimitStore, 5, 30 * 60 * 1000);
+  const allowed = await db.checkRateLimit(`leads:${clientIp}`, 5, 30 * 60 * 1000);
   if (!allowed) {
     return res.status(429).json({
       error: "Rate Limit Violation. Maximum quote request frequency attained. Please try again in 30 minutes."
@@ -420,7 +389,7 @@ app.post("/api/chat", async (req: Request, res: Response) => {
   const clientIp = req.ip || req.headers["x-forwarded-for"]?.toString() || "anonymous";
 
   // Rate Limiting on Chat Widget: Max 40 messages per 10 minutes per IP
-  const allowed = checkRateLimit(clientIp, chatLimitStore, 40, 10 * 60 * 1000);
+  const allowed = await db.checkRateLimit(`chat:${clientIp}`, 40, 10 * 60 * 1000);
   if (!allowed) {
     return res.status(429).json({
       error: "Rate Limit Violation. Chat message limits attained. Please hold for a moments or call the WhatsApp line directly."
@@ -573,8 +542,6 @@ app.post("/api/chat", async (req: Request, res: Response) => {
 // Proxying (rather than calling NVD from the browser) avoids CORS issues, lets
 // us attach an API key server-side if one is configured, and returns a small,
 // normalized shape. All data returned here is live from NVD — nothing invented.
-const cveLimitStore = new Map<string, RateLimitBucket>();
-
 interface NormalizedCve {
   id: string;
   summary: string;
@@ -607,7 +574,7 @@ app.get("/api/cve", async (req: Request, res: Response) => {
   const clientIp = req.ip || req.headers["x-forwarded-for"]?.toString() || "anonymous";
 
   // Rate limit: max 10 lookups per 5 minutes per IP (NVD is a shared public service).
-  const allowed = checkRateLimit(clientIp, cveLimitStore, 10, 5 * 60 * 1000);
+  const allowed = await db.checkRateLimit(`cve:${clientIp}`, 10, 5 * 60 * 1000);
   if (!allowed) {
     return res.status(429).json({ error: "Rate limit reached. Please wait a few minutes before searching again." });
   }

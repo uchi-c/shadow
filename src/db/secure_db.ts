@@ -143,6 +143,11 @@ const SEED_KNOWLEDGE_BASE: KnowledgeBaseEntry[] = [
 
 const genId = (prefix: string) => `${prefix}_${Math.random().toString(36).slice(2, 11)}_${Date.now()}`;
 
+interface RateLimitBucket {
+  count: number;
+  resetAt: number;
+}
+
 /**
  * Storage backend contract. Two interchangeable implementations exist: a local
  * JSON-file store (development / persistent-server hosting) and a Supabase store
@@ -167,6 +172,12 @@ interface Store {
   updateChatLog(id: string, update: Partial<Omit<ChatLog, "id" | "createdAt">>): Promise<ChatLog>;
   appendChatMessage(id: string, message: ChatMessage): Promise<ChatLog>;
   updateChatLogStatus(id: string, status: RecordStatus): Promise<boolean>;
+
+  // Returns true if the caller is still within `limit` requests for the given
+  // window; false if the window's quota is exhausted. `key` should already be
+  // scoped per-endpoint (e.g. "leads:203.0.113.4") so different rate-limited
+  // routes don't share a bucket.
+  checkRateLimit(key: string, limit: number, windowMs: number): Promise<boolean>;
 }
 
 // ===================================================================
@@ -177,6 +188,11 @@ class FileStore implements Store {
   private leadsFile: string;
   private knowledgeFile: string;
   private chatLogsFile: string;
+  // In-memory only. Fine for local dev and persistent Node hosts (single
+  // long-running process); on the Vercel fallback path (no Supabase env vars
+  // configured) this store is already documented as ephemeral per-invocation,
+  // so rate limiting is best-effort there too, not a new regression.
+  private rateLimitStore = new Map<string, RateLimitBucket>();
 
   constructor() {
     // On serverless (Vercel) only /tmp is writable; elsewhere use the project dir.
@@ -306,6 +322,19 @@ class FileStore implements Store {
     this.writeJsonAtomic(this.chatLogsFile, logs);
     return true;
   }
+
+  async checkRateLimit(key: string, limit: number, windowMs: number): Promise<boolean> {
+    const now = Date.now();
+    const record = this.rateLimitStore.get(key);
+
+    if (!record || now > record.resetAt) {
+      this.rateLimitStore.set(key, { count: 1, resetAt: now + windowMs });
+      return true;
+    }
+    if (record.count >= limit) return false;
+    record.count += 1;
+    return true;
+  }
 }
 
 // ===================================================================
@@ -427,6 +456,25 @@ class SupabaseStore implements Store {
     if (error) throw error;
     return (data?.length || 0) > 0;
   }
+
+  async checkRateLimit(key: string, limit: number, windowMs: number): Promise<boolean> {
+    // Delegates the increment-and-compare to a Postgres function (see
+    // supabase/schema.sql) so concurrent serverless invocations racing on the
+    // same key are still counted correctly — a plain read-then-write from
+    // here would lose increments under concurrency.
+    const { data, error } = await this.client.rpc("check_rate_limit", {
+      p_key: key,
+      p_limit: limit,
+      p_window_ms: windowMs
+    });
+    if (error) {
+      // Fail open: an infra hiccup on the rate-limit table shouldn't take
+      // down lead submission or the chat widget for every visitor.
+      console.error("[RateLimit] Supabase check failed, failing open:", error);
+      return true;
+    }
+    return Boolean(data);
+  }
 }
 
 // ===================================================================
@@ -496,6 +544,9 @@ export const db = {
   getLeads: () => store.getLeads(),
   addLead: (lead: Omit<Lead, "id" | "createdAt" | "status">) => store.addLead(lead),
   updateLeadStatus: (id: string, status: RecordStatus) => store.updateLeadStatus(id, status),
+
+  // === RATE LIMITING ===
+  checkRateLimit: (key: string, limit: number, windowMs: number) => store.checkRateLimit(key, limit, windowMs),
 
   // === KNOWLEDGE BASE (seed baseline + custom documents) ===
   async getKnowledgeBase(): Promise<KnowledgeBaseEntry[]> {
